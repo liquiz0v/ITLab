@@ -571,17 +571,17 @@ header nav ul li span:hover{
 	left: 0;
 	bottom: 0;
 	box-sizing: border-box;
-	padding: 10px 17px;
+	padding: 25px 17px;
 }
 .news-button > button{
 	border: none;
 	color: white;
-	font-size: 18px;
+	font-size: 16px;
 	background-color: #4faa9f;
 	border: solid 2px #4faa9f;
 	box-sizing: border-box;
 	border-radius: 15px;
-	padding: 8px 20px;
+	padding: 3px 10px;
 	box-shadow: 1px 1px 1px 1px #DCDCDC;
 	cursor: pointer;
 	transition: .3s;
