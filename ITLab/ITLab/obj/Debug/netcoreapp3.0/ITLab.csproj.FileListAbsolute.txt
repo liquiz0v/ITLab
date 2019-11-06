@@ -166,3 +166,12 @@ C:\Users\Admin\Documents\ITLab\ITLab\ITLab\bin\Debug\netcoreapp3.0\Microsoft.Asp
 C:\Users\Admin\Documents\ITLab\ITLab\ITLab\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\PersonalData.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\_StatusMessage.cshtml.g.cs
+C:\Users\Admin\Documents\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Error.cshtml.g.cs
