@@ -1,0 +1,55 @@
+.content-site{
+    background-color: rgb(229, 255, 0);
+    height: 1200px;
+    width: 100%;
+}
+.backround-dimming{
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.342);
+    height: 100vh;
+    min-height: 500px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0;
+}
+.content-login {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(247, 247, 247);
+
+}
+.d-flex {
+    display: flex;
+}
+.justify-cont-center{
+    justify-content: center;
+}
+.align-items-center {
+    align-items: center;
+}
+.direction-column {
+    flex-direction: column;
+}
+.soc-btn {
+    width: 90px;
+    height: 23px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 23px;
+    margin-top: 15px;
+
+    /* background-color: white; */
+}
+.soc-google {
+    margin-right: 20px;
+}
+.soc-facebook {
+    margin-left: 20px;
+    background-color: rgb(0, 0, 223);
+    color: white;
+}
