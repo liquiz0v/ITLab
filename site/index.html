@@ -53,7 +53,7 @@
 		<div class="filter">
 			<div class="start-info">
 				<h1 class="animated fadeInRight delay-.7s">Лаборатория<br> инновационных технологий</h1>
-				<a href="#about"><img src="images/arrowDown.png" class="animated infinite pulse delay-.7s"></a>
+				<img src="images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(about)">
 			</div>
 		</div>
 	</section>
@@ -195,10 +195,11 @@
 	<section id="news">
 		<div class="filter">
 			<div class="news-header">
-				<h3 class="wow fadeInLeft" data-wow-delay="0.3s">Новости</h3>
-				<hr>
+				<h3 class="wow fadeInRight" data-wow-delay="0.2s">Новости</h3>
+				<hr class="wow fadeInLeft" data-wow-delay="0.5s">
 			</div>
 			<div class="slider">
+				<div class="slideLeft"></div>
 				<div class="slider-wrapper">
 					<div class="slider-news">
 						<div class="news-date">
@@ -277,28 +278,46 @@
 						</div>
 					</div>
 				</div>
+				<div class="slideRight"></div>
 			</div>
 		</div>
 	</section>
 	<section id="statistics">
 		<div class="filter">
-			<div class="st-block">
-				<img src="images/sClock.png">
-				<b>2015</b>
-				<br>
-				<span>Год основания</span>
+			<div class="st-container">
+				<div class="st-block">
+					<img src="images/sClock.png">
+					<b id="yCounter">2015</b>
+					<br>
+					<span>Год основания</span>
+				</div>
+				<div class="st-block">
+					<img src="images/sFolder.png">
+					<b><span id="prCounter">14</span>+</b>
+					<br>
+					<span>Успешных проектов</span>
+				</div>
+				<div class="st-block">
+					<img src="images/sPeople.png">
+					<b><span id="pCounter">1000</span>+</b>
+					<br>
+					<span>Учеников</span>
+				</div>
 			</div>
-			<div class="st-block">
-				<img src="images/sFolder.png">
-				<b>14+</b>
-				<br>
-				<span>Успешных проектов</span>
+		</div>
+	</section>
+	<section id="feedback">
+		<div class="filter">
+			<div class="feedback-header">
+				<h3 class="wow fadeInRight" data-wow-delay="0.2s">Обратная связь</h3>
+				<hr class="wow fadeInLeft" data-wow-delay="0.5s">
 			</div>
-			<div class="st-block">
-				<img src="images/sPeople.png">
-				<b>1000+</b>
-				<br>
-				<span>Учеников</span>
+			<div class="feedback-body">
+				<input type="text" placeholder="ФИО"><br>
+				<input type="tel" placeholder="Телефон"><br>
+				<textarea type="text" placeholder="Задайте Ваш вопрос"></textarea><br>
+				<button>Отправить</button>
+				<p>Нажимая <span>«Отправить»</span>, вы соглашаетесь с политикой обработки персональных данных</p>
 			</div>
 		</div>
 	</section>
@@ -311,13 +330,40 @@
 			</p>
 			<div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
 		</div>
-		<div class="footer-section">a</div>
-		<div class="footer-section">a</div>
+		<div class="footer-section">
+			<div class="sf-block">
+				<b>Навигация</b>
+				<ul>
+					<li><a href="#">Курсы</a></li>
+					<li><a href="#">Проекты</a></li>
+					<li><a href="#">Личный кабинет</a></li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-section">
+			<div class="s-footer">
+				<b>Контактная информация</b>
+				<ul>
+					<li><img src="images/place.png">ул. Кузнечная,1</li>
+				<li><img src="images/phone.png">
+					<ul class="tel-list">
+						<li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
+						<li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
+					</ul>
+				</li>
+				<li><img src="images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
+				</ul>
+				<ul class="social-footer">
+					<li><a href=""><img src="images/facebook.png"></a></li>
+					<li><a href=""><img src="images/youtube.png"></a></li>
+					<li><a href=""><img src="images/insta.png"></a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </footer>
 <script src="js/wow.min.js"></script>
-<script>
-    new WOW().init();
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
