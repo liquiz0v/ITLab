@@ -216,8 +216,3 @@ D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.MvcApplicationPa
 D:\github repos\ITLab\ITLab\ITLab\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 D:\github repos\ITLab\ITLab\ITLab\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\Index.cshtml.g.cs
-D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Create.cshtml.g.cs
-D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Delete.cshtml.g.cs
-D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Details.cshtml.g.cs
-D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Edit.cshtml.g.cs
-D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Index.cshtml.g.cs

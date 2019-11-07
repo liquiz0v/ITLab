@@ -1,0 +1,2 @@
+﻿insert into News 
+values ('titletitletitleaaaa', 'shortdescriptionshortdescriptionshortdhortddescription', 'shortdescriptionshortdescriptionshortdhortddescriptionshortdescriptionshortdescriptionshortdhortddescription','3/10/19 14:30:20:000','http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',13)
