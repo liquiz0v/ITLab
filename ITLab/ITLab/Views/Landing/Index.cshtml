@@ -1,0 +1,46 @@
+﻿
+@model List<ITLab.Client_Objects.ShortNews>
+
+<section id="news">
+    <div class="filter">
+        <div class="news-header">
+            <h3 class="wow fadeInLeft" data-wow-delay="0.3s">Новости</h3>
+            <hr>
+        </div>
+        <div class="slider">
+            <div class="slider-wrapper">
+
+                <!--news template-->
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="slider-news">
+                        <div class="news-date">
+                            <span>@item.TimeDate</span>
+                            <br>
+                            image href = @item.HeadPhoto
+                        </div>
+                        <div class="slider-news-header"></div>
+                        <div class="news-body">
+                            <span>«@item.Title</span>
+                            <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
+                            <p>
+                               @item.ShortDescription 
+                                ...
+                            </p>
+                        </div>
+                        <div class="news-button">
+                            <button>Подробнее</button>
+                        </div>
+                    </div>
+
+                }
+
+
+                <!--end news template-->
+
+            </div>
+        </div>
+    </div>
+</section>

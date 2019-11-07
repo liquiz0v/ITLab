@@ -12,6 +12,7 @@ using ITLab.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ITLab.Models;
 
 namespace ITLab
 {
@@ -34,6 +35,7 @@ namespace ITLab
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddDbContext<ITLabContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +64,7 @@ namespace ITLab
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Landing}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
