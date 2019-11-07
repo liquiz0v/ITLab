@@ -20,7 +20,7 @@ window.addEventListener("scroll", function(){
 	&& !toSt){
 	    toSt = true;
 		let el = document.getElementById('yCounter');
-		counterAnimation(2015, 1500, 5, el);
+		counterAnimation(2015, 1500, 65, el);
 
 		el = document.getElementById('prCounter');
 		counterAnimation(14, 1500, 1, el);
