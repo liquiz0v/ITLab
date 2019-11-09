@@ -101,7 +101,7 @@
 					<div class="cours-name">Робототехника и<br> мехатроника</div>
 				</div>
 				<div class="cours-body">
-					<div class="decore-line mainLine"></div>
+					<div class="decore-line"></div>
 					<div class="cours-time">
 						<ul>
 							<li>Пятница</li>
@@ -199,7 +199,7 @@
 				<hr class="wow fadeInLeft" data-wow-delay="0.5s">
 			</div>
 			<div class="slider">
-				<div class="slideLeft"></div>
+				<div id="slideLeft"></div>
 				<div class="slider-wrapper">
 					<div class="slider-news">
 						<div class="news-date">
@@ -258,7 +258,7 @@
 							<button>Подробнее</button>
 						</div>
 					</div>
-										<div class="slider-news">
+					<div class="slider-news">
 						<div class="news-date">
 							<span>19 окт</span>
 							<span>2019</span>
@@ -277,30 +277,54 @@
 							<button>Подробнее</button>
 						</div>
 					</div>
+					<div class="slider-news">
+						<div class="news-date">
+							<span>19 окт</span>
+							<span>2019</span>
+						</div>
+						<div class="slider-news-header"></div>
+						<div class="news-body">
+							<span>«Некст профориентация»<br>на Морвокзале</span>
+							<p><span>10</span> комментариев / <span>38</span> просмотров</p>
+							<p>Около 40 навчальник заведений 
+							и 20 ведущих компаний города 
+							выступили с презентациями 
+							профессий. Мероприятие было 
+							нацелено на шк...</p>
+						</div>
+						<div class="news-button">
+							<button>Подробнее</button>
+						</div>
+					</div>
+					<div class="slider-news">
+						<a href="#">Больше новостей</a>
+					</div>
 				</div>
-				<div class="slideRight"></div>
+				<div id="slideRight"></div>
 			</div>
 		</div>
 	</section>
 	<section id="statistics">
-		<div class="st-container">
-			<div class="st-block">
-				<img src="images/sClock.png">
-				<b id="yCounter">2015</b>
-				<br>
-				<span>Год основания</span>
-			</div>
-			<div class="st-block">
-				<img src="images/sFolder.png">
-				<b><span id="prCounter">14</span>+</b>
-				<br>
-				<span>Успешных проектов</span>
-			</div>
-			<div class="st-block">
-				<img src="images/sPeople.png">
-				<b><span id="pCounter">1000</span>+</b>
-				<br>
-				<span>Учеников</span>
+		<div class="filter">
+			<div class="st-container">
+				<div class="st-block">
+					<img src="images/sClock.png">
+					<b id="yCounter">2015</b>
+					<br>
+					<span>Год основания</span>
+				</div>
+				<div class="st-block">
+					<img src="images/wr.png">
+					<b><span id="prCounter">14</span>+</b>
+					<br>
+					<span>Успешных проектов</span>
+				</div>
+				<div class="st-block">
+					<img src="images/sPeople.png">
+					<b><span id="pCounter">1000</span>+</b>
+					<br>
+					<span>Учеников</span>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -311,10 +335,10 @@
 				<hr class="wow fadeInLeft" data-wow-delay="0.5s">
 			</div>
 			<div class="feedback-body">
-				<input type="text" placeholder="ФИО"><br>
-				<input type="tel" placeholder="Телефон"><br>
-				<textarea type="text" placeholder="Задайте Ваш вопрос"></textarea><br>
-				<button>Отправить</button>
+				<input type="text" class="fName" placeholder="ФИО"><br>
+				<input type="tel" class="fTel" placeholder="Телефон"><br>
+				<textarea type="text" class="fAsk" placeholder="Задайте Ваш вопрос"></textarea><br>
+				<button id="sendFeedback">Отправить</button>
 				<p>Нажимая <span>«Отправить»</span>, вы соглашаетесь с политикой обработки персональных данных</p>
 			</div>
 		</div>

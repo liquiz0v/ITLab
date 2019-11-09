@@ -78,7 +78,7 @@ header{
 	display: block;
 }
 .tel-list > li > a:hover{
-	color: #5CC3B7;
+	color: #00a3af;
 }
 .h-social{
 	display: flex;
@@ -146,7 +146,7 @@ header nav a{
 	transition: .3s;
 }
 header nav a:hover{
-	background-color: #4faa9f;
+	background-color: #00a3af;
 }
 .sign-in:hover{
 	background-color: inherit;
@@ -154,7 +154,7 @@ header nav a:hover{
 header nav button{
 	width: 120px;
 	height: 40px;
-	background-color: #4faa9f;
+	background-color: #00a3af;
 	outline: none;
 	border: none;
 	border-radius: 25px;
@@ -167,10 +167,10 @@ header nav button:hover{
 }
 header nav ul li span:hover{
 	cursor: pointer;
-	border-bottom: solid 3px #4faa9f;
+	border-bottom: solid 3px #00a3af;
 }
 .active-lang{
-	color: #4faa9f;
+	color: #00a3af;
 	font-size: 24px;
 	font-weight: 700;
 }
@@ -209,6 +209,7 @@ header nav ul li span:hover{
 	position: absolute;
 	bottom: 25px;
 	left: calc(50% - 50px);
+	cursor: pointer;
 }
 
 #about{
@@ -236,7 +237,7 @@ header nav ul li span:hover{
 }
 .about-block:nth-child(2) > hr{
 	width: 430px;
-	background-color: #65929e;
+	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
@@ -264,7 +265,7 @@ header nav ul li span:hover{
 }
 .courses-header > hr{
 	width: 210px;
-	background-color: #65929e;
+	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
@@ -318,7 +319,7 @@ header nav ul li span:hover{
 	color: white;
 	font-size: 24px;
 	font-weight: 100;
-	background-color: rgba(79, 170, 159, .7);
+	background-color: rgba(0, 163, 175, .7);
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -333,12 +334,7 @@ header nav ul li span:hover{
 .decore-line{
 	width: 100%;
 	height: 100px;
-	background: linear-gradient(to right, #4faa9f 33.3%, #83c3bc 33.3%, #83c3bc 66.6%, #98dcd5 33.3%);
-}
-.mainLine{
-	width: 100%;
-	height: 100px;
-	background: linear-gradient(to right, #62909c 33.3%, #70a2af 33.3%, #70a2af 66.6%, #80b8c6 33.3%);
+	background: linear-gradient(to right, #00a3af 33.3%, #00b9c7 33.3%, #00b9c7 66.6%, #00d7e7 33.3%);
 }
 .cours-time{
 	padding-top: 30px;
@@ -382,7 +378,7 @@ header nav ul li span:hover{
 	height: 40px;
 	width: 160px;
 	border-radius: 25px;
-	background-color: #4faa9f;
+	background-color: #00a3af;
 	color: white;
 	border: none;
 	font-size: 13px;
@@ -390,23 +386,11 @@ header nav ul li span:hover{
 	cursor: pointer;
 	transition: .3s;
 }
-.cours-button > button:nth-child(2){
-	border: solid 2px #4faa9f;
-	box-sizing: border-box;
-	color: #4faa9f;
-	cursor: pointer;
-	background-color: inherit;
-}
 .cours-button > button:hover{
-	color: #4faa9f;
+	color: #00a3af;
 	background-color: inherit;
-	border: solid 2px #4faa9f;
+	border: solid 2px #00a3af;
 }
-.cours-button > button:nth-child(2):hover{
-	color: white;
-	background-color: #4faa9f;
-}
-
 
 #features{
 	padding: 50px 0;
@@ -427,7 +411,7 @@ header nav ul li span:hover{
 	margin-top: 5px;
 }
 .features-header > h3 > span{
-	color: #4faa9f;
+	color: #00a3af;
 	cursor: pointer;
 	transition: .5s;
 }
@@ -436,7 +420,7 @@ header nav ul li span:hover{
 }
 .features-header > hr{
 	width: 10000px;
-	background-color: #65929e;
+	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
@@ -502,7 +486,7 @@ header nav ul li span:hover{
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-	background-color: rgba(5, 5, 5, .8);
+	background-color: rgba(5, 5, 5, .6);
 	position: relative;
 	padding: 45px 0;
 }
@@ -516,29 +500,31 @@ header nav ul li span:hover{
 }
 .news-header > hr{
 	width: 250px;
-	background-color: #65929e;
+	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
 	margin: 0 auto;
 }
 .slider{
-	width: 80%;
+	width: 980px;
 	height: 450px;
 	margin: 0 auto;
 	margin-top: 25px;
 	max-width: 1280px;
 	position: relative;
+	overflow: hidden;
 }
 .slider-wrapper{
-	display: flex;
-	overflow: hidden;
+	width: 100000px;
 	transition: .5s;
+	position: absolute;
+	left: 0px;
 }
-.slideLeft{
+#slideLeft{
 	width: 35px;
 	height: 35px;
-	background-color: #4faa9f;
+	background-color: #00a3af;
 	position: absolute;
 	left: -5px;
 	top: calc(50% - 45px);
@@ -546,7 +532,7 @@ header nav ul li span:hover{
 	cursor: pointer;
 	transition: .3s;
 }
-.slideLeft:before{
+#slideLeft:before{
 	position: absolute;
 	left: 7px;
 	top: -13px;
@@ -556,10 +542,10 @@ header nav ul li span:hover{
 	cursor: pointer;
 	transition: .5s;
 }
-.slideRight{
+#slideRight{
 	width: 35px;
 	height: 35px;
-	background-color: #4faa9f;
+	background-color: #00a3af;
 	position: absolute;
 	right: -5px;
 	top: calc(50% - 45px);
@@ -567,7 +553,7 @@ header nav ul li span:hover{
 	cursor: pointer;
 	transition: .3s;
 }
-.slideRight:before{
+#slideRight:before{
 	position: absolute;
 	left: 13px;
 	top: -13px;
@@ -590,15 +576,23 @@ header nav ul li span:hover{
 	left: 17px;
 }
 .slider-news{
+	float: left;
 	background-color: white;
-	flex: 0 0 30%;
-	margin-left: 3.3333%;
-	max-width: 30%;
+	margin-left: 20px;
+	width: 300px;
 	height: 450px;
 	position: relative;
 }
-.slider-news:first-child{
-	margin-left: 1.516665%;
+.slider-news > a{
+	display: block;
+	text-align: center;
+	color: #00a3af;
+	font-size: 24px;
+	font-weight: 700;
+	margin-top: 60%;
+}
+.slider-news > a:hover{
+	color: #00C1CF;
 }
 .news-date{
 	position: absolute;
@@ -606,7 +600,7 @@ header nav ul li span:hover{
 	left: 10px;
 	width: 45px;
 	height: 60px;
-	background-color: rgba(92, 172, 159, .9);
+	background-color: rgba(0, 163, 175, .7);
 	text-align: center;
 	color: white;
 	font-size: 14px;
@@ -651,8 +645,8 @@ header nav ul li span:hover{
 	border: none;
 	color: white;
 	font-size: 16px;
-	background-color: #4faa9f;
-	border: solid 2px #4faa9f;
+	background-color: #00a3af;
+	border: solid 2px #00a3af;
 	box-sizing: border-box;
 	border-radius: 15px;
 	padding: 3px 10px;
@@ -661,17 +655,20 @@ header nav ul li span:hover{
 	transition: .3s;
 }
 .news-button > button:hover{
-	border: solid 2px #4faa9f;
+	border: solid 2px #00a3af;
 	background-color: white;
-	color: #4faa9f;
+	color: #00a3af;
 	box-shadow: none;
 }
 #statistics{
 	height: 120px;
+	background-image: url('../images/st.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-top: solid 10px #65929e;
-	border-bottom: solid 10px #65929e;
+}
+#statistics > .filter{
+	height: 100%;
+	background-color: rgba(5, 5, 5, .3);
 }
 .st-container{
 	display: flex;
@@ -695,13 +692,12 @@ header nav ul li span:hover{
 .st-block > b{
 	font-size: 35px;
 	font-weight: 600;
-	color: #4faa9f;
+	color: white;
 	margin-left: 15px;
 }
 .st-block > span{
 	font-size: 16px;
-	font-weight: 700;
-	color: rgba(79, 170, 159, .8);
+	color: white;
 }
 #feedback{
 	width: 100%;
@@ -714,7 +710,7 @@ header nav ul li span:hover{
 #feedback > .filter{
 	width: 100%;
 	height: 100%;
-	background-color: rgba(5, 5, 5, .8);
+	background-color: rgba(5, 5, 5, .6);
 	padding: 60px 0 0 40px;
 	box-sizing: border-box;
 }
@@ -728,7 +724,7 @@ header nav ul li span:hover{
 }
 .feedback-header > hr{
 	width: 280px;
-	background-color: #65929e;
+	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
@@ -755,7 +751,7 @@ header nav ul li span:hover{
 	padding: 15px 0 0 25px;
 }
 .feedback-body > button{
-	background-color: #4faa9f;
+	background-color: #00a3af;
 	box-sizing: border-box;
 	padding: 15px 50px;
 	border-radius: 25px;
@@ -763,14 +759,14 @@ header nav ul li span:hover{
 	color: white;
 	font-size: 18px;
 	margin-top: 45px;
-	border: solid 3px #4faa9f;
+	border: solid 3px #00a3af;
 	cursor: pointer;
 	transition: .3s;
 }
 .feedback-body > button:hover{
-    border: solid 3px #4faa9f;
+    border: solid 3px #00a3af;
     box-sizing: border-box;
-    color: #4faa9f;
+    color: #00a3af;
     cursor: pointer;
     background-color: white;
     font-weight: 700;
