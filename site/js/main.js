@@ -52,6 +52,7 @@ slideRight.onclick = function(){
 		}else{
 			slideRight.style.visibility = 'visible';
 		}
+		slideLeft.style.visibility = 'visible';
 	}else{
 		slideRight.style.visibility = 'hidden';
 	}
@@ -69,22 +70,88 @@ slideLeft.onclick = function(){
 		}
 	}else{
 		slideLeft.style.visibility = 'hidden';
+		slideRight.style.visibility = 'visible';
 	}
 }
 
 let sendFeedback = document.getElementById('sendFeedback');
 
 sendFeedback.onclick = function(){
+	let d1 = document.querySelector('.fName').value;
+    let d2 = document.querySelector('.fTel').value;
+    let d3 = document.querySelector('.fAsk').value;
+
+    let data = {name: d1, phone: d2, question: d3};
+
 	let xmlhttp = new XMLHttpRequest();
 
+	xmlhttp.open('POST', 'http://localhost:3000');
+	xmlhttp.setRequestHeader('Content-Type', 'application/json');
+	xmlhttp.send(JSON.stringify(data));
+
 	xmlhttp.onreadyechange = function(){
-		if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-           if (xmlhttp.status == 200) {
-               let d1 = document.querySelector('.fName');
-               let d2 = document.querySelector('.fTel');
-               let d3 = document.querySelector('.fAsk');
+		if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+           if (xmlhttp.status == 200){
+           		let body = XMLHttpRequest.response;
+           		body = JSON.parse(body);
+           		if(body.status){
+           			console.log('nice!');
+           		}else{
+
+           		}
            }
-           else if (xmlhttp.status == 400) {
+           else if (xmlhttp.status == 400){
+              alert('There was an error 400');
+           }
+           else {
+               alert('something else other than 200 was returned');
+           }
+        }
+	}
+}
+
+function openModal(){
+	document.getElementById('global-filter').style.display = 'block';
+	document.getElementById('modalFB').style.display = 'block';
+}	
+function closeModal(){
+	document.getElementById('global-filter').style.display = 'none';
+	document.getElementById('modalFB').style.display = 'none';
+}
+
+document.getElementById('mfb1').onclick = openModal;
+document.getElementById('mfb2').onclick = openModal;
+document.getElementById('mfb3').onclick = openModal;
+
+document.getElementById('close-modal').onclick = closeModal;
+
+
+document.getElementById('fb-first-lesson').onclick = function(){
+	let name = document.getElementById('ffb-name').value;
+	let phone = document.getElementById('ffb-name').value;
+	let email = document.getElementById('ffb-name').value;
+	let age = document.getElementById('ffb-name').value;
+
+	let data = {name: name, phone: phone, email: email, age: age};
+
+	let xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.open('POST', 'http://localhost:3000');
+	xmlhttp.setRequestHeader('Content-Type', 'application/json');
+	xmlhttp.send(JSON.stringify(data));
+
+	xmlhttp.onreadyechange = function(){
+		if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+           if (xmlhttp.status == 200){
+           		let body = XMLHttpRequest.response;
+           		body = JSON.parse(body);
+           		if(body.status){
+           			console.log('nice!');
+           		}else{
+
+           		}
+           }
+           else if (xmlhttp.status == 400){
               alert('There was an error 400');
            }
            else {
