@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="content-site">
+        someContent
+    </div>
+    <div class="backround-dimming d-flex justify-cont-center align-items-center">
+        <div class="content-login d-flex align-items-center direction-column">
+
+            <div class="header-text-top coursor-context-menu" onmousedown="return false" onselectstart="return false">Войти в систему</div>
+            <div class="header-text-bootom coursor-context-menu" onmousedown="return false" onselectstart="return false">с вашей социальной сетью</div>
+            
+            <div class="soc-networks d-flex align-items-center">
+                <!-- <div class="soc-btn soc-google"><span class="image-google"><img src="img\google.png" alt="" height="20px" width="20px"></span> <p> Google </p></div> -->
+                <div class="soc-btn soc-google d-flex">
+                    <img src="img\google.png" alt="" height="20px" width="20px">
+                    <span class="image-google"> Google </span>
+                </div>
+                <div class="soc-btn soc-facebook d-flex">
+                    <img src="img\facebook.jpg" alt="" height="23px" width="23px">
+                    <span class="image-google"> Facebook </span>
+                </div>
+            </div>
+            
+            <!-- <div class="">content</div> -->
+            <div class="horisontal-line d-flex ">
+                <!-- ------------------------или--------------------- -->
+                <div class="line left-line"></div>
+                <div class="middle-text color-light-gray coursor-context-menu" onmousedown="return false" onselectstart="return false">или</div>
+                <div class="line right-line "></div>
+            </div>
+
+            <input type="email" class="inp-fields brdr-radius" id="inp-email" placeholder="Имя пользователя или e-mail">
+            <input type="password" class="inp-fields brdr-radius" id="inp-pass" placeholder="Пароль">
+
+            <div class="bl-rememberMe">
+                <input type="checkbox" name="" id="rememberMe" class="check-box-login cursor-pointer">
+                <label for="rememberMe" class="label-check-reg cursor-pointer" onmousedown="return false" onselectstart="return false">Запомнить меня</label>
+            </div>
+
+            <button class="login-sign-in brdr-radius">Войти</button>
+
+            <div class="added-links d-flex">
+                <div class="go-to-reg">Зарегестрироваться</div>
+                <div class="go-to-fogot-pass">Забыли пароль?</div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
