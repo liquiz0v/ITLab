@@ -1,0 +1,121 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-column-gap: 2%;
+    height: 40em;
+}
+.menu{
+    background-color: blue;
+}
+.menu-container{
+    display: grid;
+    grid-row-gap: 1em;
+}
+.menu-item{
+    background-color: forestgreen;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    background-color: coral;
+}
+/*news*/
+#news{
+	width: 100%;
+	height: 800px;
+	box-sizing: border-box;
+	background-image: url('../images/nBlock.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+
+.news-header{
+	text-align: center;
+}
+.news-header > h3{
+	font-size: 32px;
+	font-weight: 100;
+	color: #ffffff;
+}
+
+.slider-news{
+	background-color: white;
+	flex: 0 0 30%;
+	margin: 0 1%;
+	max-width: 30%;
+	height: 450px;
+    position: relative;
+    width:33.3%;
+
+}
+.news-date{
+	position: absolute;
+	top: 0;
+	left: 10px;
+	width: 45px;
+	height: 60px;
+	background-color: rgba(92, 172, 159, .9);
+	text-align: center;
+	color: white;
+	font-size: 14px;
+	padding-top: 12px;
+	box-sizing: border-box;
+}
+.slider-wrapper{
+    display: flex;
+}
+
+.slider-news-header{
+	width: 100%;
+	height: 200px;
+	background-image: url('../images/n1.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.news-body{
+	width: 100%;
+	height: 250px;
+	color: #505050;
+	box-sizing: border-box;
+	padding: 10px 17px;
+}
+.news-body > span{
+	font-size: 18px;
+	font-weight: 600;
+}
+.news-body > p{
+	margin-top: 20px;
+	max-height: 75px;
+	overflow: hidden;
+}
+.news-button{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	box-sizing: border-box;
+	padding: 25px 17px;
+}
+.news-button > button{
+	border: none;
+	color: white;
+	font-size: 16px;
+	background-color: #4faa9f;
+	border: solid 2px #4faa9f;
+	box-sizing: border-box;
+	border-radius: 15px;
+	padding: 3px 10px;
+	box-shadow: 1px 1px 1px 1px #DCDCDC;
+	cursor: pointer;
+	transition: .3s;
+}
+.news-button > button:hover{
+	border: solid 2px #4faa9f;
+	background-color: white;
+	color: #4faa9f;
+	box-shadow: none;
+}
+
+/*news*/

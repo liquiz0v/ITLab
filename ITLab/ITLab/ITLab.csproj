@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\wow.min.js" />
   </ItemGroup>
 
 

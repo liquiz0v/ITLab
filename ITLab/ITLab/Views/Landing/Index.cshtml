@@ -202,6 +202,7 @@
             </div>
             <img src="images/mainF.png" class="feature-img wow fadeInUp" data-wow-delay="0.5s">
         </section>
+
         <section id="news">
             <div class="filter">
                 <div class="news-header">
@@ -217,7 +218,7 @@
                         {
                             <div class="slider-news">
                                 <div class="news-date">
-                                    <span>@ViewBag.Time</span> 
+                                    <span>@ViewBag.Time</span>
                                 </div>
                                 <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
                                 <div class="news-body">
@@ -233,7 +234,7 @@
                             </div>
                         }
 
-                  
+
                         <!--end news template-->
 
                     </div>
@@ -241,27 +242,26 @@
                 </div>
             </div>
         </section>
+
         <section id="statistics">
-            <div class="filter">
-                <div class="st-container">
-                    <div class="st-block">
-                        <img src="images/sClock.png">
-                        <b id="yCounter">2015</b>
-                        <br>
-                        <span>Год основания</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="images/sFolder.png">
-                        <b><span id="prCounter">14</span>+</b>
-                        <br>
-                        <span>Успешных проектов</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="images/sPeople.png">
-                        <b><span id="pCounter">1000</span>+</b>
-                        <br>
-                        <span>Учеников</span>
-                    </div>
+            <div class="st-container">
+                <div class="st-block">
+                    <img src="images/sClock.png">
+                    <b id="yCounter">2015</b>
+                    <br>
+                    <span>Год основания</span>
+                </div>
+                <div class="st-block">
+                    <img src="images/sFolder.png">
+                    <b><span id="prCounter">14</span>+</b>
+                    <br>
+                    <span>Успешных проектов</span>
+                </div>
+                <div class="st-block">
+                    <img src="images/sPeople.png">
+                    <b><span id="pCounter">1000</span>+</b>
+                    <br>
+                    <span>Учеников</span>
                 </div>
             </div>
         </section>
@@ -272,10 +272,10 @@
                     <hr class="wow fadeInLeft" data-wow-delay="0.5s">
                 </div>
                 <div class="feedback-body">
-                    <input type="text" placeholder="ФИО"><br>
-                    <input type="tel" placeholder="Телефон"><br>
-                    <textarea type="text" placeholder="Задайте Ваш вопрос"></textarea><br>
-                    <button>Отправить</button>
+                    <input type="text" class="fName" placeholder="ФИО"><br>
+                    <input type="tel" class="fTel" placeholder="Телефон"><br>
+                    <textarea type="text" class="fAsk" placeholder="Задайте Ваш вопрос"></textarea><br>
+                    <button id="sendFeedback">Отправить</button>
                     <p>Нажимая <span>«Отправить»</span>, вы соглашаетесь с политикой обработки персональных данных</p>
                 </div>
             </div>
@@ -296,8 +296,8 @@
                     <ul>
                         <li><a href="#">Курсы</a></li>
                         <li><a href="#">Проекты</a></li>
-                        <li><a href="#">Личный кабинет</a></li>
                         <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Вход</a></li>
                     </ul>
                 </div>
             </div>
