@@ -56,7 +56,7 @@
 					<h1>Новости лаборатории</h1>
 					<p>Подпишитесь на рассылку — оставайтесь в курсе 
 					<br>новостей <span>IT Lab Odessa</span></p>
-					<input type="email" placeholder="E-mail">
+					<input id="subEmail" type="email" placeholder="E-mail">
 					<button id="subscribe">Подписаться</button>
 					<br>
 				</div>
@@ -67,11 +67,16 @@
 	<section id="fullNews">
 		<div class="news-block">
 			<div class="news-filter">
-				<img src="#">
+				<img src="images/sort-news.png" width="20">
 				<span>Сортировать:</span>
-				<select>
-					<option>1</option>
-				</select>
+				<div class="filter-news-dropdown">
+					<button id="toSort">по дате</button>
+					<ul id="sortList">
+						<li data-type='date'>по дате</li>
+						<li data-type='comments'>по комментариям</li>
+						<li data-type='views'>по просмотрам</li>
+					</ul>
+				</div>
 			</div>
 			<div class="news-block-body">
 				<div class="slider-news">
@@ -162,7 +167,7 @@
 			</p>
 			<div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
 		</div>
-		<div class="footer-section">
+		<div class="footer-section wow fadeInUp" data-wow-delay="0.5s">
 			<div class="sf-block">
 				<b>Навигация</b>
 				<ul>
@@ -173,7 +178,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="footer-section">
+		<div class="footer-section wow fadeInUp" data-wow-delay="0.7s">
 			<div class="s-footer">
 				<b>Контактная информация</b>
 				<ul>
@@ -197,5 +202,6 @@
 </footer>
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/news.js"></script>
 </body>
 </html>
