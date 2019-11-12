@@ -1,0 +1,18 @@
+.pass-hint{
+    font-size: 12px;
+    line-height: 15px;
+    color: gray;
+    text-align: center;
+    margin-bottom: 0;
+}
+.label-check-reg{
+    cursor: pointer;
+}
+.go-to-login{
+    text-align: center;
+}
+.added-links-reg{
+    width: 100%;
+    justify-content: center;
+    margin-top: 5px;
+}
