@@ -173,6 +173,11 @@ header nav ul li span:hover{
 	color: #00a3af;
 	font-size: 24px;
 	font-weight: 700;
+	transition: .3s;
+}
+.active-lang:hover{
+	border: none;
+	color: #00BFCD;
 }
 #home{
 	width: 100%;
@@ -766,7 +771,6 @@ header nav ul li span:hover{
     color: white;
     cursor: pointer;
     background-color: #00d7e7;
-    font-weight: 700;
 }
 .feedback-body > p{
 	color: white;
@@ -803,14 +807,14 @@ footer{
 	color: #ffffff;
 	font-family: 'FREESCPT';
 	font-size: 55px;
-	padding-left: 40px;
+	padding-left: 60px;
 }
 .footer-section:nth-child(1) > p{
 	color: #ffffff;
 	font-size: 16px;
 	max-width: 390px;
 	display: block;
-	padding-left: 40px;
+	padding-left: 60px;
 }
 .footer-section:nth-child(2){
 	text-align: left;
@@ -864,7 +868,7 @@ footer{
 margin-right: 15px;
 }
 .fEmail{
-	color: #4faa9f;
+	color: #00a3af;
 }
 .fEmail:hover{
 	color: white;
@@ -899,10 +903,10 @@ margin-right: 15px;
 #modalFB{
 	display: none;
 	position: fixed;
-	top: 15%;
-	left: 20%;
-	width: 60%;
-	height: 70%;
+	top: calc(50% - 225px);
+	left: calc(50% - 315px);
+	width: 630px;
+	height: 450px;
 	background-color: #F0F0F0;
 	border-radius: 35px;
 	text-align: center;
@@ -933,7 +937,7 @@ margin-right: 15px;
 	outline: none;
 }
 #modalFB > button{
-	background-color: #00aca0;
+	background-color: #00a3af;
 	border: none;
 	border-radius: 15px;
 	width: 320px;
@@ -944,7 +948,7 @@ margin-right: 15px;
 	transition: .3s;
 }
 #modalFB > button:hover{
-	background-color: #00C7B9;
+	background-color: #00D0E0;
 }
 .modal-info{
 	font-size: 15px;
@@ -963,4 +967,91 @@ margin-right: 15px;
 }
 #close-modal:hover{
 	color: #AAAAAA;
+}
+
+
+#newsBlock{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../images/newsBG.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+#newsBlock > .filter{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(5, 5, 5, .75);
+	position: relative;
+}
+.prev-lab-news{
+	width: 100%;
+	height: 50vh;
+	position: absolute;
+	right: 15%;
+	bottom: 0;
+	text-align: center;
+}
+.prev-lab-news > h1{
+	color: white;
+}
+.prev-lab-news > p{
+	color: white;
+	font-size: 18px;
+	line-height: 30px;
+}
+.prev-lab-news > p > span{
+	font-family: 'FREESCPT';
+	font-size: 32px;
+}
+.prev-lab-news > input{
+	display: block;
+	margin: 0 auto;
+	width: 250px;
+	height: 40px;
+	border: none;
+	border-radius: 15px;
+	background-color: white;
+	margin-top: 25px;
+	padding-left: 25px;
+	box-sizing: border-box;
+	outline: none;
+}
+.prev-lab-news > button{
+	background-color: #00a3af;
+	border: none;
+	border-radius: 15px;
+	width: 160px;
+	height: 45px;
+	margin-top: 10px;
+	color: white;
+	cursor: pointer;
+	transition: .3s;
+}
+.prev-lab-news > button:hover{
+	background-color: #00D0E0;
+}
+.prev-lab > img{
+	margin: 0 auto;
+	position: absolute;
+	bottom: 25px;
+	left: calc(50% - 50px);
+	cursor: pointer;
+}
+.news-filter{
+	width: 1000px;
+	margin: 0 auto;
+}
+.news-block-body{
+	width: 100%;
+	height: 1000px;
+}
+.news-block-body{
+	width: 1000px;
+	margin: 0 auto;
+}
+.news-block-body > .slider-news{
+	box-shadow: 0 0 5px 2px #CBCBCB;
+	margin-top: 40px;
 }
