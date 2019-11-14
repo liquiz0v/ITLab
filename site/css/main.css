@@ -52,6 +52,9 @@ header{
 .header-contact > ul > li > a{
 	color: #ffffff;
 }
+.header-contact > ul > li > a:hover{
+	color: #00a3af;
+}
 .header-contact > ul > li > img{
 	margin-right: 15px;
 }
@@ -786,10 +789,13 @@ header nav ul li span:hover{
 	text-decoration: underline;
 }
 
+
+
 footer{
 	background-color: #000000;
 	height: 250px;
 	padding: 25px 0 0 0;
+	overflow: hidden;
 }
 .footer-block{
 	display: flex;
@@ -1039,7 +1045,6 @@ margin-right: 15px;
 }
 .prev-lab-news > button:hover{
 	background-color: #00D0E0;
-	border-radius: 0;
 }
 .prev-lab > img{
 	margin: 0 auto;
@@ -1123,6 +1128,9 @@ margin-right: 15px;
 	width: 100%;
 	height: 1000px;
 }
+.news-block{
+	padding-bottom: 25px;
+}
 .news-block-body{
 	width: 980px;
 	margin: 0 auto;
@@ -1130,4 +1138,31 @@ margin-right: 15px;
 .news-block-body > .slider-news{
 	box-shadow: 0 0 5px 2px #CBCBCB;
 	margin-top: 40px;
+}
+.more-news-block{
+	text-align: center;
+}
+#more-news{
+    color: white;
+    font-size: 16px;
+    background-color: #00a3af;
+    border: solid 2px #00a3af;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 8px 15px;
+    margin-top: 25px;
+    box-shadow: 1px 1px 1px 1px #CACACA;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+.cources-prev{
+	width: 100%;
+	height: 50vh;
+	position: absolute;
+	bottom: 10%;
+	text-align: center;
+	color: white;
+	font-variant: small-caps;
 }
