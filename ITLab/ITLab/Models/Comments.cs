@@ -5,6 +5,10 @@ namespace ITLab.Models
 {
     public partial class Comments
     {
+        public Comments()
+        {
+            TimeDate = DateTime.UtcNow;
+        }
         public int Id { get; set; }
         public string CommentText { get; set; }
         public DateTime TimeDate { get; set; }

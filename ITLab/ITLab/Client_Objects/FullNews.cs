@@ -18,6 +18,7 @@ namespace ITLab.Client_Objects
 
        public virtual List<Photos> Photos { get; set; }
     }
+    
     public class FullNewsBox
     {
         public int Id { get; set; }

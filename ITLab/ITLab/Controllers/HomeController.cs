@@ -6,23 +6,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ITLab.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ITLab.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ITLabContext _context;
+        public HomeController(ILogger<HomeController> logger, ITLabContext context)
         {
             _logger = logger;
-          
+            _context = context;
+
         }
 
         public IActionResult Index()
         {
+            News news = new News();
+            _context.News.Add(news);
+            _context.SaveChanges();
             return View();
+           
         }
+    
 
         public IActionResult Privacy()
         {
