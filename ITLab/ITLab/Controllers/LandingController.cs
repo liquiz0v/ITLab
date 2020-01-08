@@ -22,27 +22,29 @@ namespace ITLab.Controllers
         public async Task<IActionResult> Index()
         {
             List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
+
             return View(news);
         }
 
-       [HttpPost]
-        public ActionResult<ResponseStatus> FeedBack([Bind("FullName,Phone,Question")] Feedback feedback)
+        [HttpPost]
+        public ActionResult<ResponseStatus> FeedBack(string FullName, string Phone, string Question)
         {
             ResponseStatus responseStatus = new ResponseStatus { Response = false };
-            if (ModelState.IsValid)
+
+            try
             {
-                try
+                Feedback feedback = new Feedback
                 {
-                    feedback.FeedbackStatus = 1;
-                    _context.Feedback.Add(feedback);
-                    _context.SaveChanges();
-                    responseStatus.Response = true;
-                }
-                catch (Exception ex)
-                {
-                    responseStatus.Exception = ex.ToString();
-                }
-                
+
+                };
+                feedback.FeedbackStatus = 1;
+                _context.Feedback.Add(feedback);
+                _context.SaveChanges();
+                responseStatus.Response = true;
+            }
+            catch (Exception ex)
+            {
+                responseStatus.Exception = ex.ToString();
             }
             return responseStatus;
 
@@ -52,9 +54,9 @@ namespace ITLab.Controllers
             var test = _context.News
                 .Include(s => s.Comments)
                 .ToList();
-            
+
             return test;
         }
-       
+
     }
 }
