@@ -27,13 +27,13 @@ namespace ITLab.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ResponseStatus> FeedBack(string FullName, string Phone, string Question)
+        public ActionResult<ResponseStatus> FeedBack(FeedBackDTO feedBackDTO)
         {
             ResponseStatus responseStatus = new ResponseStatus { Response = false };
 
             try
             {
-                Feedback feedback = new Feedback
+                Feedback feedback = new Feedback()
                 {
 
                 };
