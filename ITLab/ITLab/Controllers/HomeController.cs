@@ -23,13 +23,16 @@ namespace ITLab.Controllers
 
         public IActionResult Index()
         {
-            News news = new News();
-            _context.News.Add(news);
-            _context.SaveChanges();
             return View();
-           
         }
-    
+        public IActionResult Login()
+        {
+            return View("Login"); //нужно прикрепить к identity
+        }
+        public IActionResult Registration()
+        {
+            return View("Registration"); //нужно прикрепить к identity
+        }
 
         public IActionResult Privacy()
         {

@@ -222,3 +222,9 @@ D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\_Lay
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\NewsCreate.cshtml.g.cs
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\NewsDelete.cshtml.g.cs
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Admin\NewsEdit.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Index.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\News.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\Cources.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Login.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Login.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Registration.cshtml.g.cs

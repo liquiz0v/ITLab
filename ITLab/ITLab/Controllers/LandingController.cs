@@ -57,6 +57,15 @@ namespace ITLab.Controllers
 
             return test;
         }
+        public IActionResult News()
+        {
+            return View();
+        }
+        public IActionResult Cources()
+        {
+            return View();
+        }
+
 
     }
 }

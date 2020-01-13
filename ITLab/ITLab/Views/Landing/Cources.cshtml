@@ -1,0 +1,209 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ITlab Одесса - курсы</title>
+    <!-- META tags -->
+    <meta charset="utf-8">
+    <meta name="author" content="ITL">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- LINK tags -->
+    <link href="~/css/normalize.css" rel="stylesheet" />
+    <link href="~/css/animate.min.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">*@
+    <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <div class="header-contact">
+            <ul>
+                <li><img src="images/place.png">ул. Кузнечная,1</li>
+                <li>
+                    @*<img src="images/phone.png">*@
+                    <img src="~/images/phone.png" />
+                    <ul class="tel-list">
+                        <li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
+                        <li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
+                    </ul>
+                </li>
+                <li>
+                    @*<img src="images/mail.png">*@ <img src="~/images/mail.png" /> <a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a>
+                            </li>
+                <li>
+                    <ul class="h-social">
+                        <li><a href="">  @*<img src="images/facebook.png">*@ <img src="~/images/facebook.png" /></a></li>
+                        <li><a href="">  @*<img src="images/youtube.png">*@  @*<img src="~/images/youtube.png" />*@</a></li>
+                        <li><a href="">  @*<img src="images/insta.png">*@  <img src="~/images/insta.png" /></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <nav>
+            <span>IT Lab Odessa</span>
+            <ul>
+                <li><a href="#courses">Курсы</a></li>
+                <li><a href="#">Проекты</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><span>UA</span> / <span class="active-lang">RU</span></li>
+                <li><a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in"><button>Вход</button></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="newsBlock">
+            <div class="filter">
+                <div class="cources-prev">
+                    <h1>
+                        Курс<br>
+                        «Робототехника и мехатроника»
+                    </h1>
+                    <p>Лучшая программа подготовки детей к будущему</p>
+                    <img src="~/images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(fullNews)">
+                    <button id="cSub">Записаться</button>
+                </div>
+            </div>
+        </section>
+        <section id="about-cource">
+            <div class="ac-b">
+                <div class="about-cource-block">
+                    <hr>
+                    <img src="~/images/ac1.png" class="wow fadeInLeft" data-wow-delay="0.1s">
+                </div>
+                <div class="about-cource-block">
+                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Для кого предназначен курс?</b>
+                    <hr class="wow fadeInLeft" data-wow-delay="0.25s">
+                    <p class="wow fadeInLeft" data-wow-delay="0.1s">IT-Lab Odessa – мейкерская лаборатория современных и инновационных технологий для детей школьного возраста в г. Одесса.</p>
+                </div>
+            </div>
+        </section>
+        <section id="cource-stats" class="wow zoomIn" data-wow-delay="0.1s">
+            <div class="c-stats-block">
+                <div class="c-stats-el">
+                    <img src="~/images/cse1.png">
+                    <div class="c-stats-el-text">
+                        <b>Период</b>
+                        <br>
+                        <b>3 месяца</b>
+                    </div>
+                </div>
+                <br>
+                <div class="c-stats-el">
+                    <img src="~/images/cse2.png">
+                    <div class="c-stats-el-text">
+                        <b>Занятия</b>
+                        <br>
+                        <b>16 занятий</b>
+                    </div>
+                </div>
+                <div class="c-stats-el">
+                    <img src="~/images/cse3.png">
+                    <div class="c-stats-el-text">
+                        <b>Возраст</b>
+                        <br>
+                        <b>7-14 лет</b>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="course-info">
+            <div class="course-info-mblock cimb-first">
+                <div class="info-cource-block">
+                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Что изучаем?</b>
+                    <hr class="wow fadeInLeft" data-wow-delay="0.25s">
+                    <p class="wow fadeInLeft" data-wow-delay="0.1s">
+                        На этом курсе дети конструируют и программируют<br>
+                        автономных роботов, создают научные проекты, изучают<br>
+                        животный мир, узнают о новейших технологиях,<br>
+                        исследуют космическое пространство.<br><br>
+
+                        В течение этого вводного курса дети изучают основы<br>
+                        механики, математики и программирования.<br>
+                        Главный принцип обучения на этом курсе - «а что,<br>
+                        если ...»: дети экспериментируют, проверяют свои<br>
+                        теории и не боятся делать ошибки.
+                    </p>
+                </div>
+                <div class="info-cource-block"><img src="~/images/ac2.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
+            </div>
+            <div class="course-info-mblock">
+                <div class="info-cource-block"><img src="~/images/ac1.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
+                <div class="info-cource-block">
+                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Для кого предназначен курс?</b>
+                    <hr class="wow fadeInLeft" data-wow-delay="0.25s">
+                    <p>IT-Lab Odessa – мейкерская лаборатория современных и инновационных технологий для детей школьного возраста в г. Одесса.</p>
+                </div>
+            </div>
+        </section>
+        <section id="bottomSub">
+            <div class="bs-rad">
+                <div class="bs-rad-block">
+                    <p>
+                        Познайте мир технологий вместе с <span>IT Lab Odessa</span><br>
+                        Запишитесь на первое пробное занятие!
+                    </p>
+                </div>
+                <div class="bs-rad-block">
+                    <button>Записаться</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-block">
+            <div class="footer-section">
+                <span class="wow fadeInLeft" data-wow-delay="0.5s">IT Lab Odessa</span>
+                <p class="wow fadeInLeft" data-wow-delay="0.5s">
+                    Образование - это самая важная вещь, которую родитель может предоставить своему ребенку. Вот почему выбор идеальной STEM-школы так важен!
+                </p>
+                <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
+            </div>
+            <div class="footer-section wow fadeInUp" data-wow-delay="0.5s">
+                <div class="sf-block">
+                    <b>Навигация</b>
+                    <ul>
+                        <li><a href="#">Курсы</a></li>
+                        <li><a href="#">Проекты</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Вход</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-section wow fadeInUp" data-wow-delay="0.7s">
+                <div class="s-footer">
+                    <b>Контактная информация</b>
+                    <ul>
+                        <li><img src="images/place.png">ул. Кузнечная,1</li>
+                        <li>
+                            <img src="~/images/phone.png">
+                            <ul class="tel-list">
+                                <li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
+                                <li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
+                            </ul>
+                        </li>
+                        <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com' class="fEmail">it.ddo.od@gmail.com</a></li>
+                    </ul>
+                    <ul class="social-footer">
+                        <li><a href=""><img src="~/images/facebook.png"></a></li>
+                        <li><a href=""><img src="~/images/youtube.png"></a></li>
+                        <li><a href=""><img src="~/images/insta.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/cources.js"></script>
+</body>
+</html>
