@@ -57,9 +57,10 @@ namespace ITLab.Controllers
 
             return test;
         }
-        public IActionResult News()
+        public async Task<IActionResult> News()
         {
-            return View();
+            List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
+            return View(news);
         }
         public IActionResult Cources()
         {

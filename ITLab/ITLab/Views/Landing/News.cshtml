@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model List<ITLab.Client_Objects.ShortNews>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,8 @@
     <link href="~/css/animate.min.css" rel="stylesheet" />
     <link href="~/css/main.css" rel="stylesheet" />
     @*<link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">*@
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">*@
     <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -90,90 +90,30 @@
                     </div>
                 </div>
                 <div class="news-block-body">
-                    <div class="slider-news">
-                        <div class="news-date">
-                            <span>19 окт</span>
-                            <span>2019</span>
+                    <!--news template-->
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="slider-news">
+                            <div class="news-date">
+                                <span>@item.TimeDate</span>
+                            </div>
+                            <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
+                            <div class="news-body">
+                                <span>«@item.Title</span>
+                                <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
+                                <p>
+                                    @item.ShortDescription
+                                </p>
+                            </div>
+                            <div class="news-button">
+                                <button>Подробнее</button>
+                            </div>
                         </div>
-                        <div class="slider-news-header"></div>
-                        <div class="news-body">
-                            <span>«Некст профориентация»<br>на Морвокзале</span>
-                            <p><span>10</span> комментариев / <span>38</span> просмотров</p>
-                            <p>
-                                Около 40 навчальник заведений
-                                и 20 ведущих компаний города
-                                выступили с презентациями
-                                профессий. Мероприятие было
-                                нацелено на шк...
-                            </p>
-                        </div>
-                        <div class="news-button">
-                            <button>Подробнее</button>
-                        </div>
-                    </div>
-                    <div class="slider-news">
-                        <div class="news-date">
-                            <span>19 окт</span>
-                            <span>2019</span>
-                        </div>
-                        <div class="slider-news-header"></div>
-                        <div class="news-body">
-                            <span>«Некст профориентация»<br>на Морвокзале</span>
-                            <p><span>10</span> комментариев / <span>38</span> просмотров</p>
-                            <p>
-                                Около 40 навчальник заведений
-                                и 20 ведущих компаний города
-                                выступили с презентациями
-                                профессий. Мероприятие было
-                                нацелено на шк...
-                            </p>
-                        </div>
-                        <div class="news-button">
-                            <button>Подробнее</button>
-                        </div>
-                    </div>
-                    <div class="slider-news">
-                        <div class="news-date">
-                            <span>19 окт</span>
-                            <span>2019</span>
-                        </div>
-                        <div class="slider-news-header"></div>
-                        <div class="news-body">
-                            <span>«Некст профориентация»<br>на Морвокзале</span>
-                            <p><span>10</span> комментариев / <span>38</span> просмотров</p>
-                            <p>
-                                Около 40 навчальник заведений
-                                и 20 ведущих компаний города
-                                выступили с презентациями
-                                профессий. Мероприятие было
-                                нацелено на шк...
-                            </p>
-                        </div>
-                        <div class="news-button">
-                            <button>Подробнее</button>
-                        </div>
-                    </div>
-                    <div class="slider-news">
-                        <div class="news-date">
-                            <span>19 окт</span>
-                            <span>2019</span>
-                        </div>
-                        <div class="slider-news-header"></div>
-                        <div class="news-body">
-                            <span>«Некст профориентация»<br>на Морвокзале</span>
-                            <p><span>10</span> комментариев / <span>38</span> просмотров</p>
-                            <p>
-                                Около 40 навчальник заведений
-                                и 20 ведущих компаний города
-                                выступили с презентациями
-                                профессий. Мероприятие было
-                                нацелено на шк...
-                            </p>
-                        </div>
-                        <div class="news-button">
-                            <button>Подробнее</button>
-                        </div>
-                    </div>
+                    }
+
+
+                    <!--end news template-->
                 </div>
                 <div class="more-news-block">
                     <button id="more-news">Ещё новости</button>
