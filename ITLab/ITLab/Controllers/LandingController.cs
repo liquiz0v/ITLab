@@ -62,6 +62,24 @@ namespace ITLab.Controllers
             List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
             return View(news);
         }
+        [HttpPost]
+        public ResponseStatus NewsSubscr(string Email)
+        {
+            ResponseStatus responseStatus = new ResponseStatus() { Response = true };
+            Subscriptions subscriptions = new Subscriptions() { Email = Email };
+            try
+            {
+                _context.Subscriptions.Add(subscriptions);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                responseStatus.Response = false;
+                responseStatus.Exception = ex.Message;
+                return responseStatus;
+            }
+            return responseStatus;
+        }
         public IActionResult Cources()
         {
             return View();
