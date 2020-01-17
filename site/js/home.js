@@ -27,7 +27,7 @@ let counter = 3;
 slideRight.onclick = function(){
 	let elem = document.querySelectorAll('.slider-news');
 	if(counter < elem.length){
-		sliderWrapper.style.left = sliderWrapper.offsetLeft - 320 + 'px';
+		sliderWrapper.style.left = sliderWrapper.offsetLeft - 520 + 'px';
 		counter++;
 		if(counter == elem.length){
 			slideLeft.style.visibility = 'visible';
@@ -42,7 +42,7 @@ slideRight.onclick = function(){
 }
 slideLeft.onclick = function(){
 	if(counter > 3){
-		sliderWrapper.style.left = sliderWrapper.offsetLeft + 320 + 'px';
+		sliderWrapper.style.left = sliderWrapper.offsetLeft + 520 + 'px';
 		counter--;
 		console.log(counter);
 		if(counter == 3){

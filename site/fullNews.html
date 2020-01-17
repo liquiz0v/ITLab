@@ -60,48 +60,91 @@
 					<button id="subscribe">Подписаться</button>
 					<br>
 				</div>
-				<img src="images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(fullNews)">
+				<img src="images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(news_block)">
 			</div>
 		</div>
 	</section>
 	<section id="news_block">
-		<div class="news_statistic">
-			<p class="st_info">19 октября 2019г. / 10 комментариев / 38 просмотров <span>5.0</span> 3 голоса</p>
-		</div>
-			<iframe id="news_video" width="100%" height="540px" src="https://www.youtube.com/embed/RIp3oylp3rY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-			<h3>На Одесском морвокзале прошел профориентационное 
-мероприятие «Некст-профориентация»</h3>
-			<p>Около 40 навчальник заведений и 20 ведущих компаний города выступили 
-с презентациями профессий и мастер-классами перед гостями. 
-Мероприятие было нацелено на школьников и студентов Одесского региона. 
-Посетить «Некст-профориентацию» приехали почти 1000 человек.</p>
-		<hr>	
-		<div class="news_footer">
-			<ul id="estimate">
-				<li data-val="1">✩</li>
-				<li data-val="2">✩</li>
-				<li data-val="3">✩</li>
-				<li data-val="4">✩</li>
-				<li data-val="5">✩</li>
-			</ul>
+		<div class="news_block_wrapper">
+			<div class="news_statistic">
+				<p class="st_info">19 октября 2019г. / 10 комментариев / 38 просмотров <span>5.0</span> 3 голоса</p>
+			</div>
+				<iframe id="news_video" width="100%" height="423" src="https://www.youtube.com/embed/RIp3oylp3rY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<h3>На Одесском морвокзале прошел профориентационное 
+	мероприятие «Некст-профориентация»</h3>
+				<p>Около 40 навчальник заведений и 20 ведущих компаний города выступили 
+	с презентациями профессий и мастер-классами перед гостями. 
+	Мероприятие было нацелено на школьников и студентов Одесского региона. 
+	Посетить «Некст-профориентацию» приехали почти 1000 человек.</p>
+			<hr>	
+			<div class="news_footer">
+				<ul id="estimate">
+					<li data-val="1">✩</li>
+					<li data-val="2">✩</li>
+					<li data-val="3">✩</li>
+					<li data-val="4">✩</li>
+					<li data-val="5">✩</li>
+				</ul>
 
-			<ul class="news_soc">
-				<li><a href="#"><img src="images/news_fb.png"></a></li>
-				<li><a href="#"><img src="images/news_tg.png"></a></li>
-				<li><a href="#"><img src="images/news_inst.png"></a></li>
-				<li><a href="#"><img src="images/news_viber.png"></a></li>
-			</ul>
-			<div class="comment_block">
-				<div class="news_comments">
-					<p>Посмотреть предыдущие комментарии (5)</p>
-				</div>
-				<div class="new_comment">
-					<div class="comment_avatar">
-						<img src="https://www.w3schools.com/images/colorpicker.gif">
+				<ul class="news_soc">
+					<li><a href="#"><img src="images/news_fb.png"></a></li>
+					<li><a href="#"><img src="images/news_tg.png"></a></li>
+					<li><a href="#"><img src="images/news_inst.png"></a></li>
+					<li><a href="#"><img src="images/news_viber.png"></a></li>
+				</ul>
+				<div class="comment_block">
+					<div class="news_comments">
+						<p>Посмотреть предыдущие комментарии (5)</p>
 					</div>
-					<textarea></textarea>
-					<div id="send_news_comment"></div>
+					<div class="new_comment">
+						<div class="comment_avatar">
+							<img src="https://www.w3schools.com/images/colorpicker.gif">
+						</div>
+						<textarea></textarea>
+						<div id="send_news_comment"></div>
+					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+	<h3 class="same_news">Похожие материалы</h3>
+	<section id="same_news_block">
+		<div class="slider-news news_block">
+			<div class="news-date">
+				<span>19 окт</span>
+				<span>2019</span>
+			</div>
+			<div class="slider-news-header"></div>
+			<div class="news-body">
+				<span>«Некст профориентация»<br>на Морвокзале</span>
+				<p><span>10</span> комментариев / <span>38</span> просмотров / <span class="rating">5.0</span></p>
+				<p>Около 40 навчальник заведений 
+							и 20 ведущих компаний города 
+							выступили с презентациями 
+							профессий. Мероприятие было 
+							нацелено на шк...</p>
+			</div>
+			<div class="news-button">
+				<button>Подробнее</button>
+			</div>
+		</div>
+		<div class="slider-news news_block">
+			<div class="news-date">
+				<span>19 окт</span>
+				<span>2019</span>
+			</div>
+			<div class="slider-news-header"></div>
+			<div class="news-body">
+				<span>«Некст профориентация»<br>на Морвокзале</span>
+				<p><span>10</span> комментариев / <span>38</span> просмотров / <span class="rating">5.0</span></p>
+				<p>Около 40 навчальник заведений 
+							и 20 ведущих компаний города 
+							выступили с презентациями 
+							профессий. Мероприятие было 
+							нацелено на шк...</p>
+			</div>
+			<div class="news-button">
+				<button>Подробнее</button>
 			</div>
 		</div>
 	</section>

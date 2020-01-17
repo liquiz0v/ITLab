@@ -533,6 +533,9 @@ header nav ul li span:hover{
 	position: absolute;
 	left: 0px;
 }
+.slider-wrapper > .slider-news, .news-block-body > .slider-news{
+	float: left;
+}
 #slideLeft{
 	width: 35px;
 	height: 35px;
@@ -589,10 +592,9 @@ header nav ul li span:hover{
 	left: 17px;
 }
 .slider-news{
-	float: left;
 	background-color: white;
 	margin-left: 20px;
-	width: 300px;
+	width: 400px;
 	height: 450px;
 	position: relative;
 }
@@ -645,8 +647,28 @@ header nav ul li span:hover{
 .news-body > p{
 	margin-top: 20px;
 	max-height: 75px;
+	padding-top: 6px;
+	padding-bottom: 5px;
 	overflow: hidden;
 }
+
+.rating{
+	height: 30px;
+	padding: 5px 12px 5px 35px;
+	border-radius: 12px;
+	background-color: #00a3af;
+	color: white;
+	position: relative;
+}
+.rating:before{
+	position: absolute;
+	left: 10px;
+	top: 3px;
+	content: "★";
+	font-size: 20px;
+	color: yellow;
+}
+
 .news-button{
 	position: absolute;
 	left: 0;
@@ -800,6 +822,10 @@ header nav ul li span:hover{
 	padding: 40px 60px;
 	box-sizing: border-box;
 }
+.news_block_wrapper{
+	width: 900px;
+	margin: 0 auto;
+}
 .st_info{
 	color: #505050;
 	font-size: 18px;
@@ -823,19 +849,20 @@ header nav ul li span:hover{
 }
 #news_video{
 	margin-top: 20px;
+	max-width: 800px;
 }
-#news_block > h3{
+.news_block_wrapper > h3{
 	color: #505050;
 	margin-top: 40px;
 }
-#news_block > p{
+.news_block_wrapper > p{
 	width: 80%;
 	font-size: 17px;
 	margin-top: 60px;
 	color: #505050;
 	line-height: 25px;
 }
-#news_block > hr{
+.news_block_wrapper > hr{
 	width: 200px;
 	margin-top: 40px;
 	border: solid 1px #D9D9D9;
@@ -893,6 +920,7 @@ header nav ul li span:hover{
 }
 .new_comment{
 	position: relative;
+	max-width: 800px;
 }
 .new_comment > textarea{
 	display: inline-block;
@@ -919,6 +947,128 @@ header nav ul li span:hover{
 #send_news_comment:hover{
 	transform: translateX(5px);
 }
+.same_news{
+	color: #505050;
+	text-align: center;
+	font-size: 24px;
+}
+#same_news_block{
+	margin-top: 25px;
+	height: 600px;
+	text-align: center;
+}
+.news_block{
+	width: 45%;
+	max-width: 400px;
+	display: inline-block;
+	text-align: left;
+	box-shadow: 0px 0px 5px 1px #BCBCBC;
+}
+#contactBlock{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../images/contacts_bg.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+#contactBlock > .filter{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(5, 5, 5, .75);
+	position: relative;
+}
+.contact-info{
+	width: 100%;
+	height: 50vh;
+	position: absolute;
+	bottom: 10%;
+	color: white;
+}
+.contact-info > h2{
+	margin-left: 25%;
+	font-size: 36px;
+	font-weight: 300;
+}
+.contact-data{
+	width: 70%;
+	max-width: 1280px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 50px;
+	display: flex;
+}
+.contact-data > li{
+	height: 50px;
+	flex: 1;
+	position: relative;
+}
+.contact-data > li:nth-child(1):before{
+	content: " ";
+	position: absolute;
+	left: 25px;
+	top: -7px;
+	width: 25px;
+	height: 35px;
+	background-image: url('../images/con_place.png');
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+.contact-data > li:nth-child(2):before{
+	content: " ";
+	position: absolute;
+	left: 5px;
+	top: -7px;
+	width: 25px;
+	height: 35px;
+	background-image: url('../images/con_clock.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+}
+.contact-data > li:nth-child(3):before{
+	content: " ";
+	position: absolute;
+	left: 10px;
+	top: -7px;
+	width: 25px;
+	height: 35px;
+	background-image: url('../images/con_phone.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+}
+.contact-data > li:nth-child(4):before{
+	content: " ";
+	position: absolute;
+	left: 0px;
+	top: -7px;
+	width: 25px;
+	height: 35px;
+	background-image: url('../images/con_mail.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+}
+.contact-social{
+	width: 70%;
+	max-width: 1280px;
+	margin: 0 auto;
+	margin-top: 100px;
+	padding-left: 40px;
+}
+.contact-social > li{
+	float: left;
+	padding-left: 40px;
+	cursor: pointer;
+	transition: .3s;
+}
+.contact-social > li:hover{
+	transform: scale(1.1);
+}
+#map{
+	padding: 5px 0px;
+}
+
+
 
 
 
@@ -1256,15 +1406,13 @@ margin-right: 15px;
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 }
-.news-block-body{
-	width: 100%;
-	height: 1000px;
-}
 .news-block{
 	padding-bottom: 25px;
 }
 .news-block-body{
-	width: 980px;
+	width: 850px;
+	height: 1000px;
+	display: table;
 	margin: 0 auto;
 }
 .news-block-body > .slider-news{
