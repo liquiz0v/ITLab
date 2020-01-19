@@ -311,14 +311,14 @@ header nav ul li span:hover{
 	height: 300px;
 	margin: 0 auto;
 	position: relative;
-	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 .cours-header:hover .cours-bg{
     -webkit-transform: scale(1.2, 1.2); 
     transform: scale(1.2, 1.2);
 }
 .i1{
-	background-image: url('../images/c1.png');
+	background-image: url('../images/ac2.png');
 }
 .i2{
 	background-image: url('../images/c2.png');
@@ -1263,7 +1263,6 @@ margin-right: 15px;
 	color: #AAAAAA;
 }
 
-
 #newsBlock{
 	width: 100%;
 	height: 100vh;
@@ -1436,7 +1435,21 @@ margin-right: 15px;
     transition: .3s;
 }
 
-
+#coursePrev{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../images/c_bg.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+#coursePrev > .filter{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(5, 5, 5, .75);
+	position: relative;
+}
 .cources-prev{
 	width: 100%;
 	height: 60vh;
@@ -1467,7 +1480,8 @@ margin-right: 15px;
 .ac-b{
 	padding: 85px 80px;
 	display: flex;
-	min-width: 1024px;
+	max-width: 1024px;
+	margin: 0 auto;
 	box-sizing: border-box;
 }
 .about-cource-block{
@@ -1476,17 +1490,18 @@ margin-right: 15px;
 	position: relative;
 }
 .about-cource-block:nth-child(1) > img{
-	width: 400px;
+	width: 90%;
+	max-width: 500px;
 	margin-left: 15%;
 }
 .about-cource-block:nth-child(1) > hr{
-	width: 35%;
+	width: 1000px;
 	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
 	position: absolute;
-	left: -160px;
+	right: 500px;
 	bottom: 50px;
 }
 .about-cource-block:nth-child(2){
@@ -1498,6 +1513,7 @@ margin-right: 15px;
 	font-weight: 400;
 	display: block;
 	margin-top: 5px;
+	margin-left: 20px;
 }
 .about-cource-block:nth-child(2) > hr{
 	width: 450px;
@@ -1506,12 +1522,13 @@ margin-right: 15px;
 	border: 0;
 	outline: none;
 	position: absolute;
-	left: -60px;
+	left: -40px;
 }
 .about-cource-block:nth-child(2) > p{
 	margin-top: 25px;
 	font-size: 18px;
 	max-width: 430px;
+	margin-left: 20px;
 }
 #cource-stats{
 	height: 150px;
@@ -1591,9 +1608,10 @@ margin-right: 15px;
 	box-shadow: 0 0 5px 2px rgba(255, 255, 255, .5);
 }
 .course-info-mblock{
-	padding: 85px 80px;
+	padding: 85px 0px;
 	display: flex;
-	min-width: 1024px;
+	max-width: 1024px;
+	margin: 0 auto;
 	box-sizing: border-box;
 }
 .info-cource-block{
@@ -1601,7 +1619,8 @@ margin-right: 15px;
 	color: #505050;
 }
 .info-cource-block:nth-child(1) > img{
-	width: 500px;
+	width: 90%;
+	max-width: 500px;
 	margin-left: 15%;
 }
 .info-cource-block:nth-child(2){
@@ -1613,20 +1632,22 @@ margin-right: 15px;
 	font-weight: 400;
 	display: block;
 	margin-top: 5px;
+	margin-left: 50px;
 }
 .info-cource-block:nth-child(2) > hr{
-	width: 450px;
+	width: 530px;
 	background-color: #00a3af;
 	height: 3px;
 	border: 0;
 	outline: none;
 	position: absolute;
-	left: -60px;
+	left: -40px;
 }
 .info-cource-block:nth-child(2) > p{
 	margin-top: 25px;
 	font-size: 18px;
 	max-width: 430px;
+	margin-left: 50px;
 }
 
 .cimb-first > .info-cource-block:nth-child(2) > img{
