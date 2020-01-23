@@ -1,9 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>ITlab Одесса - курсы</title>
@@ -13,12 +8,9 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <!-- LINK tags -->
-    <link href="~/css/normalize.css" rel="stylesheet" />
-    <link href="~/css/animate.min.css" rel="stylesheet" />
-    <link href="~/css/main.css" rel="stylesheet" />
-    @*<link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">*@
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -28,23 +20,20 @@
     <header>
         <div class="header-contact">
             <ul>
-                <li><img src="images/place.png">ул. Кузнечная,1</li>
+                <li><img src="~/images/place.png">ул. Кузнечная,1</li>
                 <li>
-                    @*<img src="images/phone.png">*@
-                    <img src="~/images/phone.png" />
+                    <img src="~/images/phone.png">
                     <ul class="tel-list">
                         <li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
                         <li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
                     </ul>
                 </li>
-                <li>
-                    @*<img src="images/mail.png">*@ <img src="~/images/mail.png" /> <a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a>
-                            </li>
+                <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
                 <li>
                     <ul class="h-social">
-                        <li><a href="">  @*<img src="images/facebook.png">*@ <img src="~/images/facebook.png" /></a></li>
-                        <li><a href="">  @*<img src="images/youtube.png">*@  @*<img src="~/images/youtube.png" />*@</a></li>
-                        <li><a href="">  @*<img src="images/insta.png">*@  <img src="~/images/insta.png" /></a></li>
+                        <li><a href=""><img src="~/images/facebook.png"></a></li>
+                        <li><a href=""><img src="~/images/youtube.png"></a></li>
+                        <li><a href=""><img src="~/images/insta.png"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,7 +50,7 @@
         </nav>
     </header>
     <main>
-        <section id="newsBlock">
+        <section id="coursePrev">
             <div class="filter">
                 <div class="cources-prev">
                     <h1>
@@ -69,13 +58,13 @@
                         «Робототехника и мехатроника»
                     </h1>
                     <p>Лучшая программа подготовки детей к будущему</p>
-                    <img src="~/images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(fullNews)">
+                    <img src="~/images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(cource)">
                     <button id="cSub">Записаться</button>
                 </div>
             </div>
         </section>
         <section id="about-cource">
-            <div class="ac-b">
+            <div class="ac-b" id="cource">
                 <div class="about-cource-block">
                     <hr>
                     <img src="~/images/ac1.png" class="wow fadeInLeft" data-wow-delay="0.1s">
@@ -137,11 +126,24 @@
                 <div class="info-cource-block"><img src="~/images/ac2.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
             </div>
             <div class="course-info-mblock">
-                <div class="info-cource-block"><img src="~/images/ac1.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
+                <div class="info-cource-block"><img src="~/images/r_c1.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
                 <div class="info-cource-block">
-                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Для кого предназначен курс?</b>
+                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Каких результатов достигаем?</b>
                     <hr class="wow fadeInLeft" data-wow-delay="0.25s">
-                    <p>IT-Lab Odessa – мейкерская лаборатория современных и инновационных технологий для детей школьного возраста в г. Одесса.</p>
+                    <p class="wow fadeInUp" data-wow-delay="0.5s">
+                        Маленькие исследователи смогут компоновать детали
+                        для создания различных механизмов,программировать
+                        в среде LEGO Education WeDo 2.0, работать в команде,
+                        находить общий язык с напарником и решать сложные
+                        задачи при работе над проектом.
+
+                        Дети оперируют понятиями: робот, датчик,
+                        компьютерная игра, манипулятор, виртуальная
+                        реальность, инфракрасное излучение, беспроводное
+                        соединение, механизмы (кривошип, зубчатая передача
+                        движения, редуктор, передаточное отношение, кожаный
+                        механизм, червячная передача движения).
+                    </p>
                 </div>
             </div>
         </section>
@@ -183,7 +185,7 @@
                 <div class="s-footer">
                     <b>Контактная информация</b>
                     <ul>
-                        <li><img src="images/place.png">ул. Кузнечная,1</li>
+                        <li><img src="~/images/place.png">ул. Кузнечная,1</li>
                         <li>
                             <img src="~/images/phone.png">
                             <ul class="tel-list">

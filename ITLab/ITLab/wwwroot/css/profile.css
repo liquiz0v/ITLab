@@ -77,6 +77,7 @@ header{
 	position: absolute;
 	top: 80px;
 	right: 0px;
+	z-index: 1000;
 	display: none;
 }
 .header-profile > ul > li > a{
@@ -139,7 +140,7 @@ header{
 	width: 225px;
 	border-radius: 100%;
 	overflow: hidden;
-	margin-left: 60px;
+	margin-left: 12px;
 	margin-top: 15px;
 }
 .main-avatar > img{
@@ -201,9 +202,11 @@ header{
 }
 .profile-main > ul > li:nth-child(3):before{
 	background-image: url('../images/pr-list.png');
+	background-size: 33px;
 }
 .profile-main > ul > li:nth-child(4):before{
 	background-image: url('../images/pr-book.png');
+	background-size: 42px;
 }
 .profile-main > ul > li > a{
 	line-height: 50px;

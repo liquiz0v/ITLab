@@ -84,7 +84,14 @@ namespace ITLab.Controllers
         {
             return View();
         }
-
+        public IActionResult FullNews()
+        {
+            return View(); //прикрутить вывод с базы 
+        }
+        public IActionResult Contacts()
+        {
+            return View();
+        }
 
     }
 }

@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\cources.js" />
+    <None Include="wwwroot\js\home.js" />
     <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\news.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\wow.min.js" />
   </ItemGroup>
