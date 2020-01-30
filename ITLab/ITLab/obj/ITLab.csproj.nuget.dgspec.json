@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {}
+    "/home/liquiz/Documents/ITLab/ITLab/ITLab/ITLab.csproj": {}
   },
   "projects": {
-    "D:\\github repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {
+    "/home/liquiz/Documents/ITLab/ITLab/ITLab/ITLab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
+        "projectUniqueName": "/home/liquiz/Documents/ITLab/ITLab/ITLab/ITLab.csproj",
         "projectName": "ITLab",
-        "projectPath": "D:\\github repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
-        "packagesPath": "C:\\Users\\vasyl\\.nuget\\packages\\",
-        "outputPath": "D:\\github repos\\ITLab\\ITLab\\ITLab\\obj\\",
+        "projectPath": "/home/liquiz/Documents/ITLab/ITLab/ITLab/ITLab.csproj",
+        "packagesPath": "/home/liquiz/.nuget/packages/",
+        "outputPath": "/home/liquiz/Documents/ITLab/ITLab/ITLab/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\vasyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/liquiz/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,6 +48,14 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -66,6 +69,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0-preview2.19525.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools.DotNet": {
+              "target": "Package",
+              "version": "[2.0.3, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -86,6 +93,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[3.0.2, 3.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -94,7 +115,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
         }
       }
     }

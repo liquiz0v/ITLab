@@ -31,7 +31,7 @@ namespace ITLab.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-68I1SD0;Database=ITLab;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=25.69.90.146;Database=ITLab;User ID=sa;Password=LaboratorY1;");
             }
         }
 
