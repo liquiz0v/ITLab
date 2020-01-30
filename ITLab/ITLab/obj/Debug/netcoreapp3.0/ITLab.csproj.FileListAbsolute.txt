@@ -229,3 +229,4 @@ D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Login.csht
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Login.cshtml.g.cs
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Registration.cshtml.g.cs
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\FullNews.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\Contacts.cshtml.g.cs

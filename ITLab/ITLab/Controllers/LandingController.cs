@@ -84,10 +84,27 @@ namespace ITLab.Controllers
         {
             return View();
         }
-        public IActionResult FullNews()
-        {
-            return View(); //прикрутить вывод с базы 
+        public IActionResult FullNews(int News_Id)
+        { 
+           
+            var fullNews = _context.News.Where(i => i.Id == News_Id)
+                .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
+                (news, photos) => new { news, photos })
+                .Select(i => new FullNews
+                {
+                    Id = i.news.Id,
+                    Title = i.news.Title,
+                    FullDescription = i.news.FullDescription,
+                    TimeDate = i.news.TimeDate,
+                    ViewsCount = i.news.ViewsCount,
+                    CommentsCount = _context.Comments.Where(n => n.NewsId == News_Id).Count(),
+                    Photos = _context.Photos.Where(n=>n.NewsId == News_Id).ToList(),
+                    Videos = _context.Videos.Where(n=>n.NewsId == News_Id).ToList()
+                }).First();
+           //залить данные и додебажить этот метод
+            return View(fullNews); //прикрутить вывод с базы 
         }
+
         public IActionResult Contacts()
         {
             return View();
