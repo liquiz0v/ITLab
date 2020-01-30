@@ -19,6 +19,7 @@ namespace ITLab.Client_Objects
 
         public virtual List<Photos> Photos { get; set; }
         public virtual List<Videos> Videos { get; set; }
+        public virtual List<Comments> Comments { get; set; }
     }
     
 }

@@ -8,6 +8,7 @@ using ITLab.Models;
 using ITLab.Client_Objects;
 using System.Globalization;
 
+
 namespace ITLab.Controllers
 {
     public class LandingController : Controller
@@ -85,8 +86,8 @@ namespace ITLab.Controllers
             return View();
         }
         public IActionResult FullNews(int News_Id)
-        { 
-           
+        {
+
             var fullNews = _context.News.Where(i => i.Id == News_Id)
                 .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
                 (news, photos) => new { news, photos })
@@ -98,11 +99,12 @@ namespace ITLab.Controllers
                     TimeDate = i.news.TimeDate,
                     ViewsCount = i.news.ViewsCount,
                     CommentsCount = _context.Comments.Where(n => n.NewsId == News_Id).Count(),
-                    Photos = _context.Photos.Where(n=>n.NewsId == News_Id).ToList(),
-                    Videos = _context.Videos.Where(n=>n.NewsId == News_Id).ToList()
+                    Photos = _context.Photos.Where(n => n.NewsId == News_Id).ToList(),
+                    Videos = _context.Videos.Where(n => n.NewsId == News_Id).ToList(),
+                    Comments = _context.Comments.Where(n => n.NewsId == News_Id).ToList()
                 }).First();
-           //залить данные и додебажить этот метод
-            return View(fullNews); //прикрутить вывод с базы 
+        
+            return View(fullNews); 
         }
 
         public IActionResult Contacts()
