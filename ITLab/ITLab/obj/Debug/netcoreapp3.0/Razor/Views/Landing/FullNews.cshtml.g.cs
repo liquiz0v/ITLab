@@ -14,6 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "D:\github repos\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
+#line 1 "/home/liquiz/Documents/ITLab/ITLab/ITLab/Views/_ViewImports.cshtml"
 using ITLab;
 
 #line default
