@@ -75,11 +75,12 @@
         <section id="news_block">
             <div class="news_block_wrapper">
                 <div class="news_statistic">
+                    <div class="fullNewsIdForComments" style="display:none">@Model.Id</div>
                     <p class="st_info">@Model.TimeDate / @Model.CommentsCount комментариев / @Model.ViewsCount просмотров <span>5.0</span> 3 голоса</p>
                 </div>
                 @foreach (var item in @Model.Videos)
                 {
-                    <iframe id="news_video" width="100%" height="423" src="@item.Link" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div>Video link: @item.Link</div>
                 }
 
                 @foreach (var item2 in @Model.Photos)
@@ -120,7 +121,7 @@
                             <div class="comment_avatar">
                                 <img src="https://www.w3schools.com/images/colorpicker.gif">
                             </div>
-                            <textarea></textarea>
+                            <textarea class="send_news_comment_area"></textarea>
                             <div id="send_news_comment"></div>
                         </div>
                         @foreach (var item3 in @Model.Comments)

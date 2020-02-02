@@ -1,4 +1,4 @@
-new WOW().init();
+//new WOW().init();
 
 function counterAnimation(allCount, animationTime, delta, el){
 	let counter = 0;

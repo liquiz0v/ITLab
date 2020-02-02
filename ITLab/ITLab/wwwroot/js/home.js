@@ -67,8 +67,8 @@ sendFeedback.onclick = function () {
 
     //let data = { FullName: d1, Phone: d2, Question: d3 };
     
-    var xmlhttp = new XMLHttpRequest();
-    var formData = new FormData();
+    let xmlhttp = new XMLHttpRequest();
+    let formData = new FormData();
     xmlhttp.open("POST", "/Landing/FeedBack", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData.append("Content-Type", "application/x-www-form-urlencodedl");
@@ -76,7 +76,7 @@ sendFeedback.onclick = function () {
     formData.set("Phone", d2);
     formData.set("Question", d3);
     xmlhttp.onload = function () {
-        xmlhttp.responseText; // ответ
+        console.log(xmlhttp.responseText); // ответ
     };
 
     xmlhttp.send(formData);
@@ -98,6 +98,9 @@ sendFeedback.onclick = function () {
 
     
 };
+
+
+
 var xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadyechange = function () {

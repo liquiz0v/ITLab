@@ -72,9 +72,10 @@ namespace ITLab.Controllers
         public ResponseStatus NewsSubscr(string Email)
         {
             ResponseStatus responseStatus = new ResponseStatus() { Response = true };
-            Subscriptions subscriptions = new Subscriptions() { Email = Email };
+           
             try
             {
+                Subscriptions subscriptions = new Subscriptions() { Email = Email };
                 _context.Subscriptions.Add(subscriptions);
                 _context.SaveChanges();
             }
@@ -90,26 +91,58 @@ namespace ITLab.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult FullNews(int News_Id)
         {
+            try
+            {
+                var fullNews = _context.News.Where(i => i.Id == News_Id)
+              .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
+              (news, photos) => new { news, photos })
+              .Select(i => new FullNews
+              {
+                  Id = i.news.Id,
+                  Title = i.news.Title,
+                  FullDescription = i.news.FullDescription,
+                  TimeDate = i.news.TimeDate,
+                  ViewsCount = i.news.ViewsCount,
+                  CommentsCount = _context.Comments.Where(n => n.NewsId == News_Id).Count(),
+                  Photos = _context.Photos.Where(n => n.NewsId == News_Id).ToList(),
+                  Videos = _context.Videos.Where(n => n.NewsId == News_Id).ToList(),
+                  Comments = _context.Comments.Where(n => n.NewsId == News_Id).ToList()
+              }).First();
 
-            var fullNews = _context.News.Where(i => i.Id == News_Id)
-                .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
-                (news, photos) => new { news, photos })
-                .Select(i => new FullNews
+                return View(fullNews);
+            }
+            catch (Exception ex) 
+            {
+                return View();
+            }
+          
+        }
+        [HttpPost]
+        public ResponseStatus CreateComment(string CommentText, int CommentatorId, int NewsId)
+        {
+            ResponseStatus responseStatus = new ResponseStatus() { Response = false };
+            
+            try
+            {
+                Comments comments = new Comments()
                 {
-                    Id = i.news.Id,
-                    Title = i.news.Title,
-                    FullDescription = i.news.FullDescription,
-                    TimeDate = i.news.TimeDate,
-                    ViewsCount = i.news.ViewsCount,
-                    CommentsCount = _context.Comments.Where(n => n.NewsId == News_Id).Count(),
-                    Photos = _context.Photos.Where(n => n.NewsId == News_Id).ToList(),
-                    Videos = _context.Videos.Where(n => n.NewsId == News_Id).ToList(),
-                    Comments = _context.Comments.Where(n => n.NewsId == News_Id).ToList()
-                }).First();
-        
-            return View(fullNews); 
+                    CommentText = CommentText,
+                    CommentatorId = CommentatorId,
+                    NewsId = NewsId
+                };
+                _context.Comments.Add(comments);
+                _context.SaveChanges();
+                responseStatus.Response = true;
+                return responseStatus;
+            }
+            catch (Exception ex)
+            {
+                responseStatus.Exception = ex.Message;
+                return responseStatus;
+            }
         }
 
         public IActionResult Contacts()
