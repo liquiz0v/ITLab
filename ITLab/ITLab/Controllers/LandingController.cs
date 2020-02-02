@@ -28,17 +28,21 @@ namespace ITLab.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ResponseStatus> FeedBack(FeedBackDTO feedBackDTO)
+        public ActionResult<ResponseStatus> FeedBack(string FullName, string Phone, string Question)
         {
+            
             ResponseStatus responseStatus = new ResponseStatus { Response = false };
-
+            
             try
             {
                 Feedback feedback = new Feedback()
                 {
-
+                    FullName = FullName,
+                    Phone = Phone,
+                    Question = Question,
+                    FeedbackStatus = 1
                 };
-                feedback.FeedbackStatus = 1;
+                
                 _context.Feedback.Add(feedback);
                 _context.SaveChanges();
                 responseStatus.Response = true;
@@ -47,6 +51,7 @@ namespace ITLab.Controllers
             {
                 responseStatus.Exception = ex.ToString();
             }
+
             return responseStatus;
 
         }

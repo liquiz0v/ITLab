@@ -19,8 +19,8 @@ window.addEventListener("scroll", function(){
 });
 
 let arrowDown = document.getElementById('arrowDown');
-let slideLeft = document.getElementById('slideLeft');
-let slideRight = document.getElementById('slideRight');
+let slideLeft = document.querySelector('.slideLeft');
+let slideRight = document.querySelector('.slideRight');
 let sliderWrapper = document.querySelector('.slider-wrapper');
 let counter = 3;
 
@@ -40,7 +40,8 @@ slideRight.onclick = function(){
 		slideRight.style.visibility = 'hidden';
 	}
 }
-slideLeft.onclick = function(){
+
+ slideLeft.onclick = function(){
 	if(counter > 3){
 		sliderWrapper.style.left = sliderWrapper.offsetLeft + 520 + 'px';
 		counter--;
@@ -57,41 +58,67 @@ slideLeft.onclick = function(){
 	}
 }
 
-let sendFeedback = document.getElementById('sendFeedback');
 
-sendFeedback.onclick = function(){
-	let d1 = document.querySelector('.fName').value;
+let sendFeedback = document.getElementById('sendFeedback');
+sendFeedback.onclick = function () {
+    let d1 = document.querySelector('.fName').value;
     let d2 = document.querySelector('.fTel').value;
     let d3 = document.querySelector('.fAsk').value;
 
-    let data = {name: d1, phone: d2, question: d3};
+    //let data = { FullName: d1, Phone: d2, Question: d3 };
+    
+    var xmlhttp = new XMLHttpRequest();
+    var formData = new FormData();
+    xmlhttp.open("POST", "/Landing/FeedBack", true);
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    formData.append("Content-Type", "application/x-www-form-urlencodedl");
+    formData.set("FullName", d1);
+    formData.set("Phone", d2);
+    formData.set("Question", d3);
+    xmlhttp.onload = function () {
+        xmlhttp.responseText; // ответ
+    };
 
-	let xmlhttp = new XMLHttpRequest();
+    xmlhttp.send(formData);
 
-	xmlhttp.open('POST', 'http://localhost:3000');
-	xmlhttp.setRequestHeader('Content-Type', 'application/json');
-	xmlhttp.send(JSON.stringify(data));
+    /*
+    $.ajax({
+        url: '/Landing/FeedBack',
+        type: 'POST',
 
-	xmlhttp.onreadyechange = function(){
-		if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-           if (xmlhttp.status == 200){
-           		let body = XMLHttpRequest.response;
-           		body = JSON.parse(body);
-           		if(body.status){
-           			console.log('nice!');
-           		}else{
-
-           		}
-           }
-           else if (xmlhttp.status == 400){
-              alert('There was an error 400');
-           }
-           else {
-               alert('something else other than 200 was returned');
-           }
+        data: data,
+        success: function () {
+            console.log("norm");
+        },
+        error: function () {
+            console.log("ne norm");
         }
-	}
-}
+    });
+    */
+
+    
+};
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadyechange = function () {
+    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+        if (xmlhttp.status == 200) {
+            let body = XMLHttpRequest.response;
+            body = JSON.parse(body);
+            if (body.status) {
+                console.log('nice!');
+            } else {
+
+            }
+        }
+        else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+        }
+        else {
+            alert('something else other than 200 was returned');
+        }
+    }
+};
 
 function openModal(){
 	document.getElementById('global-filter').style.display = 'block';
@@ -102,6 +129,9 @@ function closeModal(){
 	document.getElementById('modalFB').style.display = 'none';
 }
 
+
+/*
+ *  СНИЗУ НЕ РАБОТАЕТ, ЭТИХ ID ПРОСТО НЕТУ В HTML
 document.getElementById('mfb1').onclick = openModal;
 document.getElementById('mfb2').onclick = openModal;
 document.getElementById('mfb3').onclick = openModal;
@@ -143,3 +173,5 @@ document.getElementById('fb-first-lesson').onclick = function(){
         }
 	}
 }
+
+*/
