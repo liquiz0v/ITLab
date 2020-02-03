@@ -120,9 +120,12 @@ namespace ITLab.Controllers
             }
           
         }
+
+
         [HttpPost]
         public ResponseStatus CreateComment(string CommentText, int CommentatorId, int NewsId)
         {
+
             ResponseStatus responseStatus = new ResponseStatus() { Response = false };
             
             try

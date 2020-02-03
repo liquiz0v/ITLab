@@ -36,3 +36,22 @@ send_news_comment.onclick = function () {
     xmlhttp.send(formData);
 
 };
+
+let subscribe_on_news = document.getElementById('subscribe_on_news');
+subscribe_on_news.onclick = function () {
+    alert("aaa");
+    let d1 = document.getElementById('subEmail').value;
+
+    let xmlhttp = new XMLHttpRequest();
+    let formData = new FormData();
+    xmlhttp.open("POST", "/Landing/NewsSubscr", true);
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    formData.append("Content-Type", "application/x-www-form-urlencodedl");
+    formData.set("Email", d1);
+    xmlhttp.onload = function () {
+        console.log(xmlhttp.responseText); // ответ
+    };
+
+    xmlhttp.send(formData);
+
+};
