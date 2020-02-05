@@ -1,16 +1,17 @@
-//new WOW().init();
 
-function counterAnimation(allCount, animationTime, delta, el){
-	let counter = 0;
+new WOW().init();
+
+function counterAnimation(allCount, animationTime, delta, el) {
+    let counter = 0;
     animationTime /= allCount / delta;
 
-    let t = setInterval(function(){
-    	counter += delta;
-      	el.textContent = counter;
-      	if(counter >= allCount) clearInterval(t);
+    let t = setInterval(function () {
+        counter += delta;
+        el.textContent = counter;
+        if (counter >= allCount) clearInterval(t);
     }, animationTime);
 }
 
-function toElem(elem){
-	elem.scrollIntoView({block: 'start', behavior: 'smooth'});
+function toElem(elem) {
+    elem.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }

@@ -168,3 +168,6 @@ D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.Views.pdb
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.csproj.CopyComplete
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.dll
 D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\ITLab.pdb
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\ShortNews.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\obj\Debug\netcoreapp3.0\Razor\Views\Landing\Comments.cshtml.g.cs
+D:\github repos\ITLab\ITLab\ITLab\bin\Debug\netcoreapp3.0\libman.json

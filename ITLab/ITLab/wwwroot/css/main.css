@@ -847,9 +847,9 @@ header nav ul li span:hover{
 	font-size: 28px;
 	color: yellow;
 }
-#news_video{
+.news_video{
 	margin-top: 20px;
-	max-width: 800px;
+	
 }
 .news_block_wrapper > h3{
 	color: #505050;
@@ -944,13 +944,17 @@ header nav ul li span:hover{
 	cursor: pointer;
 	transition: .3s;
 }
+
 #send_news_comment:hover{
 	transform: translateX(5px);
 }
-.same_news{
-	color: #505050;
-	text-align: center;
-	font-size: 24px;
+.fullNewsImage {
+    max-width: 900px;
+}
+.same_news {
+    color: #505050;
+    text-align: center;
+    font-size: 24px;
 }
 #same_news_block{
 	margin-top: 25px;

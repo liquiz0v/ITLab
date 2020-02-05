@@ -1,0 +1,11 @@
+﻿
+@model List<ITLab.Models.Comments>
+
+
+
+@foreach (var item3 in @Model)
+{
+    <div>Comment</div>
+    <div>@item3.TimeDate</div>
+    <div>@item3.CommentText</div>
+}

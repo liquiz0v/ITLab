@@ -3,10 +3,13 @@
     Layout = null;
 }
 @model List<ITLab.Client_Objects.ShortNews>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ITlab Одесса</title>
+    <title>ITlab Одесса - главная страница</title>
     <!-- META tags -->
     <meta charset="utf-8">
     <meta name="author" content="ITL">
@@ -16,13 +19,26 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
     <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
     <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+      <script src="~/https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
 </head>
 <body>
+    <div id="global-filter"></div>
+    <div id="modalFB">
+        <div id="close-modal">×</div>
+        <p>
+            Записаться на пробное занятие<br>
+            в <span>IT Lab Odessa</span>
+        </p>
+        <input type="text" id="ffb-name" placeholder="Имя и Фамилия">
+        <input type="text" id="ffb-phone" placeholder="Телефон">
+        <input type="text" id="ffb-email" placeholder="E-mail">
+        <input type="text" id="ffb-age" placeholder="Возраст">
+        <button id="fb-first-lesson">Записаться</button>
+        <p class="modal-info">Нажимая «Записаться», вы соглашаетесь с политикой обработки персональный данных</p>
+    </div>
     <header>
         <div class="header-contact">
             <ul>
@@ -37,9 +53,9 @@
                 <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
                 <li>
                     <ul class="h-social">
-                        <li><a href=""><img src="images/facebook.png"></a></li>
-                        <li><a href=""><img src="images/youtube.png"></a></li>
-                        <li><a href=""><img src="images/insta.png"></a></li>
+                        <li><a href=""><img src="~/images/facebook.png"></a></li>
+                        <li><a href=""><img src="~/images/youtube.png"></a></li>
+                        <li><a href=""><img src="~/images/insta.png"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -65,7 +81,7 @@
             </div>
         </section>
         <section id="about">
-            <div class="about-block"><img src="images/aboutImage.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
+            <div class="about-block"><img src="~/images/aboutImage.png" class="wow fadeInLeft" data-wow-delay="0.1s"></div>
             <div class="about-block">
                 <div class="about wow fadeInRight" data-wow-delay="0.1s">О нас</div>
                 <b class="wow fadeInLeft" data-wow-delay="0.1s">Наша лаборатория</b>
@@ -97,7 +113,7 @@
                             </ul>
                         </div>
                         <div class="cours-button">
-                            <button>Записаться на занятие</button>
+                            <button id="mfb1">Записаться на занятие</button>
                             <button>Подробнее о курсе</button>
                         </div>
                     </div>
@@ -108,19 +124,19 @@
                         <div class="cours-name">Робототехника и<br> мехатроника</div>
                     </div>
                     <div class="cours-body">
-                        <div class="decore-line mainLine"></div>
+                        <div class="decore-line"></div>
                         <div class="cours-time">
                             <ul>
                                 <li>Пятница</li>
                                 <li>Воскресенье</li>
                             </ul>
                             <ul>
-                                <li><img src="~/images/clock.png">  17:00 - 18:30</li>
-                                <li><img src="~/images/clock.png">  10:00 - 11:30</li>
+                                <li><img src="images/clock.png">  17:00 - 18:30</li>
+                                <li><img src="images/clock.png">  10:00 - 11:30</li>
                             </ul>
                         </div>
                         <div class="cours-button">
-                            <button>Записаться на занятие</button>
+                            <button id="mfb2">Записаться на занятие</button>
                             <button>Подробнее о курсе</button>
                         </div>
                     </div>
@@ -128,7 +144,7 @@
                 <div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
                     <div class="cours-header">
                         <div class="cours-bg i3"></div>
-                        <div class="cours-name">Робототехника и<br> мехатроника</div>
+                        <div class="cours-name">Программирование   в <br>мире Minecraft</div>
                     </div>
                     <div class="cours-body">
                         <div class="decore-line"></div>
@@ -141,7 +157,7 @@
                             </ul>
                         </div>
                         <div class="cours-button">
-                            <button>Записаться на занятие</button>
+                            <button id="mfb3">Записаться на занятие</button>
                             <button>Подробнее о курсе</button>
                         </div>
                     </div>
@@ -203,7 +219,6 @@
             </div>
             <img src="~/images/mainF.png" class="feature-img wow fadeInUp" data-wow-delay="0.5s">
         </section>
-
         <section id="news">
             <div class="filter">
                 <div class="news-header">
@@ -211,58 +226,43 @@
                     <hr class="wow fadeInLeft" data-wow-delay="0.5s">
                 </div>
                 <div class="slider">
-                    <div class="slideLeft"></div>
+                    <div id="slideLeft"></div>
                     <div class="slider-wrapper">
+
+
                         <!--news template-->
 
-                        @foreach (var item in Model)
-                        {
-                            <div class="slider-news">
-                                <div class="news-date">
-                                    <span>@item.TimeDate</span>
-                                </div>
-                                <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
-                                <div class="news-body">
-                                    <span>«@item.Title</span>
-                                    <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
-                                    <p>
-                                        @item.ShortDescription
-                                    </p>
-                                </div>
-                                <div class="news-button">
-                                    <button>Подробнее</button>
-                                </div>
-                            </div>
-                        }
+                        @await Html.PartialAsync("ShortNews", Model)
 
 
                         <!--end news template-->
 
                     </div>
-                    <div class="slideRight"></div>
+                    <div id="slideRight"></div>
                 </div>
             </div>
         </section>
-
         <section id="statistics">
-            <div class="st-container">
-                <div class="st-block">
-                    <img src="~/images/sClock.png">
-                    <b id="yCounter">2015</b>
-                    <br>
-                    <span>Год основания</span>
-                </div>
-                <div class="st-block">
-                    <img src="~/images/sFolder.png">
-                    <b><span id="prCounter">14</span>+</b>
-                    <br>
-                    <span>Успешных проектов</span>
-                </div>
-                <div class="st-block">
-                    <img src="~/images/sPeople.png">
-                    <b><span id="pCounter">1000</span>+</b>
-                    <br>
-                    <span>Учеников</span>
+            <div class="filter">
+                <div class="st-container">
+                    <div class="st-block">
+                        <img src="~/images/sClock.png">
+                        <b id="yCounter">2015</b>
+                        <br>
+                        <span>Год основания</span>
+                    </div>
+                    <div class="st-block">
+                        <img src="~/images/wr.png">
+                        <b><span id="prCounter">14</span>+</b>
+                        <br>
+                        <span>Успешных проектов</span>
+                    </div>
+                    <div class="st-block">
+                        <img src="~/images/sPeople.png">
+                        <b><span id="pCounter">1000</span>+</b>
+                        <br>
+                        <span>Учеников</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -291,7 +291,7 @@
                 </p>
                 <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
             </div>
-            <div class="footer-section">
+            <div class="footer-section wow fadeInUp" data-wow-delay="0.5s">
                 <div class="sf-block">
                     <b>Навигация</b>
                     <ul>
@@ -302,19 +302,19 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-section">
+            <div class="footer-section wow fadeInUp" data-wow-delay="0.7s">
                 <div class="s-footer">
                     <b>Контактная информация</b>
                     <ul>
                         <li><img src="~/images/place.png">ул. Кузнечная,1</li>
                         <li>
-                            <img src="images/phone.png">
+                            <img src="~/images/phone.png">
                             <ul class="tel-list">
                                 <li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
                                 <li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
                             </ul>
                         </li>
-                        <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
+                        <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com' class="fEmail">it.ddo.od@gmail.com</a></li>
                     </ul>
                     <ul class="social-footer">
                         <li><a href=""><img src="~/images/facebook.png"></a></li>
@@ -328,6 +328,27 @@
     <script src="~/js/wow.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/home.js"></script>
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

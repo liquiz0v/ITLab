@@ -92,11 +92,12 @@ namespace ITLab.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult FullNews(int News_Id)
+        public IActionResult FullNews(int Id)
         {
+
             try
             {
-                var fullNews = _context.News.Where(i => i.Id == News_Id)
+                var fullNews = _context.News.Where(i => i.Id == Id)
               .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
               (news, photos) => new { news, photos })
               .Select(i => new FullNews
@@ -106,11 +107,13 @@ namespace ITLab.Controllers
                   FullDescription = i.news.FullDescription,
                   TimeDate = i.news.TimeDate,
                   ViewsCount = i.news.ViewsCount,
-                  CommentsCount = _context.Comments.Where(n => n.NewsId == News_Id).Count(),
-                  Photos = _context.Photos.Where(n => n.NewsId == News_Id).ToList(),
-                  Videos = _context.Videos.Where(n => n.NewsId == News_Id).ToList(),
-                  Comments = _context.Comments.Where(n => n.NewsId == News_Id).ToList()
+                  CommentsCount = _context.Comments.Where(n => n.NewsId == Id).Count(),
+                  Photos = _context.Photos.Where(n => n.NewsId == Id).ToList(),
+                  Videos = _context.Videos.Where(n => n.NewsId == Id).ToList(),
+                  Comments = _context.Comments.Where(n => n.NewsId == Id).ToList()
               }).First();
+                fullNews.ShortNews = _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToList();
+              
 
                 return View(fullNews);
             }
@@ -120,6 +123,7 @@ namespace ITLab.Controllers
             }
           
         }
+        
 
 
         [HttpPost]
@@ -152,6 +156,18 @@ namespace ITLab.Controllers
         {
             return View();
         }
-
+        public async Task<IActionResult> ShortNews()
+        {
+            List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
+            return PartialView(news);
+        }
+        [HttpPost]
+        public List<Comments> Comments(int NewsId)
+        {
+            var comments = _context.Comments.Where(n => n.NewsId == NewsId).ToList();
+            return comments;
+        }
+       
     }
 }
+
