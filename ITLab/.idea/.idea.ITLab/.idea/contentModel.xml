@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_ITLab.8354639.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\Admin\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Admin\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ITLab.1755549447.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Admin\repos\ITLab\ITLab" t="IncludeFlat">
       <e p="ITLab" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
           <e p="Identity" t="Include">
             <e p="Pages" t="Include">
@@ -14,6 +14,7 @@
             </e>
           </e>
         </e>
+        <e p="bin" t="ExcludeRecursive" />
         <e p="Client_Objects" t="Include">
           <e p="FeedBackDTO.cs" t="Include" />
           <e p="FullNews.cs" t="Include" />
@@ -29,17 +30,14 @@
         <e p="Data" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
           <e p="Migrations" t="Include">
-            <e p="00000000000000_CreateIdentitySchema.Designer.cs" t="Include" />
             <e p="00000000000000_CreateIdentitySchema.cs" t="Include" />
+            <e p="00000000000000_CreateIdentitySchema.Designer.cs" t="Include" />
             <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
           </e>
         </e>
+        <e p="Dockerfile" t="Include" />
         <e p="ITLab.csproj" t="IncludeRecursive" />
-        <e p="Migrations" t="Include">
-          <e p="20200130215854_InitialMigration.Designer.cs" t="Include" />
-          <e p="20200130215854_InitialMigration.cs" t="Include" />
-          <e p="CabinetContextModelSnapshot.cs" t="Include" />
-        </e>
+        <e p="libman.json" t="Include" />
         <e p="Models" t="Include">
           <e p="Comments.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
@@ -64,49 +62,6 @@
           <e p="Task.cs" t="Include" />
           <e p="Video.cs" t="Include" />
         </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Startup.cs" t="Include" />
-        <e p="Views" t="Include">
-          <e p="Admin" t="Include">
-            <e p="Index.cshtml" t="Include" />
-            <e p="NewsCreate.cshtml" t="Include" />
-            <e p="NewsDelete.cshtml" t="Include" />
-            <e p="NewsDetails.cshtml" t="Include" />
-            <e p="NewsEdit.cshtml" t="Include" />
-            <e p="_Layout.cshtml" t="Include" />
-          </e>
-          <e p="Home" t="Include">
-            <e p="Index.cshtml" t="Include" />
-            <e p="Privacy.cshtml" t="Include" />
-          </e>
-          <e p="Landing" t="Include">
-            <e p="Contacts.cshtml" t="Include" />
-            <e p="Cources.cshtml" t="Include" />
-            <e p="FullNews.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="News.cshtml" t="Include" />
-          </e>
-          <e p="Login.cshtml" t="Include" />
-          <e p="Profile" t="Include">
-            <e p="Index.cshtml" t="Include" />
-          </e>
-          <e p="Shared" t="Include">
-            <e p="Error.cshtml" t="Include" />
-            <e p="Login.cshtml" t="Include" />
-            <e p="Registration.cshtml" t="Include" />
-            <e p="_Layout.cshtml" t="Include" />
-            <e p="_LoginPartial.cshtml" t="Include" />
-            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
-          </e>
-          <e p="_ViewImports.cshtml" t="Include" />
-          <e p="_ViewStart.cshtml" t="Include" />
-        </e>
-        <e p="appsettings.Development.json" t="Include" />
-        <e p="appsettings.json" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -115,17 +70,49 @@
             </e>
           </e>
         </e>
-        <e p="wwwroot" t="Include">
-          <e p="Login" t="Include">
-            <e p="css" t="Include">
-              <e p="main.css" t="Include" />
-              <e p="registration.css" t="Include" />
-            </e>
-            <e p="img" t="Include">
-              <e p="facebook.jpg" t="Include" />
-              <e p="google.png" t="Include" />
-            </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Admin" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="NewsCreate.cshtml" t="Include" />
+            <e p="NewsDelete.cshtml" t="Include" />
+            <e p="NewsDetails.cshtml" t="Include" />
+            <e p="NewsEdit.cshtml" t="Include" />
           </e>
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Landing" t="Include">
+            <e p="Comments.cshtml" t="Include" />
+            <e p="Contacts.cshtml" t="Include" />
+            <e p="Cources.cshtml" t="Include" />
+            <e p="FullNews.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="News.cshtml" t="Include" />
+            <e p="ShortNews.cshtml" t="Include" />
+          </e>
+          <e p="Login.cshtml" t="Include" />
+          <e p="Profile" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_LoginPartial.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+            <e p="Login.cshtml" t="Include" />
+            <e p="Registration.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
           <e p="css" t="Include">
             <e p="AdminStyles.css" t="Include" />
             <e p="animate.min.css" t="Include" />
@@ -170,11 +157,11 @@
             <e p="mainF.png" t="Include" />
             <e p="n1.png" t="Include" />
             <e p="nBlock.png" t="Include" />
-            <e p="newsBG.png" t="Include" />
             <e p="news_fb.png" t="Include" />
             <e p="news_inst.png" t="Include" />
             <e p="news_tg.png" t="Include" />
             <e p="news_viber.png" t="Include" />
+            <e p="newsBG.png" t="Include" />
             <e p="phone.png" t="Include" />
             <e p="place.png" t="Include" />
             <e p="pr-book-white.png" t="Include" />
@@ -188,8 +175,8 @@
             <e p="r_c1.png" t="Include" />
             <e p="sClock.png" t="Include" />
             <e p="sFolder.png" t="Include" />
-            <e p="sPeople.png" t="Include" />
             <e p="sort-news.png" t="Include" />
+            <e p="sPeople.png" t="Include" />
             <e p="st.png" t="Include" />
             <e p="wr.png" t="Include" />
             <e p="youtube.png" t="Include" />
@@ -205,7 +192,6 @@
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">
-              <e p="LICENSE" t="Include" />
               <e p="dist" t="Include">
                 <e p="css" t="Include">
                   <e p="bootstrap-grid.css" t="Include" />
@@ -232,28 +218,39 @@
                   <e p="bootstrap.min.js.map" t="Include" />
                 </e>
               </e>
+              <e p="LICENSE" t="Include" />
             </e>
             <e p="jquery" t="Include">
-              <e p="LICENSE.txt" t="Include" />
               <e p="dist" t="Include">
                 <e p="jquery.js" t="Include" />
                 <e p="jquery.min.js" t="Include" />
                 <e p="jquery.min.map" t="Include" />
               </e>
+              <e p="LICENSE.txt" t="Include" />
             </e>
             <e p="jquery-validation" t="Include">
-              <e p="LICENSE.md" t="Include" />
               <e p="dist" t="Include">
                 <e p="additional-methods.js" t="Include" />
                 <e p="additional-methods.min.js" t="Include" />
                 <e p="jquery.validate.js" t="Include" />
                 <e p="jquery.validate.min.js" t="Include" />
               </e>
+              <e p="LICENSE.md" t="Include" />
             </e>
             <e p="jquery-validation-unobtrusive" t="Include">
-              <e p="LICENSE.txt" t="Include" />
               <e p="jquery.validate.unobtrusive.js" t="Include" />
               <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Login" t="Include">
+            <e p="css" t="Include">
+              <e p="main.css" t="Include" />
+              <e p="registration.css" t="Include" />
+            </e>
+            <e p="img" t="Include">
+              <e p="facebook.jpg" t="Include" />
+              <e p="google.png" t="Include" />
             </e>
           </e>
         </e>
