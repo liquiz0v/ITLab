@@ -35,6 +35,7 @@
             <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
           </e>
         </e>
+        <e p="docker-build-deploy.jenkins" t="Include" />
         <e p="Dockerfile" t="Include" />
         <e p="ITLab.csproj" t="IncludeRecursive" />
         <e p="libman.json" t="Include" />

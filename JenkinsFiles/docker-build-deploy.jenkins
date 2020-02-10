@@ -1,0 +1,54 @@
+﻿#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'master'
+        }
+    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("docker login") {
+            steps {
+                echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_liquiz0v', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                    docker login -u $USERNAME -p $PASSWORD
+                    """
+                }
+            }
+        }
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('ITLab/ITLab/ITLab') {
+                	sh 'docker build -t liquiz0v/itlab:latest . '
+                }
+            }
+        }
+        stage("docker push") {
+            steps {
+                echo " ============== start pushing image =================="
+                sh '''
+                docker push liquiz0v/itlab:latest
+                '''
+            }
+        }
+        stage("remote checkout && run"){
+            steps{
+                echo " ============== remote checkout && run from docker-hub =================="
+                withCredentials([string(credentialsId: 'servip', variable: 'IP')]) {
+                    sh '''
+                    ssh root@$IP
+                    docker pull liquiz0v/itlab:latest
+                    docker run -d -p 5000:5000 --name liquiz0v/itlab itlab
+                    '''
+                }
+            }
+        }
+    }
+}
