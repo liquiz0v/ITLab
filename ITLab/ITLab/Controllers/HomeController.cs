@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ITLab.Models;
 using Microsoft.EntityFrameworkCore;
+using ITLab.ModelsDTOCabinet;
+using ITLab.Models_cabinet;
 
 namespace ITLab.Controllers
 {
@@ -23,7 +25,9 @@ namespace ITLab.Controllers
 
         public IActionResult Index()
         {
+
             return View();
+
         }
         public IActionResult Login()
         {
