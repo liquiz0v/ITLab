@@ -1,4 +1,4 @@
-﻿#!groovy
+#!groovy
 // Run docker build
 properties([disableConcurrentBuilds()])
 
@@ -25,7 +25,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('ITLab/ITLab/ITLab') {
+                dir ('ITLab/ITLab') {
                 	sh 'docker build -t liquiz0v/itlab:latest . '
                 }
             }
@@ -41,13 +41,11 @@ pipeline {
         stage("remote checkout && run"){
             steps{
                 echo " ============== remote checkout && run from docker-hub =================="
-                withCredentials([string(credentialsId: 'servip', variable: 'IP')]) {
-                    sh '''
-                    ssh root@$IP
-                    docker pull liquiz0v/itlab:latest
-                    docker run -d -p 5000:5000 --name liquiz0v/itlab itlab
-                    '''
-                }
+                sh '''
+                ssh root@35.242.224.118
+                docker pull liquiz0v/itlab:latest
+                docker run -d -p 5000:5000 --name liquiz0v/itlab itlab
+                '''
             }
         }
     }
