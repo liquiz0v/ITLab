@@ -7,18 +7,20 @@ using Microsoft.EntityFrameworkCore;
 using ITLab.Models;
 using ITLab.Client_Objects;
 using System.Globalization;
-
+using ITLab.ModelsDTOCabinet;
 
 namespace ITLab.Controllers
 {
     public class LandingController : Controller
     {
+        
         private readonly ITLabContext _context;
 
         public LandingController(ITLabContext context)
         {
             _context = context;
         }
+
 
         public async Task<IActionResult> Index()
         {
@@ -167,7 +169,7 @@ namespace ITLab.Controllers
             var comments = _context.Comments.Where(n => n.NewsId == NewsId).ToList();
             return comments;
         }
-       
+    
     }
 }
 

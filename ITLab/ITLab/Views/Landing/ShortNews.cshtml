@@ -1,29 +1,28 @@
 ﻿
 @model List<ITLab.Client_Objects.ShortNews>
-
 <!--news template-->
 
-@foreach (var item in Model)
+@for (var i = 0; i < 3; i++)
 {
-    <div class="slider-news news_block">
+<div class="slider-news news_block">
 
-        <div class="news-date">
-            <span>@item.TimeDate</span>
-        </div>
-        <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
-        <div class="news-body">
-            <span>«@item.Title</span>
-            <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
-            <p>
-                @item.ShortDescription
-            </p>
-        </div>
-        <a asp-action="FullNews" asp-route-id="@item.Id">
-            <div class="news-button">
-                <button>Подробнее</button> <!--ПОФИКСИТЬ-->
-            </div>
-        </a>
+    <div class="news-date">
+        <span>@Model[i].TimeDate</span>
     </div>
+    <div class="slider-news-header" style="background-image: url('@Model[i].HeadPhoto')"></div>
+    <div class="news-body">
+        <span>«@Model[i].Title</span>
+        <p><span>@Model[i].CommentsCount</span> комментариев / <span>@Model[i].ViewsCount</span> просмотров</p>
+        <p>
+            @Model[i].ShortDescription
+        </p>
+    </div>
+    <a asp-action="FullNews" asp-route-id="@Model[i].Id">
+        <div class="news-button">
+            <button>Подробнее</button> 
+        </div>
+    </a>
+</div>
 }
 
 

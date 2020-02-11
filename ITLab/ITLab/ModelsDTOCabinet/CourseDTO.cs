@@ -15,11 +15,6 @@ namespace ITLab.ModelsDTOCabinet
            var course = _context.Courses.Find(Id);
             return course;
         }
-        public List<Course> GetCourcesOfStudent(int Id)
-        {
-            var courses = _context.Courses.ToList(); //не доделано, заглушка
-            return courses;
-        }
-
+        
     }
 }

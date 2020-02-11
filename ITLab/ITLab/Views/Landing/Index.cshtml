@@ -232,7 +232,27 @@
 
                         <!--news template-->
 
-                        @await Html.PartialAsync("ShortNews", Model)
+                        @foreach (var item in Model)
+                        {<div class="slider-news news_block">
+
+                                <div class="news-date">
+                                    <span>@item.TimeDate</span>
+                                </div>
+                                <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
+                                <div class="news-body">
+                                    <span>«@item.Title</span>
+                                    <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
+                                    <p>
+                                        @item.ShortDescription
+                                    </p>
+                                </div>
+                                <a asp-action="FullNews" asp-route-id="@item.Id">
+                                    <div class="news-button">
+                                        <button>Подробнее</button>
+                                    </div>
+                                </a>
+                            </div>
+                        }
 
 
                         <!--end news template-->
