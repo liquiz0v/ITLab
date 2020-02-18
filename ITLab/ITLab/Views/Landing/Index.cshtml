@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
     <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -50,7 +52,8 @@
                 <li><a href="#">Проекты</a></li>
                 <li><a href="#">Контакты</a></li>
                 <li><span>UA</span> / <span class="active-lang">RU</span></li>
-                <li><a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in"><button>Вход</button></a></li>
+                <!-- testing <a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in">-->
+                <li><button id="logIn">Вход</button></a></li>
             </ul>
         </nav>
     </header>
@@ -324,7 +327,58 @@
             </div>
         </div>
     </footer>
+
+
+    <!--Login Window-->
+    <div class="backround-dimming d-none justify-cont-center align-items-center" id="loginWindow">
+        <div class="backround-dimming-2" id="loginWindow-cover"></div>
+        <div class="content-login d-flex align-items-center direction-column">
+
+            <div class="header-text-top coursor-context-menu" onmousedown="return false" onselectstart="return false">Войти в систему</div>
+            <div class="header-text-bootom coursor-context-menu" onmousedown="return false" onselectstart="return false">с вашей социальной сетью</div>
+
+            <div class="soc-networks d-flex align-items-center">
+                <!-- <div class="soc-btn soc-google"><span class="image-google"><img src="img\google.png" alt="" height="20px" width="20px"></span> <p> Google </p></div> -->
+                <div class="soc-btn soc-google d-flex">
+                    <img src="images\google.png" alt="" height="20px" width="20px">
+                    <span class="image-google"> Google </span>
+                </div>
+                <div class="soc-btn soc-facebook d-flex">
+                    <img src="images\facebook.jpg" alt="" height="23px" width="23px">
+                    <span class="image-google"> Facebook </span>
+                </div>
+            </div>
+
+            <!-- <div class="">content</div> -->
+            <div class="horisontal-line d-flex ">
+                <!-- ------------------------или--------------------- -->
+                <div class="line left-line"></div>
+                <div class="middle-text color-light-gray coursor-context-menu" onmousedown="return false" onselectstart="return false">или</div>
+                <div class="line right-line "></div>
+            </div>
+
+            <input type="email" class="inp-fields brdr-radius" id="inp-email" placeholder="Имя пользователя или e-mail">
+            <input type="password" class="inp-fields brdr-radius" id="inp-pass" placeholder="Пароль">
+
+            <div class="bl-rememberMe">
+                <input type="checkbox" name="" id="rememberMe" class="check-box-login cursor-pointer">
+                <label for="rememberMe" class="label-check-reg cursor-pointer" onmousedown="return false" onselectstart="return false">Запомнить меня</label>
+            </div>
+
+            <button class="login-sign-in brdr-radius" id="SignIn_login">Войти</button>
+
+            <div class="added-links d-flex">
+                <div class="go-to-reg">Зарегистрироваться</div>
+                <div class="go-to-fogot-pass">Забыли пароль?</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--//Login Window-->
     <script src="js/wow.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/logiReg.js"></script>
 </body>
 </html>
