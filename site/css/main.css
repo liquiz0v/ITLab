@@ -1706,6 +1706,7 @@ margin-right: 15px;
 	width: 100%;
 	height: 50vh;
 	position: absolute;
+	right: 15%;
 	bottom: 10%;
 	text-align: center;
 }
@@ -1728,9 +1729,13 @@ margin-right: 15px;
 }
 .project-info-block{
 	text-align: center;
+	padding-top: 80px;
+}
+.project-info-block:first-child{
+	padding: 0;
 }
 .project-info-block > h2{
-	margin-top: 15px;
+	margin-top: 20px;
 	color: #515151;
 }
 .project-info-block > hr{
@@ -1742,4 +1747,45 @@ margin-right: 15px;
 }
 .project-info-block > p{
 	max-width: 500px;
+	margin: 0 auto;
+	margin-top: 30px;
+	color: #505050;
+	font-size: 16px;
+}
+#projectSub{
+    height: 150px;
+    padding: 50px 0;
+}
+.project-rad-block > p{
+	line-height: 30px;
+	font-size: 18px;
+}
+.sub-wrapper{
+	position: relative;
+}
+.sub-wrapper > img{
+	position: absolute;
+	top: 17px;
+	right: 15px;
+	cursor: pointer;
+	transition: .3s;
+}
+.sub-wrapper > img:hover{
+	transform: translateX(5px);
+}
+.project-rad-input{
+	background-color: white;
+	color: #00a3af;
+	width: 300px;
+	height: 50px;
+	font-size: 18px;
+	border-radius: 25px;
+	border: none;
+	cursor: pointer;	
+	margin-top: 5px;
+	color: #00C0CE;
+	outline: none;
+	padding: 0px 0px 0px 30px;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 0px 1px #00838d;
 }
