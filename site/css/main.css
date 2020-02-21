@@ -1484,17 +1484,17 @@ margin-right: 15px;
 	margin: 0 auto;
 	box-sizing: border-box;
 }
-.about-cource-block{
+.about-cource-block, .about-project-block{
 	flex: 1;
 	color: #505050;
 	position: relative;
 }
-.about-cource-block:nth-child(1) > img{
+.about-cource-block:nth-child(1) > img, .about-project-block:nth-child(1) > img{
 	width: 90%;
 	max-width: 500px;
 	margin-left: 15%;
 }
-.about-cource-block:nth-child(1) > hr{
+.about-cource-block:nth-child(1) > hr, .about-project-block:nth-child(1) > hr{
 	width: 1000px;
 	background-color: #00a3af;
 	height: 3px;
@@ -1504,18 +1504,22 @@ margin-right: 15px;
 	right: 500px;
 	bottom: 50px;
 }
-.about-cource-block:nth-child(2){
+.about-cource-block:nth-child(2), .about-project-block:nth-child(2){
 	padding: 25px 25px;
 	position: relative;
 }
-.about-cource-block:nth-child(2) > b{
-	font-size: 27px;
-	font-weight: 400;
+.about-cource-block:nth-child(2) > b, .about-project-block:nth-child(2) > b{
+	font-size: 25px;
+	font-weight: 600;
 	display: block;
 	margin-top: 5px;
 	margin-left: 20px;
 }
-.about-cource-block:nth-child(2) > hr{
+.about-project-block:nth-child(2) > p{
+	margin-left: 20px;
+	font-size: 20px;
+}
+.about-cource-block:nth-child(2) > hr, .about-project-block:nth-child(2) > hr{
 	width: 450px;
 	background-color: #00a3af;
 	height: 3px;
@@ -1676,5 +1680,66 @@ margin-right: 15px;
 .cimb-first > .info-cource-block:nth-child(1) > p{
 	margin-top: 25px;
 	font-size: 18px;
+	max-width: 500px;
+}
+
+
+
+
+
+#projectBlock{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../images/c_bg.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+#projectBlock > .filter{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(5, 5, 5, .75);
+	position: relative;
+}
+.prev-lab-project{
+	width: 100%;
+	height: 50vh;
+	position: absolute;
+	bottom: 10%;
+	text-align: center;
+}
+.prev-lab-project > h1{
+	color: white;
+	font-variant: small-caps;
+}
+.prev-lab-project > p{
+	color: white;
+	font-size: 18px;
+	line-height: 30px;
+}
+.prev-lab > img{
+	margin: 0 auto;
+	position: absolute;
+	bottom: 25px;
+	left: calc(50% - 35px);
+	width: 70px;
+	cursor: pointer;
+}
+.project-info-block{
+	text-align: center;
+}
+.project-info-block > h2{
+	margin-top: 15px;
+	color: #515151;
+}
+.project-info-block > hr{
+	background-color: #00a3af;
+	height: 2px;
+	width: 150px;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+.project-info-block > p{
 	max-width: 500px;
 }
