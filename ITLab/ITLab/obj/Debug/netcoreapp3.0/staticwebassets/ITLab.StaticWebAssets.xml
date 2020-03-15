@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/Identity" Path="C:\Users\vasyl\.nuget\packages\microsoft.aspnetcore.identity.ui\3.0.0\staticwebassets\V4" />
+=======
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/Identity" Path="C:\Users\Alex\.nuget\packages\microsoft.aspnetcore.identity.ui\3.0.0\staticwebassets\V4" />
+>>>>>>> AlexUpdates
 </StaticWebAssets>
