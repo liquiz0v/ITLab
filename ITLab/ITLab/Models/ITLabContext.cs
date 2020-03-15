@@ -15,7 +15,7 @@ namespace ITLab.Models
             : base(options)
         {
         }
-
+        
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<Feedback> Feedback { get; set; }
         public virtual DbSet<FeedbackStatuses> FeedbackStatuses { get; set; }
@@ -23,6 +23,7 @@ namespace ITLab.Models
         public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Videos> Videos { get; set; }
+        public virtual DbSet<Subscriptions> Subscriptions { get; set; }
 
         public virtual DbSet<ShortNews> ShortNews { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,7 +31,7 @@ namespace ITLab.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-68I1SD0;Database=ITLab;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=25.69.90.146;Database=ITLab;User ID=sa;Password=LaboratorY1;");
             }
         }
 
@@ -52,7 +53,7 @@ namespace ITLab.Models
                     .HasForeignKey(d => d.NewsId)
                     .HasConstraintName("FK__Comments__NewsId__4AB81AF0");
             });
-
+           
             modelBuilder.Entity<Feedback>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
