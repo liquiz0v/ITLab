@@ -13,14 +13,14 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "D:\github repos\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
+#line 1 "D:\Git\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
 using ITLab;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\github repos\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
+#line 2 "D:\Git\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
 using ITLab.Models;
 
 #line default
@@ -86,7 +86,7 @@ using ITLab.Models;
         {
             WriteLiteral("\r\n");
 #nullable restore
-#line 2 "D:\github repos\ITLab\ITLab\ITLab\Views\Landing\Index.cshtml"
+#line 2 "D:\Git\ITLab\ITLab\ITLab\Views\Landing\Index.cshtml"
   
     Layout = null;
 
@@ -106,6 +106,8 @@ using ITLab.Models;
     <link rel=""stylesheet"" type=""text/css"" href=""css/normalize.css"">
     <link rel=""stylesheet"" type=""text/css"" href=""css/animate.min.css"">
     <link rel=""stylesheet"" type=""text/css"" href=""css/main.css"">
+    <link rel=""stylesheet"" type=""text/css"" href=""css/login.css"">
+    <link rel=""stylesheet"" type=""text/css"" href=""css/registration.css"">
     <!-- Полифил для корректного отображения HTML5 элементов в старых версиях Internet Explorer-->
     <!--[if lt IE 9]>
       <script src=""~/https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js""></script>
@@ -253,7 +255,8 @@ using ITLab.Models;
                 <li><a href=""#"">Проекты</a></li>
                 <li><a href=""#"">Контакты</a></li>
                 <li><span>UA</span> / <span class=""active-lang"">RU</span></li>
-                <li><a href=""https://www.youtube.com/watch?v=urU2EcKWDXw"" class=""sign-in""><button>Вход</button></a></li>
+                <!-- testing <a href=""https://www.youtube.com/watch?v=urU2EcKWDXw"" class=""sign-in"">-->
+                <li><button id=""logIn"">Вход</button></a></li>
             </ul>
         </nav>
     </header>

@@ -13,14 +13,14 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "D:\github repos\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
+#line 1 "D:\Git\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
 using ITLab;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\github repos\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
+#line 2 "D:\Git\ITLab\ITLab\ITLab\Views\_ViewImports.cshtml"
 using ITLab.Models;
 
 #line default
@@ -34,7 +34,7 @@ using ITLab.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
 #nullable restore
-#line 1 "D:\github repos\ITLab\ITLab\ITLab\Views\Home\Index.cshtml"
+#line 1 "D:\Git\ITLab\ITLab\ITLab\Views\Home\Index.cshtml"
   
     ViewData["Title"] = "Home Page";
 

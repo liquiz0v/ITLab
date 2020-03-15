@@ -1,0 +1,249 @@
+.content-site {
+    background-color: rgb(190, 190, 190);
+    height: 1200px;
+    width: 100%;
+}
+
+.coursor-context-menu {
+    cursor: context-menu;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.backround-dimming-2 {
+    z-index: 1001;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0;
+}
+
+.backround-dimming {
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.342);
+    height: 100vh;
+    /* min-height: 500px; */
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0;
+}
+
+.content-login {
+    z-index: 1002;
+    width: 300px;
+    height: auto;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    border: 20px solid #f6f6f6;
+}
+
+.check-box-login {
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.justify-cont-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.direction-column {
+    flex-direction: column;
+}
+
+.direction-row {
+    flex-direction: row;
+}
+
+.soc-btn {
+    width: 120px;
+    height: 25px;
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 5px;
+    text-align: center;
+    /* line-height: 20px; */
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-between; */
+    /* transform: initial; */
+    transition-duration: 1s;
+    /* background-color: white; */
+    cursor: pointer;
+}
+
+.soc-btn:hover {
+    /* background-color: rgba(0, 0, 0, 0.507); */
+    transform: rotate(10deg);
+}
+
+
+/* .soc-btn p {
+    display: inline-block;
+    line-height: 24px;
+} */
+
+.soc-google {
+    margin-right: 19px;
+}
+
+.soc-facebook {
+    margin-left: 19px;
+    background-color: #22589A;
+    color: white;
+}
+
+.image-google {
+    /* margin-top: 3px; */
+    margin-left: 5px;
+    font-size: 20px;
+    /* display: inline-block; */
+}
+
+.inp-fields {
+    border: none !important;
+    outline: none;
+    padding-left: 20px;
+    /* padding-right: 20px; */
+    /* margin-left: 80px; */
+    /* margin-right: 80px; */
+    outline-offset: 0;
+    margin-top: 8px;
+    width: calc(100% - 20px);
+    height: 40px;
+}
+
+.bl-rememberMe {
+    /* margin-left: 0; */
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.login-sign-in {
+    background-color: #00ADA1;
+    width: 100%;
+    height: 40px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-sign-in:hover {
+    transition-duration: 0.5s;
+    background-color: rgb(0, 138, 129);
+}
+
+.login-sign-in:active,
+.login-sign-in:focus {
+    outline: none;
+}
+
+.added-links {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.brdr-radius {
+    border-radius: 20px;
+}
+
+.header-text-top {
+    font-size: 23px;
+}
+
+.header-text-bootom {
+    font-size: 18px;
+    /* margin-top: 5px; */
+}
+
+.horisontal-line {
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.line {
+    height: 1px;
+    width: 120px;
+    margin-top: 10px;
+    background: rgb(192, 192, 192);
+}
+
+.middle-text {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.color-light-gray {
+    color: rgb(143, 143, 143);
+}
+
+.d-inline-b {
+    display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+    .content-login {
+        width: 400px;
+        border-radius: 20px;
+        /* border: solid #f6f6f6; */
+        border-right: 60px solid #f6f6f6;
+        border-left: 60px solid #f6f6f6;
+    }
+    .soc-btn {
+        width: 150px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+    .soc-google {
+        margin-right: 30px;
+    }
+    .soc-facebook {
+        margin-left: 30px;
+    }
+    .line {
+        height: 1px;
+        width: 180px;
+    }
+    .header-text-top {
+        font-size: 28px;
+    }
+    .header-text-bootom {
+        font-size: 23px;
+        /* margin-top: 5px; */
+    }
+    .inp-fields {
+        margin-top: 8px;
+        width: calc(100% - 20px);
+        height: 50px;
+        font-size: 20px;
+    }
+    .login-sign-in {
+        height: 50px;
+    }
+}
