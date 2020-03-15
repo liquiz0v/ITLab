@@ -16,10 +16,7 @@
     },
     "ITLab": {
       "commandName": "Project",
-<<<<<<< HEAD
       "launchBrowser": true,
-=======
->>>>>>> AlexUpdates
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
