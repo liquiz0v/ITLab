@@ -7670,11 +7670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
+      "projectUniqueName": "E:\\GitProjects\\ITL-ssite\\ITLab\\ITLab\\ITLab.csproj",
       "projectName": "ITLab",
-      "projectPath": "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
+      "projectPath": "E:\\GitProjects\\ITL-ssite\\ITLab\\ITLab\\ITLab.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\ITLab\\ITLab\\ITLab\\obj\\",
+      "outputPath": "E:\\GitProjects\\ITL-ssite\\ITLab\\ITLab\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",

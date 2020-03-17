@@ -1,0 +1,90 @@
+﻿.MenuLeft {
+    height: 400px;
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 50px;
+    position: relative;
+
+    display: inline;
+}
+
+.MenuLeft > ul {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: 1000;
+}
+
+    .MenuLeft > ul > li {
+        height: 50px;
+        position: relative;
+        margin-top: 10px;
+    }
+
+
+.MenuLeft > ul > li:before {
+    position: absolute;
+    left: 0px;
+    content: " ";
+    width: 50px;
+    height: 50px;
+    background-size: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.MenuLeft > ul > li:nth-child(1):before {
+    background-image: url('../../images/pr-man.png');
+}
+
+
+.MenuLeft > ul > li:nth-child(2):before {
+    background-image: url('../../images/pr-cal.png');
+}
+
+.MenuLeft > ul > li:nth-child(3):before {
+    background-image: url('../../images/pr-list.png');
+    background-size: 33px;
+}
+
+.MenuLeft > ul > li:nth-child(4):before {
+    background-image: url('../../images/pr-book.png');
+    background-size: 42px;
+}
+
+.MenuLeft > ul > li > a {
+    line-height: 50px;
+    font-size: 20px;
+    padding-left: 80px;
+    padding-right: 30px;
+    color: white;
+    background-color: #00bdcb;
+    border-radius: 5px;
+    display: none;
+}
+
+.MenuLeft > ul > li:hover a {
+    display: block;
+}
+
+.MenuLeft > ul > li:hover:before {
+    background-image: url('../../images/pr-cal-white.png');
+    background-color: #00a3af;
+}
+
+.MenuLeft > ul > li:nth-child(1):hover:before {
+    background-image: url('../../images/pr-man-white.png');
+}
+
+.MenuLeft > ul > li:nth-child(2):hover:before {
+    background-image: url('../../images/pr-cal-white.png');
+}
+.MenuLeft > ul > li:nth-child(3):hover:before {
+    background-image: url('../../images/pr-list-white.png');
+}
+
+.MenuLeft > ul > li:nth-child(4):hover:before {
+    background-image: url('../../images/pr-book-white.png');
+}
+
