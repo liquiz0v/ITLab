@@ -1,0 +1,34 @@
+﻿.colums-data {
+    /*display: flex;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    width: 100%;
+}
+
+
+.main-avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.main-avatar > img {
+    height: 250px;
+}
+
+.data-Columns {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.firstColumn {
+    /*flex-grow: 1;*/
+}
+
+.secondColumn {
+    /*flex-grow: 1;*/
+}
+.thirdColumn {
+    /*flex-grow: 1;*/
+}

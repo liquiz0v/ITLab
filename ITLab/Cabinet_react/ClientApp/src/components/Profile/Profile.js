@@ -35,7 +35,7 @@ export default class Profile extends Component {
                                 <div class="profile-block-left">
                                     <div class="main-avatar">
                                         <img src={UserImage}/>
-                            </div>
+                                    </div>
                                     <b class="profile-name">Иван Иванов</b>
                                     <button id="edit_profile">Редактировать профиль</button>
                                 </div>

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 
 //import Home from './components/Home/Home';
 //import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
+//import Profile from './components/Profile/Profile';
+import EditProfile from './components/EditProfile/EditProfile';
 
 import './App.css';
 import './lib/normalize.css';
@@ -18,7 +19,11 @@ const USER = 'Иван Иванов';
 class App extends Component {
     render() {
         return (
-            <Profile
+            //<Profile
+            //    userName={USER}
+            //    UserImage={UserImage}
+            ///>
+            <EditProfile
                 userName={USER}
                 UserImage={UserImage}
             />

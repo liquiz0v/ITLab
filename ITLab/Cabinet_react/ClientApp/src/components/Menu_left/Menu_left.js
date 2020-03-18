@@ -8,10 +8,10 @@ export default class MenuLeft extends Component {
         return (
             <div class="MenuLeft">
                 <ul>
-                    <li><a href="">Главная</a></li>
-                    <li><a href="">Календарь</a></li>
-                    <li><a href="">Список</a></li>
-                    <li><a href="">Книги</a></li>
+                    <li><a href=""> Профиль   </a></li>
+                    <li><a href=""> Календарь </a></li>
+                    <li><a href=""> Список    </a></li>
+                    <li><a href=""> Книги     </a></li>
                 </ul>
             </div>
         )
