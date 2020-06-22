@@ -13,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ITLab.Models;
-using ITLab.Models_cabinet;
 
 namespace ITLab
 {
@@ -37,7 +36,7 @@ namespace ITLab
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddDbContext<ITLabContext>();
-            services.AddDbContext<CabinetContext>(i => i.UseSqlServer(Configuration.GetConnectionString("CabinetConnection")));
+            //services.AddDbContext<CabinetContext>(i => i.UseSqlServer(Configuration.GetConnectionString("CabinetConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

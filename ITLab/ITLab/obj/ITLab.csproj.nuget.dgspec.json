@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {}
+    "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {}
   },
   "projects": {
-    "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {
+    "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
+        "projectUniqueName": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
         "projectName": "ITLab",
-        "projectPath": "D:\\Git\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\ITLab\\ITLab\\ITLab\\obj\\",
+        "projectPath": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.csproj",
+        "packagesPath": "C:\\Users\\artem.vasylenko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\artem.vasylenko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,6 +95,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -103,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
