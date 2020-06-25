@@ -1,6 +1,6 @@
 // Для статистики
 let toSt = false;
-
+render_news_block()
 window.addEventListener("scroll", function () {
     let elementTarget = document.getElementById("statistics");
     if (window.scrollY + document.documentElement.clientHeight
@@ -65,7 +65,7 @@ sendFeedback.onclick = function () {
     let d3 = document.querySelector('.fAsk').value;
 
     //let data = { FullName: d1, Phone: d2, Question: d3 };
-    
+
     let xmlhttp = new XMLHttpRequest();
     let formData = new FormData();
     xmlhttp.open("POST", "/Landing/FeedBack", true);
@@ -77,14 +77,14 @@ sendFeedback.onclick = function () {
     xmlhttp.onload = function () {
         console.log(xmlhttp.responseText); // ответ
     };
-  
+
     xmlhttp.send(formData);
 
     document.querySelector('.fName').value = "";
     document.querySelector('.fTel').value = "";
     document.querySelector('.fAsk').value = "";
 
-  
+
     xmlhttp.onreadyechange = function () {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
             if (xmlhttp.status == 200) {
@@ -105,9 +105,9 @@ sendFeedback.onclick = function () {
         }
     }
 
-   
- 
-   
+
+
+
 
     /*
     $.ajax({
@@ -124,21 +124,105 @@ sendFeedback.onclick = function () {
     });
     */
 
-    
+
 };
 
-
-
-
-function openModal(){
-	document.getElementById('global-filter').style.display = 'block';
-	document.getElementById('modalFB').style.display = 'block';
-}	
-function closeModal(){
-	document.getElementById('global-filter').style.display = 'none';
-	document.getElementById('modalFB').style.display = 'none';
+function openModal() {
+    document.getElementById('global-filter').style.display = 'block';
+    document.getElementById('modalFB').style.display = 'block';
+}
+function closeModal() {
+    document.getElementById('global-filter').style.display = 'none';
+    document.getElementById('modalFB').style.display = 'none';
 }
 
+//GENERATE NEWS
+let newsRequestData = document.getElementById('');
+
+function render_news_block(d2 = null, type = "render") {
+
+    let xmlhttp = new XMLHttpRequest();
+    let formData2 = new FormData();
+    xmlhttp.open("POST", "/Landing/GetNews", true);
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    formData2.append("Content-Type", "application/x-www-form-urlencodedl");
+    formData2.set("newsId", d2);
+
+    xmlhttp.send(formData2);
+
+
+    xmlhttp.onload = function () {
+
+        let obj = JSON.parse(xmlhttp.response);
+        console.log(obj);
+        let newsArr = [];
+
+        for (item in obj) {
+            let newsObj = new News(
+                obj[item].Id,
+                obj[item].Title,
+                obj[item].ShortDescription,
+                obj[item].CommentsCount,
+                obj[item].ViewsCount,
+                obj[item].HeadPhoto,
+                obj[item].TimeDate
+            );
+            newsArr.push(newsObj.generateHtml());
+        }
+        let newsHtmlString = "";
+        for (item in newsArr) {
+            newsHtmlString += newsArr[item];
+        }
+
+        console.log(newsHtmlString);
+        if (type == "refresh") {
+            document.getElementById('newsBlock').innerHTML = newsHtmlString;
+        }
+        else {
+            document.getElementById('newsBlock').innerHTML += newsHtmlString;
+        }
+
+
+    };
+
+    /*end2*/
+}
+class News {
+    constructor(Id, Title, ShortDescription, CommentsCount, ViewsCount, HeadPhoto, TimeDate) {
+        this.Id = Id;
+        this.Title = Title;
+        this.ShortDescription = ShortDescription;
+        this.CommentsCount = CommentsCount;
+        this.ViewsCount = ViewsCount;
+        this.HeadPhoto = HeadPhoto;
+        this.TimeDate = TimeDate;
+    }
+
+    generateHtml() {
+        let htmlString = `<div class="slider-news news_block">
+
+        <div class="news-date">
+            <span>${this.TimeDate}</span>
+        </div>
+        <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>
+        <div class="news-body">
+            <span>«${this.Title}</span>
+            <p><span>${this.CommentsCount}</span> комментариев / <span>${this.ViewsCount}</span> просмотров</p>
+            <p>
+                ${this.ShortDescription}
+            </p>
+        </div>
+        <a asp-action="FullNews" src="${this.Id}">
+            <div class="news-button">
+                <button>Подробнее</button>
+            </div>
+        </a>
+    </div>`;
+        return htmlString;
+    }
+}
+
+//GENERATE NEWS
 
 //хз что снизу
 function openModal() {

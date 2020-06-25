@@ -6,7 +6,7 @@ using ITLab.Models;
 
 namespace ITLab.Client_Objects
 {
-    public class FullNews
+    public class FullNewsDTO
     {
        
         public int Id { get; set; }
