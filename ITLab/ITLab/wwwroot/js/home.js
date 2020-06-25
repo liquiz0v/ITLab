@@ -143,10 +143,10 @@ function render_news_block(d2 = null, type = "render") {
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("POST", "/Landing/GetNews", true);
+    xmlhttp.open("POST", "/Landing/GetShortNews", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    formData2.append("Content-Type", "application/x-www-form-urlencodedl");
-    formData2.set("newsId", d2);
+    formData2.append("Content-Type", "application/x-www-form-urlencoded");
+    //formData2.set("newsId", d2);
 
     xmlhttp.send(formData2);
 
@@ -159,13 +159,13 @@ function render_news_block(d2 = null, type = "render") {
 
         for (item in obj) {
             let newsObj = new News(
-                obj[item].Id,
-                obj[item].Title,
-                obj[item].ShortDescription,
-                obj[item].CommentsCount,
-                obj[item].ViewsCount,
-                obj[item].HeadPhoto,
-                obj[item].TimeDate
+                obj[item].id,
+                obj[item].title,
+                obj[item].shortDescription,
+                obj[item].commentsCount,
+                obj[item].viewsCount,
+                obj[item].headPhoto,
+                obj[item].timeDate
             );
             newsArr.push(newsObj.generateHtml());
         }
@@ -188,14 +188,14 @@ function render_news_block(d2 = null, type = "render") {
     /*end2*/
 }
 class News {
-    constructor(Id, Title, ShortDescription, CommentsCount, ViewsCount, HeadPhoto, TimeDate) {
-        this.Id = Id;
-        this.Title = Title;
-        this.ShortDescription = ShortDescription;
-        this.CommentsCount = CommentsCount;
-        this.ViewsCount = ViewsCount;
-        this.HeadPhoto = HeadPhoto;
-        this.TimeDate = TimeDate;
+    constructor(id, title, shortDescription, commentsCount, viewsCount, headPhoto, timeDate) {
+        this.Id = id;
+        this.Title = title;
+        this.ShortDescription = shortDescription;
+        this.CommentsCount = commentsCount;
+        this.ViewsCount = viewsCount;
+        this.HeadPhoto = headPhoto;
+        this.TimeDate = timeDate;
     }
 
     generateHtml() {

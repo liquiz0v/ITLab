@@ -7766,19 +7766,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\artem.vasylenko\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.Landing.MVC.csproj",
+      "projectUniqueName": "M:\\Repos\\ITLab\\ITLab\\ITLab\\ITLab.Landing.MVC.csproj",
       "projectName": "ITLab.Landing.MVC",
-      "projectPath": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\ITLab.Landing.MVC.csproj",
-      "packagesPath": "C:\\Users\\artem.vasylenko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\artem.vasylenko\\source\\repos\\ITLab\\ITLab\\ITLab\\obj\\",
+      "projectPath": "M:\\Repos\\ITLab\\ITLab\\ITLab\\ITLab.Landing.MVC.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "M:\\Repos\\ITLab\\ITLab\\ITLab\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\artem.vasylenko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
