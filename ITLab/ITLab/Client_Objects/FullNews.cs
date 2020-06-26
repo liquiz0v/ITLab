@@ -8,7 +8,14 @@ namespace ITLab.Client_Objects
 {
     public class FullNewsDTO
     {
-       
+
+        public FullNewsDTO()
+        {
+            Photos = new List<Photos>();
+            Videos = new List<Videos>();
+            Comments = new List<Comments>();
+            ShortNews = new List<ShortNews>();
+        }
         public int Id { get; set; }
         public string Title { get; set; }
         public string FullDescription { get; set; }

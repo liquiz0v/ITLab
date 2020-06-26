@@ -1,6 +1,11 @@
 let estimate = document.getElementById('estimate');
 let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
-render_news(GeneralNewsId);
+//render_news(GeneralNewsId);
+
+const queryString = window.location.href;
+
+render_full_news_block(queryString);
+
 
 estimate.onmousemove = function (event) {
     let stars = document.querySelectorAll('#estimate > li');
@@ -40,12 +45,12 @@ send_news_comment.onclick = function () {
     document.querySelector('.send_news_comment_area').value = "";
 
     /*start2 action , refresh comments*/
-    render_news(d2,"refresh");
-    
+    //render_news(d2, "refresh");
+
 };
 
 function render_news(d2, type = "render") {
-   
+
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
     xmlhttp.open("POST", "/Landing/Comments", true);
@@ -82,7 +87,7 @@ function render_news(d2, type = "render") {
         else {
             document.getElementById('comments_block').innerHTML += commentsHtmlString;
         }
-       
+
 
     };
 
@@ -134,4 +139,141 @@ subscribe_on_news.onclick = function () {
 
     document.getElementById('subEmail').value = "";
 };
+
+
+
+
+
+//GENERATE FULL NEWS
+let newsRequestData = document.getElementById('');
+
+function render_full_news_block(d2 = null, type = "render") {
+
+    let xmlhttp = new XMLHttpRequest();
+    let formData2 = new FormData();
+    xmlhttp.open("GET", `window.location.href/${d2}`, true);
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    formData2.append("Content-Type", "application/x-www-form-urlencoded");
+    //formData2.set("newsId", d2);
+
+    xmlhttp.send(formData2);
+
+    xmlhttp.onload = function () {
+
+        let obj = JSON.parse(xmlhttp.response);
+        console.log(`${obj}`);
+        let newsArr = [];
+
+        for (item in obj) {
+            let newsObj = new News(
+                obj[item].id,
+                obj[item].title,
+                obj[item].fullDescription,
+                obj[item].commentsCount,
+                obj[item].viewsCount,
+                obj[item].headPhoto,
+                obj[item].timeDate,
+                obj[item].photos,
+                obj[item].videos,
+                obj[item].comments
+            );
+            newsArr.push(newsObj.generateHtml());
+        }
+        let newsHtmlString = "";
+        for (item in newsArr) {
+            newsHtmlString += newsArr[item];
+        }
+      
+        
+
+        if (type == "refresh") {
+            document.getElementById('fullNewsBlock').innerHTML = newsHtmlString;
+        }
+        else {
+            document.getElementById('fullNewsBlock').innerHTML += newsHtmlString;
+        }
+
+
+    };
+
+    /*end2*/
+}
+
+// public int Id { get; set; }
+// public string Title { get; set; }
+// public string FullDescription { get; set; }
+// public DateTime TimeDate { get; set; }
+
+// public int CommentsCount { get; set; }
+// public int ViewsCount { get; set; }
+
+// public virtual List<Photos> Photos { get; set; }
+// public virtual List<Videos> Videos { get; set; }
+// public virtual List<Comments> Comments { get; set; }
+
+// public virtual List<ShortNews> ShortNews { get; set; }
+class News {
+    constructor(id, title, fullDescription, commentsCount, viewsCount, headPhoto, timeDate, photos, videos, comments) {
+        this.Id = id;
+        this.Title = title;
+        this.FullDescription = fullDescription;
+        this.CommentsCount = commentsCount;
+        this.ViewsCount = viewsCount;
+        this.HeadPhoto = headPhoto;
+        this.TimeDate = timeDate;
+        this.Photos = photos;
+        this.Videos = videos;
+        this.Comments = comments;
+    }
+
+    generateHtml() {
+        var newsDate = toITLabDateString(this.TimeDate);
+
+        let fullNewsLink = `${window.location.href}Landing/FullNews?newsId=${this.Id}`;
+
+        let htmlString = `<div class="slider-news news_block">
+        
+        <div class="news-date">
+            <span>${newsDate.day}</span> <span>${newsDate.month}</span>
+            
+        </div>
+        <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>
+        <div class="news-body">
+            <span>«${this.Title}</span>
+            <p><span>${this.CommentsCount}</span> комментариев / <span>${this.ViewsCount}</span> просмотров</p>
+            <p>
+                ${this.ShortDescription}
+            </p>
+        </div>
+        <a  href="${fullNewsLink}">
+            <div class="news-button">
+                <button>Подробнее</button>
+            </div>
+        </a>
+    </div>`;
+    
+        return htmlString;
+    }
+}
+
+let toITLabDateString = (date) => {
+    var resultDate = new Date(date);
+
+    var result = {
+        month: resultDate.getMonth(),
+        day: resultDate.getDay()
+    }
+    return result;
+};
+//GENERATE FULL NEWS
+
+
+
+
+
+
+
+
+
+
 

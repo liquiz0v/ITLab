@@ -10,6 +10,7 @@ using System.Globalization;
 using Dapper;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using System.Net.Http;
 
 namespace ITLab.Controllers
 {
@@ -136,15 +137,16 @@ namespace ITLab.Controllers
             return View();
         }
         [HttpGet]
+        
         public IActionResult FullNews(int newsId) //move to queries
         {
             return View();
         }
 
         [HttpGet]
+        [Route("GetFullNews/{countryCode}")]
         public object GetFullNews(int newsId) //move to queries
         {
-
             try
             {
                 var news = new News();

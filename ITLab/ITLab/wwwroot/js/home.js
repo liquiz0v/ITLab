@@ -199,10 +199,15 @@ class News {
     }
 
     generateHtml() {
-        let htmlString = `<div class="slider-news news_block">
+        var newsDate = toITLabDateString(this.TimeDate);
 
+        let fullNewsLink = `${window.location.href}Landing/FullNews/${this.Id}`;
+
+        let htmlString = `<div class="slider-news news_block">
+        
         <div class="news-date">
-            <span>${this.TimeDate}</span>
+            <span>${newsDate.day}</span> <span>${newsDate.month}</span>
+            
         </div>
         <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>
         <div class="news-body">
@@ -212,7 +217,7 @@ class News {
                 ${this.ShortDescription}
             </p>
         </div>
-        <a asp-action="FullNews" src="${this.Id}">
+        <a  href="${fullNewsLink}">
             <div class="news-button">
                 <button>Подробнее</button>
             </div>
@@ -222,6 +227,15 @@ class News {
     }
 }
 
+let toITLabDateString = (date) => {
+    var resultDate = new Date(date);
+
+    var result = {
+        month: resultDate.getMonth(),
+        day: resultDate.getDay()
+    }
+    return result;
+};
 //GENERATE NEWS
 
 //хз что снизу
@@ -275,3 +289,4 @@ document.getElementById('fb-first-lesson').onclick = function () {
         }
     }
 }
+
