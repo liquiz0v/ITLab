@@ -2,9 +2,9 @@ let estimate = document.getElementById('estimate');
 let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
 //render_news(GeneralNewsId);
 
-const queryString = window.location.href;
 
-render_full_news_block(queryString);
+
+render_full_news_block();
 
 
 estimate.onmousemove = function (event) {
@@ -148,10 +148,11 @@ subscribe_on_news.onclick = function () {
 let newsRequestData = document.getElementById('');
 
 function render_full_news_block(d2 = null, type = "render") {
+    const queryString = window.location.href;
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("GET", `window.location.href/${d2}`, true);
+    xmlhttp.open("GET", `${queryString}`, true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencoded");
     //formData2.set("newsId", d2);
@@ -161,7 +162,7 @@ function render_full_news_block(d2 = null, type = "render") {
     xmlhttp.onload = function () {
 
         let obj = JSON.parse(xmlhttp.response);
-        console.log(`${obj}`);
+        console.log(`${obj} !!!!!!!!!!!!!!`);
         let newsArr = [];
 
         for (item in obj) {
