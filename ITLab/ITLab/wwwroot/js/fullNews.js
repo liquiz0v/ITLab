@@ -1,11 +1,8 @@
 let estimate = document.getElementById('estimate');
-let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
+//let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
 //render_news(GeneralNewsId);
 
-
-
-render_full_news_block();
-
+render_full_news_block(window.location.search);
 
 estimate.onmousemove = function (event) {
     let stars = document.querySelectorAll('#estimate > li');
@@ -101,7 +98,7 @@ class Comments {
         this.timeDate = timeDate;
         this.commentatorId = commentatorId;
         this.newsId = newsId;
-        this.commentatorName = commentatorName;//добавить на беке возврат имени, завтыкал
+        this.commentatorName = commentatorName; //добавить на беке возврат имени, завтыкал
     }
 
     toHtmlString() {
@@ -141,14 +138,11 @@ subscribe_on_news.onclick = function () {
 };
 
 
-
-
-
 //GENERATE FULL NEWS
 let newsRequestData = document.getElementById('');
 
 function render_full_news_block(d2 = null, type = "render") {
-    const queryString = window.location.href;
+    const queryString = `/Landing/GetFullNews/?newsid=1`;
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
@@ -163,35 +157,72 @@ function render_full_news_block(d2 = null, type = "render") {
 
         let obj = JSON.parse(xmlhttp.response);
         console.log(`${obj} !!!!!!!!!!!!!!`);
-        let newsArr = [];
+        let basicNewsArr = [];
+        let additionalNewsArr = [];
+        let commentsArr = [];
+        let photosArr = [];
+        let videosArr = [];
 
-        for (item in obj) {
-            let newsObj = new News(
-                obj[item].id,
-                obj[item].title,
-                obj[item].fullDescription,
-                obj[item].commentsCount,
-                obj[item].viewsCount,
-                obj[item].headPhoto,
-                obj[item].timeDate,
-                obj[item].photos,
-                obj[item].videos,
-                obj[item].comments
-            );
-            newsArr.push(newsObj.generateHtml());
+        console.log(obj);
+
+        let newsObj = new News(
+            obj.id,
+            obj.title,
+            obj.fullDescription,
+            obj.commentsCount,
+            obj.viewsCount,
+            obj.headPhoto,
+            obj.timeDate,
+            obj.photos,
+            obj.videos,
+            obj.comments);
+
+            console.log(newsObj);
+
+        basicNewsArr.push(newsObj.generateBasicNewsHtml());
+        additionalNewsArr.push(newsObj.generateAdditionalNewsHtml());
+        photosArr.push(newsObj.generatePhotosHtml(newsObj.photos));
+        commentsArr.push(newsObj.generateCommentsHtml());
+        videosArr.push(newsObj.generateVideosHtml(newsObj.videos));
+            
+
+        let basicNewsHtmlString = "";
+        let additionalNewsHtmlString = "";
+        let commentHtmlString = "";
+        let photosHtmlString = "";
+        let videosHtmlString = "";
+
+        basicNewsHtmlString += basicNewsArr;
+        additionalNewsHtmlString += additionalNewsArr;
+        
+        for (item in photosArr){
+            photosHtmlString += photosArr[item];
         }
-        let newsHtmlString = "";
-        for (item in newsArr) {
-            newsHtmlString += newsArr[item];
+
+        for (item in videosArr){
+            videosHtmlString += videosHtmlString[item];
+        }
+
+        for (item in commentsArr) {
+            commentHtmlString += commentsArr[item];
         }
       
         
 
         if (type == "refresh") {
-            document.getElementById('fullNewsBlock').innerHTML = newsHtmlString;
+            document.getElementById('basic_news').innerHTML = basicNewsHtmlString;
+            document.getElementById('videos').innerHTML = additionalNewsHtmlString;
+            document.getElementById('photos').innerHTML = photosHtmlString;
+            document.getElementById('additional_news').innerHTML = videosHtmlString;
+            document.getElementById('comments').innerHTML = commentHtmlString;
         }
+
         else {
-            document.getElementById('fullNewsBlock').innerHTML += newsHtmlString;
+            document.getElementById('basic_news').innerHTML += basicNewsHtmlString;
+            document.getElementById('videos').innerHTML += videosHtmlString;
+            document.getElementById('photos').innerHTML += photosHtmlString;
+            document.getElementById('additional_news').innerHTML += additionalNewsHtmlString;
+            document.getElementById('comments').innerHTML += commentHtmlString;
         }
 
 
@@ -200,19 +231,6 @@ function render_full_news_block(d2 = null, type = "render") {
     /*end2*/
 }
 
-// public int Id { get; set; }
-// public string Title { get; set; }
-// public string FullDescription { get; set; }
-// public DateTime TimeDate { get; set; }
-
-// public int CommentsCount { get; set; }
-// public int ViewsCount { get; set; }
-
-// public virtual List<Photos> Photos { get; set; }
-// public virtual List<Videos> Videos { get; set; }
-// public virtual List<Comments> Comments { get; set; }
-
-// public virtual List<ShortNews> ShortNews { get; set; }
 class News {
     constructor(id, title, fullDescription, commentsCount, viewsCount, headPhoto, timeDate, photos, videos, comments) {
         this.Id = id;
@@ -227,35 +245,50 @@ class News {
         this.Comments = comments;
     }
 
-    generateHtml() {
+    generateBasicNewsHtml() {
         var newsDate = toITLabDateString(this.TimeDate);
 
         let fullNewsLink = `${window.location.href}Landing/FullNews?newsId=${this.Id}`;
 
-        let htmlString = `<div class="slider-news news_block">
-        
-        <div class="news-date">
-            <span>${newsDate.day}</span> <span>${newsDate.month}</span>
-            
-        </div>
-        <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>
-        <div class="news-body">
-            <span>«${this.Title}</span>
-            <p><span>${this.CommentsCount}</span> комментариев / <span>${this.ViewsCount}</span> просмотров</p>
-            <p>
-                ${this.ShortDescription}
-            </p>
-        </div>
-        <a  href="${fullNewsLink}">
-            <div class="news-button">
-                <button>Подробнее</button>
-            </div>
-        </a>
-    </div>`;
-    
+        let htmlString = `<div class="news_statistic">
+                            <div class="${this.Id}" style="display:none"></div>
+                            <p class="st_info">${this.TimeDate} / ${this.CommentsCount} комментариев / ${this.ViewsCount} <span>5.0</span> 3 голоса</p>
+                         </div>`;
         return htmlString;
     }
+
+    generateAdditionalNewsHtml() {
+        let htmlString = `<h3>
+                              ${this.Title}
+                          </h3>
+                          <p>
+                              ${this.FullDescription}
+                          </p>`;
+
+        return htmlString;
+    };
+
+    generateCommentsHtml() { //По идее не нужно тк уже есть метод в классе Comments
+        let htmlString = ``;
+
+        return htmlString;
+    };
+
+    generatePhotosHtml(photos) {
+        for (item in photos) {
+            let htmlString = `<img href="${item.link}" alt="Alternate Text" class="fullNewsImage" />`;
+            return htmlString;
+        }
+    };
+
+    generateVideosHtml(videos) {
+        for (item in videos) {
+            let htmlString = `<iframe href="${item.link}" width="900" height="506" src="item.Link" frameborder="0" allow="accelerometer; autoplay; encrypted - media; gyroscope; picture -in -picture" allowfullscreen></iframe>`;
+            return htmlString;
+        }
+    };
 }
+
 
 let toITLabDateString = (date) => {
     var resultDate = new Date(date);

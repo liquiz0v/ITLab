@@ -144,7 +144,6 @@ namespace ITLab.Controllers
         }
 
         [HttpGet]
-        [Route("GetFullNews/{countryCode}")]
         public object GetFullNews(int newsId) //move to queries
         {
             try

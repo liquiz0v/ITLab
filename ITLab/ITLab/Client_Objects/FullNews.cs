@@ -24,11 +24,11 @@ namespace ITLab.Client_Objects
         public int CommentsCount { get; set; }
         public int ViewsCount { get; set; }
 
-        public virtual List<Photos> Photos { get; set; }
-        public virtual List<Videos> Videos { get; set; }
-        public virtual List<Comments> Comments { get; set; }
+        public virtual List<Photos>? Photos { get; set; }
+        public virtual List<Videos>? Videos { get; set; }
+        public virtual List<Comments>? Comments { get; set; }
 
-        public virtual List<ShortNews> ShortNews { get; set; }
+        public virtual List<ShortNews>? ShortNews { get; set; }
     }
     
 }
