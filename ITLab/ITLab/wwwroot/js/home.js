@@ -199,14 +199,14 @@ class News {
     }
 
     generateHtml() {
-        var newsDate = toITLabDateString(this.TimeDate);
+        var newsDate = formatDateString(this.TimeDate);
 
         let fullNewsLink = `${window.location.href}Landing/FullNews/${this.Id}`;
 
         let htmlString = `<div class="slider-news news_block">
         
         <div class="news-date">
-            <span>${newsDate.day}</span> <span>${newsDate.month}</span>
+            <span>${newsDate}</span>
             
         </div>
         <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>

@@ -250,13 +250,13 @@ class News {
     }
 
     generateBasicNewsHtml() {
-        var newsDate = toITLabDateString(this.TimeDate);
+        var newsDate = formatDateString(this.TimeDate);
 
         let fullNewsLink = `${window.location.href}Landing/FullNews?newsId=${this.Id}`;
 
         let htmlString = `<div class="news_statistic">
                             <div class="${this.Id}" style="display:none"></div>
-                            <p class="st_info">${this.TimeDate} / ${this.CommentsCount} комментариев / ${this.ViewsCount} <span>5.0</span> 3 голоса</p>
+                            <p class="st_info">${newsDate} / ${this.CommentsCount} комментариев / ${this.ViewsCount} <span>5.0</span> 3 голоса</p>
                          </div>`;
         return htmlString;
     }
