@@ -11,6 +11,7 @@ using Dapper;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Net.Http;
+using ITLab.Landing.MVC.Client_Objects;
 
 namespace ITLab.Controllers
 {
@@ -187,21 +188,21 @@ namespace ITLab.Controllers
                 {
                     photos = db.Query<Photos>(photosQuery).ToList();
                 }
-
-                var comments = new List<Comments>();
+                
+                var comments = new List<CommentsDTO>();
                 var commentsQuery = @$"
-                    Select 
-                      [Id]
-                      ,[CommentText]
-                      ,[TimeDate]
-                      ,[CommentatorId]
-                      ,[NewsId]
-                   from Comments 
-                   where NewsId = {newsId}";
+                    select Users.FullName
+                        ,Comments.CommentText
+                        ,Comments.TimeDate
+                        ,Comments.CommentatorId
+                        ,Comments.NewsId
+                    from Comments
+                    join Users on Users.Id = Comments.CommentatorId
+                    where Comments.NewsId = {newsId};";
 
                 using (IDbConnection db = new SqlConnection(connectionString))
                 {
-                    comments = db.Query<Comments>(commentsQuery).ToList();
+                    comments = db.Query<CommentsDTO>(commentsQuery).ToList();
                 }
 
                 var fullnews = new FullNewsDTO
