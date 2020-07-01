@@ -280,7 +280,7 @@ class News {
 
     generateCommentsHtml(comment) { //По идее не нужно тк уже есть метод в классе Comments (перенес сюда)
         let htmlString = `<div class="one_comment">
-                            <div class="commentatorName">Имя: ${comment.commentatorName}</div>
+                            <div class="commentatorName">Имя: ${comment.fullName}</div>
                             <div class="сommentTimeDate">Дата:  ${comment.timeDate}</div>
                             <div class="сommentText">Комментарий: ${comment.commentText}</div>
                           </div>`;
