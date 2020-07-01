@@ -142,7 +142,7 @@ subscribe_on_news.onclick = function () {
 let newsRequestData = document.getElementById('');
 
 function render_full_news_block(d2 = null, type = "render") {
-    const queryString = `/Landing/GetFullNews/?newsid=1`;
+    const queryString = `/Landing/GetFullNews/?newsid=1`;   //Нужно как то вытянуть параметр строки
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
@@ -181,9 +181,19 @@ function render_full_news_block(d2 = null, type = "render") {
 
         basicNewsArr.push(newsObj.generateBasicNewsHtml());
         additionalNewsArr.push(newsObj.generateAdditionalNewsHtml());
-        photosArr.push(newsObj.generatePhotosHtml(newsObj.photos));
-        commentsArr.push(newsObj.generateCommentsHtml());
-        videosArr.push(newsObj.generateVideosHtml(newsObj.videos));
+
+        for (let item in newsObj.Photos) {
+            photosArr.push(newsObj.generatePhotosHtml(newsObj.Photos[item]));
+        };
+
+        for (let item in newsObj.Videos) {
+            videosArr.push(newsObj.generateVideosHtml(newsObj.Videos[item]));
+        };
+
+        for (let item in newsObj.Comments) {
+            commentsArr.push(newsObj.generateCommentsHtml(newsObj.Comments[item]));
+        };
+        
             
 
         let basicNewsHtmlString = "";
@@ -200,7 +210,7 @@ function render_full_news_block(d2 = null, type = "render") {
         }
 
         for (item in videosArr){
-            videosHtmlString += videosHtmlString[item];
+            videosHtmlString += videosArr[item];
         }
 
         for (item in commentsArr) {
@@ -225,7 +235,7 @@ function render_full_news_block(d2 = null, type = "render") {
             document.getElementById('comments').innerHTML += commentHtmlString;
         }
 
-
+        
     };
 
     /*end2*/
@@ -268,24 +278,25 @@ class News {
         return htmlString;
     };
 
-    generateCommentsHtml() { //По идее не нужно тк уже есть метод в классе Comments
-        let htmlString = ``;
+    generateCommentsHtml(comment) { //По идее не нужно тк уже есть метод в классе Comments (перенес сюда)
+        let htmlString = `<div class="one_comment">
+                            <div class="commentatorName">Имя: ${comment.commentatorName}</div>
+                            <div class="сommentTimeDate">Дата:  ${comment.timeDate}</div>
+                            <div class="сommentText">Комментарий: ${comment.commentText}</div>
+                          </div>`;
 
         return htmlString;
     };
 
-    generatePhotosHtml(photos) {
-        for (item in photos) {
-            let htmlString = `<img href="${item.link}" alt="Alternate Text" class="fullNewsImage" />`;
-            return htmlString;
-        }
+    generatePhotosHtml(photo) {
+        let htmlString = `<img src=${photo.link} alt="Alternate Text" class="fullNewsImage" />`;
+        return htmlString;
     };
 
-    generateVideosHtml(videos) {
-        for (item in videos) {
-            let htmlString = `<iframe href="${item.link}" width="900" height="506" src="item.Link" frameborder="0" allow="accelerometer; autoplay; encrypted - media; gyroscope; picture -in -picture" allowfullscreen></iframe>`;
-            return htmlString;
-        }
+    generateVideosHtml(video) {
+        let htmlString = `<iframe src=${video.link} width="900" height="506" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        console.log(htmlString);
+        return htmlString;
     };
 }
 

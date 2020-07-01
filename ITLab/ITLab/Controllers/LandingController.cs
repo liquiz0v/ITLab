@@ -150,7 +150,7 @@ namespace ITLab.Controllers
             {
                 var news = new News();
                 var query = @$"
-                    SELECT  [id]
+                    SELECT [id]
                           ,[title]
                           ,[ShortDescription]
                           ,[FullDescription]
