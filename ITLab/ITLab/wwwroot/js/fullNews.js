@@ -1,3 +1,5 @@
+
+
 let estimate = document.getElementById('estimate');
 //let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
 //render_news(GeneralNewsId);
@@ -20,7 +22,6 @@ estimate.onmousemove = function (event) {
 
 let send_news_comment = document.getElementById('send_news_comment');
 send_news_comment.onclick = function () {
-    console.log("start comment request");
 
     let d1 = document.querySelector('.send_news_comment_area').value;
     let d2 = document.querySelector('.fullNewsIdForComments').textContent;
@@ -34,7 +35,7 @@ send_news_comment.onclick = function () {
     formData.set("CommentatorId", 1); // после авторизации сделать
     formData.set("NewsId", d2);
     xmlhttp.onload = function () {
-        console.log(xmlhttp.responseText); // ответ
+        xmlhttp.responseText; // ответ
     };
 
     xmlhttp.send(formData);
@@ -54,7 +55,6 @@ function render_news(d2, type = "render") {
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencodedl");
     formData2.set("NewsId", d2);
-    console.log("id is " + d2);
 
 
     xmlhttp.send(formData2);
@@ -77,7 +77,6 @@ function render_news(d2, type = "render") {
             commentsHtmlString += commentsArr[item];
         }
 
-        console.log(commentsHtmlString);
         if (type == "refresh") {
             document.getElementById('comments_block').innerHTML = commentsHtmlString;
         }
@@ -129,7 +128,6 @@ subscribe_on_news.onclick = function () {
     formData.append("Content-Type", "application/x-www-form-urlencodedl");
     formData.set("Email", d1);
     xmlhttp.onload = function () {
-        console.log(xmlhttp.responseText); // ответ
     };
 
     xmlhttp.send(formData);
@@ -156,14 +154,11 @@ function render_full_news_block(d2 = null, type = "render") {
     xmlhttp.onload = function () {
 
         let obj = JSON.parse(xmlhttp.response);
-        console.log(`${obj} !!!!!!!!!!!!!!`);
         let basicNewsArr = [];
         let additionalNewsArr = [];
         let commentsArr = [];
         let photosArr = [];
         let videosArr = [];
-
-        console.log(obj);
 
         let newsObj = new News(
             obj.id,
@@ -177,7 +172,6 @@ function render_full_news_block(d2 = null, type = "render") {
             obj.videos,
             obj.comments);
 
-            console.log(newsObj);
 
         basicNewsArr.push(newsObj.generateBasicNewsHtml());
         additionalNewsArr.push(newsObj.generateAdditionalNewsHtml());
@@ -281,7 +275,7 @@ class News {
     generateCommentsHtml(comment) { //По идее не нужно тк уже есть метод в классе Comments (перенес сюда)
         let htmlString = `<div class="one_comment">
                             <div class="commentatorName">Имя: ${comment.commentatorName}</div>
-                            <div class="сommentTimeDate">Дата:  ${comment.timeDate}</div>
+                            <div class="сommentTimeDate">Дата:  ${formatDateString(comment.timeDate)}</div>
                             <div class="сommentText">Комментарий: ${comment.commentText}</div>
                           </div>`;
 
@@ -295,7 +289,6 @@ class News {
 
     generateVideosHtml(video) {
         let htmlString = `<iframe src=${video.link} width="900" height="506" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        console.log(htmlString);
         return htmlString;
     };
 }
