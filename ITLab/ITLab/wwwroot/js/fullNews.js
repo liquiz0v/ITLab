@@ -4,6 +4,8 @@ let estimate = document.getElementById('estimate');
 //let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
 //render_news(GeneralNewsId);
 
+render_short_news_block('fullNews_shortNews_block');
+
 render_full_news_block(window.location.search);
 
 estimate.onmousemove = function (event) {
@@ -160,7 +162,7 @@ function render_full_news_block(d2 = null, type = "render") {
         let photosArr = [];
         let videosArr = [];
 
-        let newsObj = new News(
+        let newsObj = new FullNews(
             obj.id,
             obj.title,
             obj.fullDescription,
@@ -235,7 +237,7 @@ function render_full_news_block(d2 = null, type = "render") {
     /*end2*/
 }
 
-class News {
+class FullNews {
     constructor(id, title, fullDescription, commentsCount, viewsCount, headPhoto, timeDate, photos, videos, comments) {
         this.Id = id;
         this.Title = title;
