@@ -75,7 +75,7 @@ sendFeedback.onclick = function () {
     formData.set("Phone", d2);
     formData.set("Question", d3);
     xmlhttp.onload = function () {
-        console.log(xmlhttp.responseText); // ответ
+        alert('Done');
     };
 
     xmlhttp.send(formData);

@@ -1,4 +1,5 @@
 
+render_comments();
 
 let estimate = document.getElementById('estimate');
 //let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
@@ -32,7 +33,7 @@ send_news_comment.onclick = function () {
     let formData = new FormData();
     xmlhttp.open("POST", "/Landing/CreateComment", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    formData.append("Content-Type", "application/x-www-form-urlencodedl");
+    formData.append("Content-Type", "application/x-www-form-urlencoded");
     formData.set("CommentText", d1);
     formData.set("CommentatorId", 1); // после авторизации сделать
     formData.set("NewsId", d2);
@@ -45,18 +46,18 @@ send_news_comment.onclick = function () {
     document.querySelector('.send_news_comment_area').value = "";
 
     /*start2 action , refresh comments*/
-    //render_news(d2, "refresh");
+    render_comments(d2, "refresh");
 
 };
 
-function render_news(d2, type = "render") {
+function render_comments(d2, type = "render") {
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("POST", "/Landing/Comments", true);
+    xmlhttp.open("POST", "/Landing/GetComments", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    formData2.append("Content-Type", "application/x-www-form-urlencodedl");
-    formData2.set("NewsId", d2);
+    formData2.append("Content-Type", "application/x-www-form-urlencoded");
+    formData2.set("newsId", d2);
 
 
     xmlhttp.send(formData2);
@@ -86,10 +87,7 @@ function render_news(d2, type = "render") {
             document.getElementById('comments_block').innerHTML += commentsHtmlString;
         }
 
-
     };
-
-    /*end2*/
 }
 
 class Comments {
@@ -130,6 +128,7 @@ subscribe_on_news.onclick = function () {
     formData.append("Content-Type", "application/x-www-form-urlencodedl");
     formData.set("Email", d1);
     xmlhttp.onload = function () {
+        alert('done');
     };
 
     xmlhttp.send(formData);
@@ -186,9 +185,11 @@ function render_full_news_block(d2 = null, type = "render") {
             videosArr.push(newsObj.generateVideosHtml(newsObj.Videos[item]));
         };
 
-        for (let item in newsObj.Comments) {
-            commentsArr.push(newsObj.generateCommentsHtml(newsObj.Comments[item]));
-        };
+        // for (let item in newsObj.Comments) {
+        //     commentsArr.push(newsObj.generateCommentsHtml(newsObj.Comments[item]));
+        // };
+        
+        //reused comments renderer instead 
         
             
 
@@ -257,7 +258,7 @@ class FullNews {
         let fullNewsLink = `${window.location.href}Landing/FullNews?newsId=${this.Id}`;
 
         let htmlString = `<div class="news_statistic">
-                            <div class="${this.Id}" style="display:none"></div>
+                            <div class="fullNewsIdForComments" style="display:none">${this.Id}</div>
                             <p class="st_info">${newsDate} / ${this.CommentsCount} комментариев / ${this.ViewsCount} <span>5.0</span> 3 голоса</p>
                          </div>`;
         return htmlString;

@@ -81,7 +81,7 @@ namespace ITLab.Controllers
             }
             catch (Exception ex)
             {
-                responseStatus.Exception = ex.ToString();
+                responseStatus.Exception = ex.Message;
             }
 
             return responseStatus;
