@@ -1,5 +1,9 @@
 
-render_comments();
+const str_params = new URLSearchParams(window.location.search); // Получаем параметры url строки
+
+const newsId = str_params.get('newsId')
+
+render_comments(newsId);
 
 let estimate = document.getElementById('estimate');
 //let GeneralNewsId = document.querySelector('.fullNewsIdForComments').textContent;
@@ -7,7 +11,7 @@ let estimate = document.getElementById('estimate');
 
 render_short_news_block('fullNews_shortNews_block');
 
-render_full_news_block(window.location.search);
+render_full_news_block(newsId);
 
 estimate.onmousemove = function (event) {
     let stars = document.querySelectorAll('#estimate > li');
@@ -24,6 +28,7 @@ estimate.onmousemove = function (event) {
 };
 
 let send_news_comment = document.getElementById('send_news_comment');
+
 send_news_comment.onclick = function () {
 
     let d1 = document.querySelector('.send_news_comment_area').value;
@@ -57,13 +62,13 @@ function render_comments(d2, type = "render") {
     xmlhttp.open("POST", "/Landing/GetComments", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencoded");
-    formData2.set("newsId", d2);
+    formData2.set("NewsId", d2);
 
 
     xmlhttp.send(formData2);
 
 
-
+    console.log(xmlhttp);
 
     xmlhttp.onload = function () {
 
@@ -125,7 +130,7 @@ subscribe_on_news.onclick = function () {
     let formData = new FormData();
     xmlhttp.open("POST", "/Landing/NewsSubscr", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    formData.append("Content-Type", "application/x-www-form-urlencodedl");
+    formData.append("Content-Type", "application/x-www-form-urlencoded");
     formData.set("Email", d1);
     xmlhttp.onload = function () {
         alert('done');
@@ -141,7 +146,7 @@ subscribe_on_news.onclick = function () {
 let newsRequestData = document.getElementById('');
 
 function render_full_news_block(d2 = null, type = "render") {
-    const queryString = `/Landing/GetFullNews/?newsid=1`;   //Нужно как то вытянуть параметр строки
+    const queryString = `/Landing/GetFullNews?newsid=${newsId}`;   //Нужно как то вытянуть параметр строки
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
@@ -172,7 +177,6 @@ function render_full_news_block(d2 = null, type = "render") {
             obj.photos,
             obj.videos,
             obj.comments);
-
 
         basicNewsArr.push(newsObj.generateBasicNewsHtml());
         additionalNewsArr.push(newsObj.generateAdditionalNewsHtml());
@@ -213,8 +217,6 @@ function render_full_news_block(d2 = null, type = "render") {
         for (item in commentsArr) {
             commentHtmlString += commentsArr[item];
         }
-      
-        
 
         if (type == "refresh") {
             document.getElementById('basic_news').innerHTML = basicNewsHtmlString;

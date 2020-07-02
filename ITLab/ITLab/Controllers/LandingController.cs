@@ -137,8 +137,8 @@ namespace ITLab.Controllers
         {
             return View();
         }
+
         [HttpGet]
-        
         public IActionResult FullNews(int newsId) //move to queries
         {
             return View();
@@ -256,7 +256,7 @@ namespace ITLab.Controllers
         {
             return View();
         }
-        public async Task<object> ShortNews() //move to queries
+        public async Task<object> ShortNews() // move to queries 
         {
 
             var query = @"

@@ -1,5 +1,5 @@
 
-//GENERATE NEWS
+//GENERATE SHORT NEWS BLOCK
 
 let render_short_news_block = (blockForRenderId, type = 'render') => {
 
@@ -37,7 +37,7 @@ let render_short_news_block = (blockForRenderId, type = 'render') => {
             newsHtmlString += newsArr[item];
         }
 
-        console.log(newsHtmlString);
+        //console.log(newsHtmlString);
         if (type == "refresh") {
             document.getElementById(blockForRenderId).innerHTML = newsHtmlString;
         }
@@ -63,7 +63,7 @@ class News {
     generateHtml() {
         var newsDate = formatDateString(this.TimeDate);
 
-        let fullNewsLink = `${window.location.href}Landing/FullNews/${this.Id}`;
+        let fullNewsLink = `${window.location.href}Landing/FullNews?newsId=${this.Id}`;
 
         let htmlString = `<div class="slider-news news_block">
         
@@ -84,7 +84,7 @@ class News {
                 <button>Подробнее</button>
             </div>
         </a>
-    </div>`;
+        </div>`;
         return htmlString;
     }
 }
