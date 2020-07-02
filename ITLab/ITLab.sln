@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITLab", "ITLab\ITLab.csproj", "{7E66AB91-39C6-4FD7-9BE4-A4D284AA05F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITLab.Landing.MVC", "ITLab\ITLab.Landing.MVC.csproj", "{7E66AB91-39C6-4FD7-9BE4-A4D284AA05F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITLab.Cabinet.API", "ITLab.Cabinet.API\ITLab.Cabinet.API.csproj", "{B151BD74-5274-4530-A899-94193ED6BCF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITLab.Cabinet.Database", "ITLab.Cabinet.Database\ITLab.Cabinet.Database.csproj", "{018F8461-D45B-4DB0-8605-08B111428083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7E66AB91-39C6-4FD7-9BE4-A4D284AA05F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E66AB91-39C6-4FD7-9BE4-A4D284AA05F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E66AB91-39C6-4FD7-9BE4-A4D284AA05F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B151BD74-5274-4530-A899-94193ED6BCF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B151BD74-5274-4530-A899-94193ED6BCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B151BD74-5274-4530-A899-94193ED6BCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B151BD74-5274-4530-A899-94193ED6BCF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018F8461-D45B-4DB0-8605-08B111428083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{018F8461-D45B-4DB0-8605-08B111428083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{018F8461-D45B-4DB0-8605-08B111428083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{018F8461-D45B-4DB0-8605-08B111428083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

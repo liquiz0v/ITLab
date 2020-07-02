@@ -2,9 +2,6 @@
 @{
     Layout = null;
 }
-@model List<ITLab.Client_Objects.ShortNews>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -235,27 +232,7 @@
 
                         <!--news template-->
 
-                        @foreach (var item in Model)
-                        {<div class="slider-news news_block">
-
-                                <div class="news-date">
-                                    <span>@item.TimeDate</span>
-                                </div>
-                                <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
-                                <div class="news-body">
-                                    <span>«@item.Title</span>
-                                    <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
-                                    <p>
-                                        @item.ShortDescription
-                                    </p>
-                                </div>
-                                <a asp-action="FullNews" asp-route-id="@item.Id">
-                                    <div class="news-button">
-                                        <button>Подробнее</button>
-                                    </div>
-                                </a>
-                            </div>
-                        }
+                        <div id="newsBlock"></div>
 
 
                         <!--end news template-->
@@ -398,7 +375,10 @@
 
 
     <!--//Login Window-->
+    <script src="~/lib/moment/moment-with-locales.min.js"></script>
+    <script src="~/js/dateHelper.js"></script>
     <script src="~/js/wow.min.js"></script>
+    <script src="~/js/renderers/shortNews.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/home.js"></script>
 </body>

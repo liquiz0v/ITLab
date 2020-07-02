@@ -73,3 +73,10 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+ITLab/.vs/ITLab/config/applicationhost.config
+ITLab/.vs/ITLab/DesignTimeBuild/.dtbcache.v2
+ITLab/.vs/ITLab/v16/.suo
+ITLab/ITLab/obj/project.assets.json
+ITLab/.vs/ITLab/config/applicationhost.config
+ITLab/.vs/ITLab/v16/.suo
+ITLab/.vs/ITLab/config/applicationhost.config~c6f18e5819e73c120fccd428df07e2fc702d621f

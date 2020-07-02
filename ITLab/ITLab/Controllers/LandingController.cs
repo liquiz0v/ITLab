@@ -7,34 +7,64 @@ using Microsoft.EntityFrameworkCore;
 using ITLab.Models;
 using ITLab.Client_Objects;
 using System.Globalization;
-using ITLab.ModelsDTOCabinet;
+using Dapper;
+using System.Data;
+using Microsoft.Data.SqlClient;
+using System.Net.Http;
+using ITLab.Landing.MVC.Client_Objects;
 
 namespace ITLab.Controllers
 {
     public class LandingController : Controller
     {
-        
-        private readonly ITLabContext _context;
 
+        private readonly ITLabContext _context;
+        string connectionString = "Server=.;Database=ITLab_Landing; Trusted_Connection=True; MultipleActiveResultSets=true";
         public LandingController(ITLabContext context)
         {
             _context = context;
         }
 
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
+            return View();
+        }
 
-            return View(news);
+        [HttpPost]
+        public object GetNews(int newsId)
+        {
+            var query = @"
+            select 
+                News.id as Id, 
+                News.title as Title, 
+                News.ShortDescription, 
+                News.FullDescription, 
+                News.TimeDate, 
+                News.HeadPhoto, 
+                News.ViewsCount, 
+                Count(Comments.Id) as CommentsCount 
+            from News 
+                full join Comments on Comments.NewsId = News.id 
+            group by 
+                News.id, 
+                News.title, 
+                News.ShortDescription, 
+                News.FullDescription, 
+                News.TimeDate, 
+                News.HeadPhoto,
+                News.ViewsCount";
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<ShortNews>(query).ToList();
+            }
         }
 
         [HttpPost]
         public ActionResult<ResponseStatus> FeedBack(string FullName, string Phone, string Question)
         {
-            
+
             ResponseStatus responseStatus = new ResponseStatus { Response = false };
-            
+
             try
             {
                 Feedback feedback = new Feedback()
@@ -44,37 +74,51 @@ namespace ITLab.Controllers
                     Question = Question,
                     FeedbackStatus = 1
                 };
-                
+
                 _context.Feedback.Add(feedback);
                 _context.SaveChanges();
                 responseStatus.Response = true;
             }
             catch (Exception ex)
             {
-                responseStatus.Exception = ex.ToString();
+                responseStatus.Exception = ex.Message;
             }
 
             return responseStatus;
 
         }
-        public ActionResult<List<News>> test()
-        {
-            var test = _context.News
-                .Include(s => s.Comments)
-                .ToList();
 
-            return test;
-        }
-        public async Task<IActionResult> News()
+        public object GetShortNews()
         {
-            List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
-            return View(news);
+            var query = @"
+            select 
+                News.id as Id, 
+                News.title as Title, 
+                News.ShortDescription, 
+                News.FullDescription, 
+                News.TimeDate, 
+                News.HeadPhoto, 
+                News.ViewsCount, 
+                Count(Comments.Id) as CommentsCount 
+            from News 
+                full join Comments on Comments.NewsId = News.id 
+            group by News.id, 
+                News.title, 
+                News.ShortDescription, 
+                News.FullDescription, 
+                News.TimeDate, 
+                News.HeadPhoto, 
+                News.ViewsCount";
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<ShortNews>(query).ToList();
+            }
         }
         [HttpPost]
         public ResponseStatus NewsSubscr(string Email)
         {
             ResponseStatus responseStatus = new ResponseStatus() { Response = true };
-           
+
             try
             {
                 Subscriptions subscriptions = new Subscriptions() { Email = Email };
@@ -93,47 +137,101 @@ namespace ITLab.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult FullNews(int Id)
-        {
 
+        [HttpGet]
+        public IActionResult FullNews(int newsId) //move to queries
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public object GetFullNews(int newsId) //move to queries
+        {
             try
             {
-                var fullNews = _context.News.Where(i => i.Id == Id)
-              .Join(_context.Photos, news => news.Id, photos => photos.NewsId,
-              (news, photos) => new { news, photos })
-              .Select(i => new FullNews
-              {
-                  Id = i.news.Id,
-                  Title = i.news.Title,
-                  FullDescription = i.news.FullDescription,
-                  TimeDate = i.news.TimeDate,
-                  ViewsCount = i.news.ViewsCount,
-                  CommentsCount = _context.Comments.Where(n => n.NewsId == Id).Count(),
-                  Photos = _context.Photos.Where(n => n.NewsId == Id).ToList(),
-                  Videos = _context.Videos.Where(n => n.NewsId == Id).ToList(),
-                  Comments = _context.Comments.Where(n => n.NewsId == Id).ToList()
-              }).First();
-                fullNews.ShortNews = _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToList();
-              
+                var news = new News();
+                var query = @$"
+                    SELECT [id]
+                          ,[title]
+                          ,[ShortDescription]
+                          ,[FullDescription]
+                          ,[TimeDate]
+                          ,[HeadPhoto]
+                          ,[ViewsCount]
+                      FROM [ITLab_Landing].[dbo].[News] 
+                        where id = {newsId}";
+                using (IDbConnection db = new SqlConnection(connectionString))
+                {
+                    news = db.Query<News>(query).FirstOrDefault();
+                }
+                var videos = new List<Videos>();
+                var videosQuery = @$"
+                      select [id]
+                          ,[Link]
+                          ,[NewsId] 
+                      from Videos 
+                      where NewsId = {newsId}";
+                using (IDbConnection db = new SqlConnection(connectionString))
+                {
+                    videos = db.Query<Videos>(videosQuery).ToList();
+                }
 
-                return View(fullNews);
+
+                var photos = new List<Photos>();
+                var photosQuery = @$"
+                      select[id]
+                        ,[Link]
+                        ,[NewsId]
+                      from Photos
+                      where NewsId = {newsId}";
+                using (IDbConnection db = new SqlConnection(connectionString))
+                {
+                    photos = db.Query<Photos>(photosQuery).ToList();
+                }
+                
+                var comments = new List<CommentsDTO>();
+                var commentsQuery = @$"
+                    select Users.FullName
+                        ,Comments.CommentText
+                        ,Comments.TimeDate
+                        ,Comments.CommentatorId
+                        ,Comments.NewsId
+                    from Comments
+                    join Users on Users.Id = Comments.CommentatorId
+                    where Comments.NewsId = {newsId};";
+
+                using (IDbConnection db = new SqlConnection(connectionString))
+                {
+                    comments = db.Query<CommentsDTO>(commentsQuery).ToList();
+                }
+
+                var fullnews = new FullNewsDTO
+                {
+                    Id = news.Id,
+                    Title = news.Title,
+                    FullDescription = news.FullDescription,
+                    TimeDate = news.TimeDate,
+                    ViewsCount = news.ViewsCount,
+                    Comments = comments,
+                    Videos = videos,
+                    Photos = photos,
+                    CommentsCount = comments.Count()
+                };
+                return fullnews;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return View();
             }
-          
-        }
-        
 
+        }
 
         [HttpPost]
         public ResponseStatus CreateComment(string CommentText, int CommentatorId, int NewsId)
         {
 
             ResponseStatus responseStatus = new ResponseStatus() { Response = false };
-            
+
             try
             {
                 Comments comments = new Comments()
@@ -158,18 +256,63 @@ namespace ITLab.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> ShortNews()
+        public async Task<object> ShortNews() // move to queries 
         {
-            List<ShortNews> news = await _context.ShortNews.FromSqlRaw("select News.id as Id, News.title as Title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount, Count(Comments.Id) as CommentsCount from News full join Comments on Comments.NewsId = News.id group by News.id, News.title, News.ShortDescription, News.FullDescription, News.TimeDate, News.HeadPhoto, News.ViewsCount").ToListAsync();
-            return PartialView(news);
+
+            var query = @"
+                select 
+                    News.id as Id, 
+                    News.title as Title, 
+                    News.ShortDescription, 
+                    News.FullDescription, 
+                    News.TimeDate, 
+                    News.HeadPhoto, 
+                    News.ViewsCount, 
+                    Count(Comments.Id) as CommentsCount 
+                from News 
+                    full join Comments on Comments.NewsId = News.id
+                group by 
+                    News.id, 
+                    News.title, 
+                    News.ShortDescription, 
+                    News.FullDescription, 
+                    News.TimeDate, 
+                    News.HeadPhoto, 
+                    News.ViewsCount";
+
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<ShortNews>(query).ToList();
+            }
         }
+
         [HttpPost]
-        public List<Comments> Comments(int NewsId)
+        public IActionResult Comments(int newsId) //move to queries
         {
-            var comments = _context.Comments.Where(n => n.NewsId == NewsId).ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public List<Comments> GetComments(int newsId) //move to queries
+        {
+            var comments = new List<Comments>();
+            var commentsQuery = @$"
+                    Select 
+                      [Id]
+                      ,[CommentText]
+                      ,[TimeDate]
+                      ,[CommentatorId]
+                      ,[NewsId]
+                   from Comments 
+                   where NewsId = {newsId}";
+
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                comments = db.Query<Comments>(commentsQuery).ToList();
+            }
             return comments;
         }
-    
+
     }
 }
 

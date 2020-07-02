@@ -2,7 +2,6 @@
 @{
     Layout = null;
 }
-@model ITLab.Client_Objects.FullNews
 
 <!DOCTYPE html>
 <html>
@@ -75,30 +74,14 @@
         </section>
         <section id="news_block">
             <div class="news_block_wrapper">
-                <div class="news_statistic">
-                    <div class="fullNewsIdForComments" style="display:none">@Model.Id</div>
-                    <p class="st_info">@Model.TimeDate / @Model.CommentsCount комментариев / @Model.ViewsCount просмотров <span>5.0</span> 3 голоса</p>
-                </div>
-                @foreach (var item in @Model.Videos)
-                {
-                    
-                    <iframe class="news_video" width="900" height="506" src="@item.Link" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                }
+                <div id="basic_news"></div>
 
-                @foreach (var item2 in @Model.Photos)
-                {
-                    <img src="@item2.Link" alt="Alternate Text" class="fullNewsImage" />
-                }
+                <div id="videos"></div>
 
+                <div id="photos"></div>
 
+                <div id="additional_news"></div>
 
-
-                <h3>
-                    @Model.Title
-                </h3>
-                <p>
-                    @Model.FullDescription
-                </p>
                 <hr>
                 <div class="news_footer">
                     <ul id="estimate">
@@ -115,6 +98,9 @@
                         <li><a href="#"><img src="~/images/news_inst.png"></a></li>
                         <li><a href="#"><img src="~/images/news_viber.png"></a></li>
                     </ul>
+
+                    <div id="comments"></div>
+
                     <div class="comment_block">
                         <div class="news_comments">
                             <p>Посмотреть предыдущие комментарии (5)</p>
@@ -124,7 +110,7 @@
                                 <img src="https://www.w3schools.com/images/colorpicker.gif">
                             </div>
                             <textarea class="send_news_comment_area"></textarea>
-                            <div id="send_news_comment" asp-action="Comments" asp-route-id="@Model.Id"></div>
+                            <div id="send_news_comment"></div>
 
                         </div>
 
@@ -135,9 +121,7 @@
             </div>
         </section>
         <h3 class="same_news">Похожие материалы</h3>
-        <section id="same_news_block">
-            @await Html.PartialAsync("ShortNews", Model.ShortNews)
-        </section>
+        <section id="fullNews_shortNews_block"></section>
     </main>
     <footer>
         <div class="footer-block">
@@ -182,11 +166,12 @@
             </div>
         </div>
     </footer>
-
+    <script src="~/lib/moment/moment-with-locales.min.js"></script>
+    <script src="~/js/dateHelper.js"></script>
     <script src="~/js/wow.min.js"></script>
+    <script src="~/js/renderers/shortNews.js"></script>
     <script src="~/js/fullNews.js"></script>
     <script src="~/js/main.js"></script>
-
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 // Для статистики
 let toSt = false;
-
+render_short_news_block('newsBlock');
 window.addEventListener("scroll", function () {
     let elementTarget = document.getElementById("statistics");
     if (window.scrollY + document.documentElement.clientHeight
@@ -65,7 +65,7 @@ sendFeedback.onclick = function () {
     let d3 = document.querySelector('.fAsk').value;
 
     //let data = { FullName: d1, Phone: d2, Question: d3 };
-    
+
     let xmlhttp = new XMLHttpRequest();
     let formData = new FormData();
     xmlhttp.open("POST", "/Landing/FeedBack", true);
@@ -75,16 +75,16 @@ sendFeedback.onclick = function () {
     formData.set("Phone", d2);
     formData.set("Question", d3);
     xmlhttp.onload = function () {
-        console.log(xmlhttp.responseText); // ответ
+        alert('Done');
     };
-  
+
     xmlhttp.send(formData);
 
     document.querySelector('.fName').value = "";
     document.querySelector('.fTel').value = "";
     document.querySelector('.fAsk').value = "";
 
-  
+
     xmlhttp.onreadyechange = function () {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
             if (xmlhttp.status == 200) {
@@ -105,9 +105,9 @@ sendFeedback.onclick = function () {
         }
     }
 
-   
- 
-   
+
+
+
 
     /*
     $.ajax({
@@ -124,20 +124,18 @@ sendFeedback.onclick = function () {
     });
     */
 
-    
+
 };
 
-
-
-
-function openModal(){
-	document.getElementById('global-filter').style.display = 'block';
-	document.getElementById('modalFB').style.display = 'block';
-}	
-function closeModal(){
-	document.getElementById('global-filter').style.display = 'none';
-	document.getElementById('modalFB').style.display = 'none';
+function openModal() {
+    document.getElementById('global-filter').style.display = 'block';
+    document.getElementById('modalFB').style.display = 'block';
 }
+function closeModal() {
+    document.getElementById('global-filter').style.display = 'none';
+    document.getElementById('modalFB').style.display = 'none';
+}
+
 
 
 //хз что снизу
@@ -191,3 +189,6 @@ document.getElementById('fb-first-lesson').onclick = function () {
         }
     }
 }
+
+// id:  same_news_block
+
