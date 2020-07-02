@@ -56,7 +56,6 @@ send_news_comment.onclick = function () {
 };
 
 function render_comments(d2, type = "render") {
-
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
     xmlhttp.open("POST", "/Landing/GetComments", true);
