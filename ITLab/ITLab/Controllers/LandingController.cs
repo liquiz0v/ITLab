@@ -12,6 +12,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Net.Http;
 using ITLab.Landing.MVC.Client_Objects;
+using Microsoft.Extensions.Configuration;
 
 namespace ITLab.Controllers
 {
@@ -19,11 +20,18 @@ namespace ITLab.Controllers
     {
 
         private readonly ITLabContext _context;
-        string connectionString = "Server=.;Database=ITLab_Landing; Trusted_Connection=True; MultipleActiveResultSets=true";
-        public LandingController(ITLabContext context)
+        private static IConfiguration _configuration;
+
+        string connectionString = _configuration.GetConnectionString("DefaultConnection");
+
+        //string connectionString = "Server=.;Database=ITLab_Landing; Trusted_Connection=True; MultipleActiveResultSets=true";
+        public LandingController(ITLabContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
+
+        
 
         public IActionResult Index()
         {
