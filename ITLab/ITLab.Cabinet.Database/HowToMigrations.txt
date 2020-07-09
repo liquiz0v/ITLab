@@ -1,0 +1,13 @@
+{
+	Update DB:
+	EntityFrameworkCore\Update-Database -StartupProject:ITLab.Cabinet.API
+
+	Create new migration:
+	EntityFrameworkCore\Add-Migration "" -StartupProject:ITLab.Cabinet.API 
+
+	Revert/Update DB to specific migration:
+	EntityFrameworkCore\Update-Database -TargetMigration:"" -StartupProject:ITLab.Cabinet.API 
+
+	Revert/Update DB to specific migration with Data loss:
+	EntityFrameworkCore\Update-Database -Force -TargetMigration:"" -StartupProject:ITLab.Cabinet.API
+}

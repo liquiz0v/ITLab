@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITLab.Models_cabinet
+namespace ITLab.Cabinet.Database.Models
 {
     public class Photo
     {

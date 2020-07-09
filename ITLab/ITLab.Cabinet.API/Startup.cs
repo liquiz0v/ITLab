@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ITLab.Cabinet.Database.Models;
 
 namespace ITLab.Cabinet.API
 {
@@ -25,6 +27,7 @@ namespace ITLab.Cabinet.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CabinetContext>(i => i.UseSqlServer(Configuration.GetConnectionString("CabinetConnection"), b => b.MigrationsAssembly("ITLab.Cabinet.Database")));
             services.AddControllers();
         }
 
@@ -44,7 +47,9 @@ namespace ITLab.Cabinet.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}");
             });
         }
     }

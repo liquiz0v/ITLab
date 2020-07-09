@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ITLab.Models_cabinet
+namespace ITLab.Cabinet.Database.Models
 {
     public class Student
     {
@@ -8,5 +8,6 @@ namespace ITLab.Models_cabinet
         public int StudentId { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        public string AvatarPhoto { get; set; }
     }
 }

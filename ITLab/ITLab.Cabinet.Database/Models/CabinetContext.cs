@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ITLab.Models_cabinet
+namespace ITLab.Cabinet.Database.Models
 {
     public class CabinetContext : DbContext
     {
