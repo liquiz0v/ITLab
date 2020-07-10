@@ -153,7 +153,7 @@ header nav a{
 	border-radius: 10px;
 	transition: .3s;
 }
-header nav a:hover{
+header ul > li > a:hover{
 	background-color: #00d7e7;
 }
 .sign-in:hover{
@@ -1008,6 +1008,12 @@ header nav ul li span:hover{
 	flex: 1;
 	position: relative;
 }
+.contact-data > li > a{
+	color: inherit;
+}
+.contact-data > li > a:hover{
+	color: #00a3af;
+}
 .contact-data > li:nth-child(1):before{
 	content: " ";
 	position: absolute;
@@ -1144,8 +1150,8 @@ footer{
 	font-size: 16px;
 	transition: .3s;
 }
-.footer-section:nth-child(2) a:hover{
-	color: #4faa9f;
+.footer-section:nth-child(2) a:hover {
+	color: #00a3af;
 }
 .footer-section:nth-child(3){
 	text-align: left;

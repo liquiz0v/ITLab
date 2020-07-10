@@ -127,6 +127,8 @@ sendFeedback.onclick = function () {
 
 };
 
+
+// Functions for open/close modal window (trial lesson popup)
 function openModal() {
     document.getElementById('global-filter').style.display = 'block';
     document.getElementById('modalFB').style.display = 'block';
@@ -135,31 +137,18 @@ function closeModal() {
     document.getElementById('global-filter').style.display = 'none';
     document.getElementById('modalFB').style.display = 'none';
 }
-
-
-
-//хз что снизу
-function openModal() {
-    document.getElementById('global-filter').style.display = 'block';
-    document.getElementById('modalFB').style.display = 'block';
-}
-function closeModal() {
-    document.getElementById('global-filter').style.display = 'none';
-    document.getElementById('modalFB').style.display = 'none';
-}
-
-document.getElementById('mfb1').onclick = openModal;
-document.getElementById('mfb2').onclick = openModal;
-document.getElementById('mfb3').onclick = openModal;
 
 document.getElementById('close-modal').onclick = closeModal;
+document.getElementById('global-filter').onclick = closeModal;
+
+// ================================================================
 
 
 document.getElementById('fb-first-lesson').onclick = function () {
     let name = document.getElementById('ffb-name').value;
-    let phone = document.getElementById('ffb-name').value;
-    let email = document.getElementById('ffb-name').value;
-    let age = document.getElementById('ffb-name').value;
+    let phone = document.getElementById('ffb-phone').value;
+    let email = document.getElementById('ffb-email').value;
+    let age = document.getElementById('ffb-age').value;
 
     let data = { name: name, phone: phone, email: email, age: age };
 
