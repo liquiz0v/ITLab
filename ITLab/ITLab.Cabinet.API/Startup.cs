@@ -23,6 +23,7 @@ namespace ITLab.Cabinet.API
 {
     public class Startup
     {
+        readonly string devCors = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             // In ASP.NET Core 3.0 `env` will be an IWebHostEnvironment, not IHostingEnvironment.
@@ -30,6 +31,7 @@ namespace ITLab.Cabinet.API
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
             Configuration = configuration;
@@ -44,6 +46,16 @@ namespace ITLab.Cabinet.API
         {
             services.AddControllers();
             services.AddAutofac();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: devCors,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+
+                                  });
+            });
+
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -56,12 +68,14 @@ namespace ITLab.Cabinet.API
         {
 
             this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+               //TODO: allow all cors must be here, for prod must be only specific cors policy
             }
 
+            app.UseCors(devCors);
 
             //app.UseHttpsRedirection();
 
