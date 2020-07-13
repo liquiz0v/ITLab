@@ -23,7 +23,7 @@ namespace ITLab.Cabinet.API
 {
     public class Startup
     {
-        readonly string devCors = "_myAllowSpecificOrigins";
+        readonly string devCors = "_AllowAllOrigins";
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             // In ASP.NET Core 3.0 `env` will be an IWebHostEnvironment, not IHostingEnvironment.
