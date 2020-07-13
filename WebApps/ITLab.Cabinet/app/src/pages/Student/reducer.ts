@@ -31,7 +31,6 @@ const initialState: StudentState = {
     studentCourses: []
 }
 
-
 export const reducer = (state: StudentState = initialState, action: any) => {
     switch (action.type) {
         case GET_STUDENT_INFORMATION.REQUEST:

@@ -13,17 +13,19 @@ export const getStudentInfoRequest = () => {
 };
 
 export const getStudentInfoSuccess = (student: Student) => {
+    console.log(student);
     return {
+        
         type: GET_STUDENT_INFORMATION.SUCCESS,
         student: student
     };
 };
 
-export const getUserInfo = (userId: number) => {
+export const getStudentInfo = (userId: number) => {
     return (dispatch: any) => {
         dispatch(getStudentInfoRequest());
-        const queryParams = `${userId}`;
-        axios.get('/GetStudent?studentId=' + queryParams) // http://25.42.18.21:82/api/Student/GetStudent?studentId=1
+        const queryParams = `?studentId='${userId}`;
+        axios.get(`Student/GetStudent + ${queryParams}`) // http://25.42.18.21:82/api/Student/GetStudent?studentId=1
             .then(response => {
                 dispatch(getStudentInfoSuccess(response.data));
             })

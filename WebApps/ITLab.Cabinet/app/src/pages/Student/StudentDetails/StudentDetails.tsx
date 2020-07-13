@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from 'reducer';
-//import { getStudentInfo } from './actions'
+import { getStudentInfo } from './actions'
 import { Student, Course } from '../reducer';
 
 interface StateFromProps{
@@ -10,7 +10,7 @@ interface StateFromProps{
 }
 
 interface DispatchFromProps{
-    //getStudentInfo: (userId : number) => void;
+    getStudentInfo: (userId : number) => void;
 }
 
 interface OwnStateProps{
@@ -27,22 +27,28 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
 
     }
 
+    componentDidMount = () => {
+        this.props.getStudentInfo(2);
+    }
+
     render() {
+       
+
         return (
-            <div>
+            <>
                 <div className="profile-block-left">
                     <div className="main-avatar">
                         <img src="images/avatar.png"/>
                     </div>
 
-                    <b className="profile-name">Иван Иванов</b>
+        <b className="profile-name"></b>
                     <button id="edit_profile">Редактировать профиль</button>
                 </div>
                 
                 <div className="profile-block-right">
 					<p>На данный момент Вы не записаны на наши курсы.</p>
 				</div>
-            </div>
+            </>
         );
     }
 }
@@ -56,5 +62,5 @@ const mapStateToProps = (state: AppState): StateFromProps => {
 };
 
 export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {
-    //getStudentInfo
+    getStudentInfo
 })(StudentDetails);
