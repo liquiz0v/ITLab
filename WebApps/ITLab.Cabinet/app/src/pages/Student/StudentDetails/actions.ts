@@ -24,8 +24,8 @@ export const getStudentInfoSuccess = (student: Student) => {
 export const getStudentInfo = (userId: number) => {
     return (dispatch: any) => {
         dispatch(getStudentInfoRequest());
-        const queryParams = `?studentId='${userId}`;
-        axios.get(`Student/GetStudent + ${queryParams}`) // http://25.42.18.21:82/api/Student/GetStudent?studentId=1
+        const queryParams = `?studentId=${userId}`;
+        axios.get(`Student/GetStudent${queryParams}`) // http://25.42.18.21:82/api/Student/GetStudent?studentId=1
             .then(response => {
                 dispatch(getStudentInfoSuccess(response.data));
             })
