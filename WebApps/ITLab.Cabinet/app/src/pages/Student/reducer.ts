@@ -5,6 +5,7 @@ export type Student = {
     StudentId: number;
     Name: string;
     Password: string;
+    AvatarPhoto: string;
 };
 
 export type Lesson = {

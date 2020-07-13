@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Menu } from 'antd'
 
 import { Link } from 'react-router-dom';
+import  StudentDetails from "../../../pages/Student/StudentDetails/StudentDetails";
 
 
 
 class MainLayout extends React.Component<any> {
-    constructor(props: any ) {
+    constructor(props: any) {
         super(props);
         
         this.state = {
@@ -21,7 +22,7 @@ class MainLayout extends React.Component<any> {
              <Menu.Item key="/StudentDetails">
                 <span>
                     <Link to="/student-details">
-                        <div>Student Details</div>
+                        <StudentDetails></StudentDetails>
                     </Link>
                 </span>
              </Menu.Item>
