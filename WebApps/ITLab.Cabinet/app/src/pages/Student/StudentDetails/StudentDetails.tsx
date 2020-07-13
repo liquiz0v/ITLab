@@ -32,16 +32,18 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
     }
 
     render() {
-       
+       let name = this.props.student ? this.props.student.Name : '1234564';
+
 
         return (
             <>
+            <div>{ name }</div>
                 <div className="profile-block-left">
                     <div className="main-avatar">
                         <img src="images/avatar.png"/>
                     </div>
 
-        <b className="profile-name"></b>
+                    <b className="profile-name"></b>
                     <button id="edit_profile">Редактировать профиль</button>
                 </div>
                 
