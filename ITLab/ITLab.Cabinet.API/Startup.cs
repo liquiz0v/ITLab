@@ -18,6 +18,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Newtonsoft.Json.Serialization;
 
 namespace ITLab.Cabinet.API
 {
@@ -31,6 +33,7 @@ namespace ITLab.Cabinet.API
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
             Configuration = configuration;
@@ -43,8 +46,16 @@ namespace ITLab.Cabinet.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+
+            // Serializer setup for PascalCase
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
+
             services.AddAutofac();
+
+            // CORS Policy setup (Allow all)
             services.AddCors(options =>
             {
                 options.AddPolicy(name: devCors,
@@ -66,7 +77,7 @@ namespace ITLab.Cabinet.API
         {
 
             this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
