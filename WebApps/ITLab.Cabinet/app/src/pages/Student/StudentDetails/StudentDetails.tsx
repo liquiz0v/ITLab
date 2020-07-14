@@ -32,8 +32,10 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
     }
 
     render() {
-        let name = this.props.student ? this.props.student.Name : 'name_error';
-        let avatar = this.props.student ? this.props.student.AvatarPhoto : 'photo_error';
+        let { student } = this.props;
+
+        let name = student ? student.Name : 'name_error';
+        let avatar = student ? student.AvatarPhoto : 'photo_error';
 
         return (
             <>
