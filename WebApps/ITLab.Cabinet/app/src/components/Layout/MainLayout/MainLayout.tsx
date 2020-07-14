@@ -26,10 +26,10 @@ class MainLayout extends React.Component<any> {
                     </Link>
                 </span>
              </Menu.Item>
-            <Menu.Item key="/b">
+            <Menu.Item key="/StudentStatistics">
                 <span>
-                    <Link to="/b">
-                        <div>b</div>
+                    <Link to="/StudentStatistics">
+                        <div>StudentStatistics</div>
                     </Link>
                 </span>
              </Menu.Item>
