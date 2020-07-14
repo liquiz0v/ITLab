@@ -65,7 +65,6 @@ namespace ITLab.Cabinet.API
 
                                   });
             });
-
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -82,7 +81,7 @@ namespace ITLab.Cabinet.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               //TODO: allow all cors must be here, for prod must be only specific cors policy
+                //TODO: allow all cors must be here, for prod must be only specific cors policy
             }
 
             app.UseCors(devCors);
