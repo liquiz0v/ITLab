@@ -38,6 +38,11 @@ namespace ITLab.Controllers
             return View();
         }
 
+        public IActionResult Project()
+        {
+            return View();
+        }
+
         [HttpPost]
         public object GetNews(int newsId)
         {

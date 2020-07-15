@@ -11,10 +11,10 @@ window.addEventListener("scroll", function () {
         counterAnimation(2015, 1500, 65, el);
 
         el = document.getElementById('prCounter');
-        counterAnimation(14, 1500, 1, el);
+        counterAnimation(10, 1500, 1, el);
 
         el = document.getElementById('pCounter');
-        counterAnimation(1000, 1500, 10, el);
+        counterAnimation(500, 1500, 10, el);
     }
 });
 
