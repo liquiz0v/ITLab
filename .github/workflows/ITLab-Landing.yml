@@ -1,0 +1,28 @@
+name: Landing
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+defaults:
+  run:
+    working-directory: ./ITLab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build ITLab/ITLab.Landing.MVC.csproj --configuration Release --no-restore
+    - name: Test
+      run: dotnet test ITLab/ITLab.Landing.MVC.csproj --no-restore --verbosity normal

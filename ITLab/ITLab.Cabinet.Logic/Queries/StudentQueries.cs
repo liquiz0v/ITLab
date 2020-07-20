@@ -7,17 +7,16 @@ using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using ITLab.Cabinet.Logic.DTOModels;
-using System.Data;
-using Microsoft.Data.SqlClient;
 using System.Linq;
 
 namespace ITLab.Cabinet.Logic.Queries
 {
     public class StudentQueries : IStudentQueries
     {
-        public StudentQueries()
+        public string _connectionString;
+        public StudentQueries(IConnectionStringHelper helper)
         {
-
+            _connectionString = helper.ConnectionString;
         }
 
         public List<CourseDTO> GetStudentCources(int studentId)
@@ -32,7 +31,7 @@ namespace ITLab.Cabinet.Logic.Queries
 
             var cources = new List<CourseDTO>();
 
-            using (IDbConnection db = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 cources = db.Query<CourseDTO>(sqlquery).ToList();
             }
@@ -54,7 +53,7 @@ namespace ITLab.Cabinet.Logic.Queries
 
             var lessons = new List<LessonDTO>();
 
-            using (IDbConnection db = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 lessons = db.Query<LessonDTO>(sqlquery).ToList();
             }
@@ -72,7 +71,7 @@ namespace ITLab.Cabinet.Logic.Queries
                 FROM [ITLab_Cabinet].[dbo].[Students]
                 WHERE StudentId = @studentId";
 
-            using (IDbConnection db = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 return db.Query<StudentDTO>(query, new { studentId }).FirstOrDefault();
             }

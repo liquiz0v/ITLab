@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using ITLab.Cabinet.Logic.Queries;
 using ITLab.Cabinet.Logic.Services.Interfaces;
-using ITLab.Cabinet.Logic.Queries;
 using ITLab.Cabinet.Logic.DTOModels;
+using ITLab.Cabinet.Logic.Queries.Interfaces;
 
 namespace ITLab.Cabinet.Logic.Services
 {
     public class StudentService : IStudentService
     {
-        StudentQueries _queries;
+        IStudentQueries _queries;
 
-        public StudentService()
+        public StudentService(IStudentQueries queries)
         {
-            StudentQueries queries = new StudentQueries();
             _queries = queries;
         }
         public StudentDTO GetStudent(int studentId)
