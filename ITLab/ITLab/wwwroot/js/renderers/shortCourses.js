@@ -3,7 +3,7 @@
 
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("POST", "/api/Course/GetShortCourse", true);
+    xmlhttp.open("POST", "https://localhost:5001/api/Course/GetShortCourse", true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencoded");
     //formData2.set("newsId", d2);
@@ -20,20 +20,21 @@
         for (item in obj) {
             let courseObj = new Course()
             {
+                    obj[item].Schedule,
                     obj[item].CourseId,
                     obj[item].Name,
                     obj[item].Description,
-                    obj[item].headPhoto,
+                    obj[item].HeadPhoto,
                     obj[item].Photos,
-                    obj[item].Lessons,
-                    obj[item].Schedule
+                    obj[item].Lessons
+   
             };
 
             coursesArr.push(courseObj.generateHtml());
         }
         let courseHtmlString = "";
 
-        for (item in newsArr) {
+        for (item in coursesArr) {
             courseHtmlString += coursesArr[item];
         }
 
@@ -51,14 +52,14 @@
 }
 
 class Course {
-    constructor(courseId, name, description, headPhoto, photos, lessons, schedule) {
+    constructor(schedule, courseId, name, description, headPhoto, photos, lessons) {
+        this.Schedule = schedule;
         this.CourseId = courseId;
         this.Name = name;
         this.Description = description;
         this.HeadPhoto = headPhoto;
         this.Photos = photos;
         this.Lessons = lessons;
-        this.Schedule = schedule;
     }
 
     generateHtmlDates() {
@@ -89,45 +90,5 @@ class Course {
                         </div>
                     </div>
                 </div>`;
-    }
-}
-
-class News {
-    constructor(id, title, shortDescription, commentsCount, viewsCount, headPhoto, timeDate) {
-        this.Id = id;
-        this.Title = title;
-        this.ShortDescription = shortDescription;
-        this.CommentsCount = commentsCount;
-        this.ViewsCount = viewsCount;
-        this.HeadPhoto = headPhoto;
-        this.TimeDate = timeDate;
-    }
-
-    generateHtml() {
-        var newsDate = formatDateString(this.TimeDate);
-
-        let fullNewsLink = `https://localhost:5001/Landing/FullNews?newsId=${this.Id}`; // Не забыть поменять на наш будущий домен.
-
-        let htmlString = `<div class="slider-news news_block">
-        
-        <div class="news-date">
-            <span>${newsDate}</span>
-            
-        </div>
-        <div class="slider-news-header" style="background-image: url('${this.HeadPhoto}')"></div>
-        <div class="news-body">
-            <span>«${this.Title}</span>
-            <p><span>${this.CommentsCount}</span> комментариев / <span>${this.ViewsCount}</span> просмотров</p>
-            <p>
-                ${this.ShortDescription}
-            </p>
-        </div>
-        <a  href="${fullNewsLink}">
-            <div class="news-button">
-                <button>Подробнее</button>
-            </div>
-        </a>
-        </div>`;
-        return htmlString;
     }
 }
