@@ -20,6 +20,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Newtonsoft.Json.Serialization;
+using ITLab.Cabinet.Database.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ITLab.Cabinet.API
 {
@@ -65,6 +67,10 @@ namespace ITLab.Cabinet.API
 
                                   });
             });
+
+            services.AddDbContext<CabinetContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("CabinetConnection")));
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

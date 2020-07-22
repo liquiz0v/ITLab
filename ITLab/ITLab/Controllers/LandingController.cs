@@ -18,7 +18,6 @@ namespace ITLab.Controllers
 {
     public class LandingController : Controller
     {
-
         private readonly ITLabContext _context;
         private static IConfiguration _configuration;
 

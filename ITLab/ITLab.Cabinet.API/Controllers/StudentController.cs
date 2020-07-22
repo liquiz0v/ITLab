@@ -14,9 +14,11 @@ namespace ITLab.Cabinet.API.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-        public StudentController(StudentService studentService)
+        private readonly ICoursesService _coursesService;
+        public StudentController(StudentService studentService, CoursesService coursesService)
         {
             _studentService = studentService;
+            _coursesService = coursesService;
         }
 
         [HttpGet]
@@ -37,6 +39,14 @@ namespace ITLab.Cabinet.API.Controllers
         public object GetStudentLessons(int studentId)
         {
             var response = _studentService.GetStudentLessons(studentId);
+            return response;
+        }
+
+        // Maybe put this to the new Controller?
+        [HttpGet]
+        public object GetShortCourse(int courseId)
+        {
+            var response = _coursesService.GetShortCourse(courseId);
             return response;
         }
     }

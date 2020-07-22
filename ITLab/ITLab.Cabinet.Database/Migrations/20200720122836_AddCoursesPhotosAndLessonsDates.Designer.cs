@@ -4,14 +4,16 @@ using ITLab.Cabinet.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ITLab.Cabinet.Database.Migrations
 {
     [DbContext(typeof(CabinetContext))]
-    partial class CabinetContextModelSnapshot : ModelSnapshot
+    [Migration("20200720122836_AddCoursesPhotosAndLessonsDates")]
+    partial class AddCoursesPhotosAndLessonsDates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +31,7 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("HeadPhotoId")
+                    b.Property<int?>("HeadPhotoPhotoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -37,7 +39,7 @@ namespace ITLab.Cabinet.Database.Migrations
 
                     b.HasKey("CourseId");
 
-                    b.HasIndex("HeadPhotoId");
+                    b.HasIndex("HeadPhotoPhotoId");
 
                     b.ToTable("Courses");
                 });
@@ -256,7 +258,7 @@ namespace ITLab.Cabinet.Database.Migrations
                 {
                     b.HasOne("ITLab.Cabinet.Database.Models.Photo", "HeadPhoto")
                         .WithMany()
-                        .HasForeignKey("HeadPhotoId");
+                        .HasForeignKey("HeadPhotoPhotoId");
                 });
 
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.Lesson", b =>
