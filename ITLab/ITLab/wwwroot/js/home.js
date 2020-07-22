@@ -1,6 +1,8 @@
 // Для статистики
+
 let toSt = false;
 render_short_news_block('newsBlock');
+render_short_course_block('courses-block');
 window.addEventListener("scroll", function () {
     let elementTarget = document.getElementById("statistics");
     if (window.scrollY + document.documentElement.clientHeight

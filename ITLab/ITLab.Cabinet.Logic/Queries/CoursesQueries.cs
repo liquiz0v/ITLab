@@ -20,47 +20,52 @@ namespace ITLab.Cabinet.Logic.Queries
             _connectionString = helper.ConnectionString;
         }
 
-        public CourseDTO GetShortCourse(int courseId)
+        public List<CourseDTO> GetCourseWithSchedule()
         {
-            var sqlquery = $@"select distinct Courses.Name
+            var sqlquery = $@"SELECT DISTINCT TOP(3)
+                                  Courses.CourseId
+                                , Courses.Name
                                 , Courses.Description
                                 , Courses.HeadPhotoId
-                            from Courses
-                            join Lessons on Lessons.CourseId = Courses.CourseId
-                            where Courses.CourseId = {courseId};";
+                            FROM Courses
+                            ;";
 
-            var course = new CourseDTO();
+            var courses = new List<CourseDTO>();
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                course = db.Query<CourseDTO>(sqlquery).FirstOrDefault();
+                courses = db.Query<CourseDTO>(sqlquery).ToList();
             }
 
-            var lessonTimes = GetCourseLessons(courseId);
-
-            foreach(var lessonTime in lessonTimes)
+            foreach (var course in courses)
             {
-                course.LessonTimes.Add(lessonTime);
+                var schedules = GetSchedule(course.CourseId);
+
+                foreach (var schedule in schedules)
+                {
+                    course.Schedule.Add(schedule);
+                }
             }
 
-            return course;
+            return courses;
         }
 
-        public List<CourceShortLessonTimeDTO> GetCourseLessons(int courseId)
+
+        public List<CourseScheduleDTO> GetSchedule(int courseId)
         {
-            var sqlquery = $@"select distinct
+            var sqlquery = $@"SELECT DISTINCT
                                   DayOfWeek = datepart(dw ,Lessons.LessonDateFrom)
                                 , Lessons.LessonDateFrom
                                 , Lessons.LessonDateTo
-                            from Courses
-                            join Lessons on Lessons.CourseId = Courses.CourseId
-                            where Courses.CourseId = {courseId};";
+                            FROM Courses
+                            JOIN Lessons on Lessons.CourseId = Courses.CourseId
+                            WHERE Courses.CourseId = {courseId};";
 
-            var lessons = new List<CourceShortLessonTimeDTO>();
+            var lessons = new List<CourseScheduleDTO>();
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                lessons = db.Query<CourceShortLessonTimeDTO>(sqlquery).ToList();
+                lessons = db.Query<CourseScheduleDTO>(sqlquery).ToList();
             }
 
             return lessons;

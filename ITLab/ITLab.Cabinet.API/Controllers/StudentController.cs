@@ -41,13 +41,5 @@ namespace ITLab.Cabinet.API.Controllers
             var response = _studentService.GetStudentLessons(studentId);
             return response;
         }
-
-        // Maybe put this to the new Controller?
-        [HttpGet]
-        public object GetShortCourse(int courseId)
-        {
-            var response = _coursesService.GetShortCourse(courseId);
-            return response;
-        }
     }
 }

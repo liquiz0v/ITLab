@@ -16,9 +16,9 @@ namespace ITLab.Cabinet.Logic.Services
             _queries = queries;
         }
 
-        public CourseDTO GetShortCourse(int courseId)
+        public List<CourseDTO> GetCourseSchedule()
         {
-            return _queries.GetShortCourse(courseId);
+            return _queries.GetCourseWithSchedule();
         }
     }
 }

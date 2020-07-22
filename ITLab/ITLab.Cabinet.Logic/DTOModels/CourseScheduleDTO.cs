@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ITLab.Cabinet.Logic.DTOModels
 {
-    public class CourceShortLessonTimeDTO
+    public class CourseScheduleDTO
     {
-        public int? DayOfWeek { get; set; }
+        public int DayOfWeek { get; set; }
         public DateTime LessonDateFrom { get; set; }
         public DateTime LessonDateTo { get; set; }
     }

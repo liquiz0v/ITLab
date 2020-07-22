@@ -7,6 +7,6 @@ namespace ITLab.Cabinet.Logic.Services.Interfaces
 {
     public interface ICoursesService
     {
-        public CourseDTO GetShortCourse(int courseId);
+        public List<CourseDTO> GetCourseSchedule();
     }
 }

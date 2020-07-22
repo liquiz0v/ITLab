@@ -8,7 +8,7 @@ namespace ITLab.Cabinet.Logic.Queries.Interfaces
 {
     public interface ICoursesQueries
     {
-        public CourseDTO GetShortCourse(int courseId);
-        public List<CourceShortLessonTimeDTO> GetCourseLessons(int courseId);
+        public List<CourseDTO> GetCourseWithSchedule();
+        public List<CourseScheduleDTO> GetSchedule(int courseId);
     }
 }

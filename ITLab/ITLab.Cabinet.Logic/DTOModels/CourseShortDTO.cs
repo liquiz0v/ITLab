@@ -9,12 +9,12 @@ namespace ITLab.Cabinet.Logic.DTOModels
     {
         public CourseShortDTO()
         {
-            LessonTimes = new List<CourceShortLessonTimeDTO>();
+            LessonTimes = new List<CourseScheduleDTO>();
         }
 
         public string Name { get; set; }
         public string Description { get; set; }
         public Photo HeadPhoto { get; set; }
-        public List<CourceShortLessonTimeDTO> LessonTimes { get; set; }
+        public List<CourseScheduleDTO> LessonTimes { get; set; }
     }
 }

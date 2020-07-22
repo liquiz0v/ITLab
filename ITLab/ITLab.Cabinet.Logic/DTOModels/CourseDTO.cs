@@ -11,9 +11,9 @@ namespace ITLab.Cabinet.Logic
     {
         public CourseDTO()
         {
-            LessonTimes = new List<CourceShortLessonTimeDTO>();
+            Schedule = new List<CourseScheduleDTO>();
         }
 
-        public List<CourceShortLessonTimeDTO> LessonTimes { get; set; }
+        public List<CourseScheduleDTO> Schedule { get; set; }
     }
 }
