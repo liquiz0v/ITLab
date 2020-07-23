@@ -77,7 +77,7 @@ class Course {
         for (i in schedule) {
             let time = getTime(schedule[i].LessonDateFrom)
             console.log(time);
-            htmlTime = htmlTime + `<li><img src="~/images/clock.png"/>${time}</li>`;
+            htmlTime = htmlTime + `<li><img src="/images/clock.png"/>${time}</li>`;
         }
 
         return htmlTime;
