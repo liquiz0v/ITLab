@@ -13,22 +13,31 @@
 
     xmlhttp.onload = function () {
 
-        let obj = JSON.parse(xmlhttp.response);
-        console.log(obj);
+        let object = JSON.parse(xmlhttp.response);
+        //console.log(object);
         let coursesArr = [];
 
-        for (item in obj) {
-            let courseObj = new Course()
-            {
-                    obj[item].Schedule,
-                    obj[item].CourseId,
-                    obj[item].Name,
-                    obj[item].Description,
-                    obj[item].HeadPhoto,
-                    obj[item].Photos,
-                    obj[item].Lessons
-   
-            };
+        for (i in object) {
+            console.log(
+                object[i].Schedule,
+                object[i].CourseId,
+                object[i].Name,
+                object[i].Description,
+                object[i].HeadPhoto,
+                object[i].Photos,
+                object[i].Lessons
+            );
+
+            let courseObj = new Course
+                (
+                    object[i].Schedule,
+                    object[i].CourseId,
+                    object[i].Name,
+                    object[i].Description,
+                    object[i].HeadPhoto,
+                    object[i].Photos,
+                    object[i].Lessons
+                );
 
             coursesArr.push(courseObj.generateHtml());
         }
@@ -62,8 +71,28 @@ class Course {
         this.Lessons = lessons;
     }
 
-    generateHtmlDates() {
-    }
+    generateHtmlTimes(schedule) {
+        let htmlTime = ``;
+
+        for (i in schedule) {
+            let time = getTime(schedule[i].LessonDateFrom)
+            console.log(time);
+            htmlTime = htmlTime + `<li><img src="~/images/clock.png"/>${time}</li>`;
+        }
+
+        return htmlTime;
+    };
+
+    generateHtmlDates(schedule) {
+        let htmlDate = ``;
+
+        for (i in schedule) {
+            console.log(numberToDayOfWeek(schedule[i].LessonDateFrom))
+            htmlDate = htmlDate + `<li>${numberToDayOfWeek(schedule[i].LessonDateFrom)}</li>`;
+        }
+
+        return htmlDate;
+    };
 
     generateHtml() {
 
@@ -76,12 +105,10 @@ class Course {
                         <div class="decore-line"></div>
                         <div class="cours-time">
                             <ul>
-                                <li>Среда</li>
-                                <li>Суббота</li>
+                                ${this.generateHtmlDates(this.Schedule)}
                             </ul>
                             <ul>
-                                <li><img src="~/images/clock.png">  17:00 - 18:30</li>
-                                <li><img src="~/images/clock.png">  13:00 - 14:30</li>
+                                ${this.generateHtmlTimes(this.Schedule)}
                             </ul>
                         </div>
                         <div class="cours-button">
@@ -90,5 +117,7 @@ class Course {
                         </div>
                     </div>
                 </div>`;
+
+        return htmlString;
     }
 }
