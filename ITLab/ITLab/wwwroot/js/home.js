@@ -157,7 +157,9 @@ document.getElementById('fb-first-lesson').onclick = function () {
 
     let xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open('POST', 'http://localhost:3000');
+    let hname = window.location.hostname
+
+    xmlhttp.open('POST', `http://${hname}:3000`);
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(JSON.stringify(data));
 

@@ -13,7 +13,7 @@ namespace ITLab.Cabinet.Logic
         {
             Schedule = new List<CourseScheduleDTO>();
         }
-
+        public string PhotoLink { get; set; }
         public List<CourseScheduleDTO> Schedule { get; set; }
     }
 }

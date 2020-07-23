@@ -27,7 +27,9 @@ namespace ITLab.Cabinet.Logic.Queries
                                 , Courses.Name
                                 , Courses.Description
                                 , Courses.HeadPhotoId
+                                , Photos.PhotoLink
                             FROM Courses
+                            JOIN Photos on Photos.PhotoId = Courses.HeadPhotoId
                             ;";
 
             var courses = new List<CourseDTO>();

@@ -24,5 +24,5 @@ const numberToDayOfWeek = (number) => {
         return number;
     }
 
-    return moment(new Date(number)).format('dddd');
+    return moment(new Date(number)).lang('ru').format('dddd');
 };

@@ -1,33 +1,22 @@
 ﻿let render_short_course_block = (blockForRenderId, type = 'render') => {
 
-
+    let hname = window.location.hostname;
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("POST", "https://localhost:5001/api/Course/GetShortCourse", true);
+    xmlhttp.open("POST", `https://${hname}:5003/api/Course/GetShortCourse`, true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencoded");
     //formData2.set("newsId", d2);
 
     xmlhttp.send(formData2);
 
-
     xmlhttp.onload = function () {
 
         let object = JSON.parse(xmlhttp.response);
-        //console.log(object);
+        console.log(object);
         let coursesArr = [];
 
         for (i in object) {
-            console.log(
-                object[i].Schedule,
-                object[i].CourseId,
-                object[i].Name,
-                object[i].Description,
-                object[i].HeadPhoto,
-                object[i].Photos,
-                object[i].Lessons
-            );
-
             let courseObj = new Course
                 (
                     object[i].Schedule,
@@ -36,10 +25,20 @@
                     object[i].Description,
                     object[i].HeadPhoto,
                     object[i].Photos,
-                    object[i].Lessons
+                    object[i].Lessons,
+                    object[i].PhotoLink
                 );
+            let str = ``;
 
-            coursesArr.push(courseObj.generateHtml());
+            if (i % 2 === 0) {
+                str = 'fadeInDown'
+            }
+            else {
+                str = 'fadeInUp'
+            }
+
+            coursesArr.push(courseObj.generateHtml(str));
+            
         }
         let courseHtmlString = "";
 
@@ -61,7 +60,7 @@
 }
 
 class Course {
-    constructor(schedule, courseId, name, description, headPhoto, photos, lessons) {
+    constructor(schedule, courseId, name, description, headPhoto, photos, lessons, photoLink) {
         this.Schedule = schedule;
         this.CourseId = courseId;
         this.Name = name;
@@ -69,6 +68,7 @@ class Course {
         this.HeadPhoto = headPhoto;
         this.Photos = photos;
         this.Lessons = lessons;
+        this.PhotoLink = photoLink;
     }
 
     generateHtmlTimes(schedule) {
@@ -77,7 +77,7 @@ class Course {
         for (i in schedule) {
             let time = getTime(schedule[i].LessonDateFrom)
             console.log(time);
-            htmlTime = htmlTime + `<li><img src="/images/clock.png"/>${time}</li>`;
+            htmlTime = htmlTime + `<li><img src="/images/clock.png"/> ${getTime(schedule[i].LessonDateFrom)} - ${getTime(schedule[i].LessonDateTo)}</li>`;
         }
 
         return htmlTime;
@@ -94,11 +94,11 @@ class Course {
         return htmlDate;
     };
 
-    generateHtml() {
+    generateHtml(str) {
 
-        const htmlString = `<div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
+        const htmlString = `<div class="cours-block wow ${str}" data-wow-delay="0.5s">
                     <div class="cours-header">
-                        <div class="cours-bg i1"></div>
+                        <div class="cours-bg"><img src="${this.PhotoLink}"></img></div>
                         <div class="cours-name">${this.Name}</div>
                     </div>
                     <div class="cours-body">

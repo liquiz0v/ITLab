@@ -64,7 +64,9 @@ class News {
     generateHtml() {
         var newsDate = formatDateString(this.TimeDate);
 
-        let fullNewsLink = `https://localhost:5001/Landing/FullNews?newsId=${this.Id}`; // Не забыть поменять на наш будущий домен.
+        let hname = window.location.hostname
+
+        let fullNewsLink = `https://${hname}:5003/Landing/FullNews?newsId=${this.Id}`; // Не забыть поменять на наш будущий домен.
 
         let htmlString = `<div class="slider-news news_block">
         
