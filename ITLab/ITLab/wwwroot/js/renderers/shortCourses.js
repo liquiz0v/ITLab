@@ -3,7 +3,7 @@
     let hname = window.location.hostname;
     let xmlhttp = new XMLHttpRequest();
     let formData2 = new FormData();
-    xmlhttp.open("POST", `https://${hname}:5003/api/Course/GetShortCourse`, true);
+    xmlhttp.open("POST", `http://${hname}:82/api/Course/GetShortCourse`, true);
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     formData2.append("Content-Type", "application/x-www-form-urlencoded");
     //formData2.set("newsId", d2);
