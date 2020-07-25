@@ -35,7 +35,7 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
         let { student } = this.props;
 
         let name = student ? student.Name : 'name_error';
-        let avatar = student ? student.AvatarPhoto : 'photo_error';
+        let avatar = student ? student.AvatarPhoto : undefined;
 
         return (
             <>
