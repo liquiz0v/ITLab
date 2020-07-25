@@ -1,4 +1,4 @@
-name: .NET Core
+name: Cabinet API
 
 on:
   push:
@@ -12,7 +12,6 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +23,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build ITLab/ITLab.Landing.MVC.csproj --configuration Release --no-restore
+      run: dotnet build ITLab.Cabinet.API/ITLab.Cabinet.API.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test ITLab/ITLab.Landing.MVC.csproj --no-restore --verbosity normal
+      run: dotnet test ITLab.Cabinet.API/ITLab.Cabinet.API.csproj --no-restore --verbosity normal

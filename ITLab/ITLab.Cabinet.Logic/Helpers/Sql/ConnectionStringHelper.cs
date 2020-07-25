@@ -1,15 +1,22 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 
 namespace ITLab.Cabinet.Logic.Helpers.Sql
 {
-    public class ConnectionStringHelper
+    public interface IConnectionStringHelper
     {
-        static public string GetConnectionString()
+        public string ConnectionString { get; }
+    }
+
+    public class ConnectionStringHelper : IConnectionStringHelper
+    {
+        public string ConnectionString { get; set; }
+        public ConnectionStringHelper(IConfiguration connectionString)
         {
-            return "Server =.; Database = ITLab_Cabinet; Trusted_Connection = True; MultipleActiveResultSets = true";
+            ConnectionString = connectionString["ConnectionStrings:CabinetConnection"];
         }
     }
 }

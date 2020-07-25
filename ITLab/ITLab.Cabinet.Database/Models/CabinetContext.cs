@@ -9,7 +9,7 @@ namespace ITLab.Cabinet.Database.Models
         {
             
         }
-        
+
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Photo> Photos { get; set; }
