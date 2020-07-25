@@ -104,27 +104,6 @@ sendFeedback.onclick = function () {
             }
         }
     }
-
-
-
-
-
-    /*
-    $.ajax({
-        url: '/Landing/FeedBack',
-        type: 'POST',
-
-        data: data,
-        success: function () {
-            console.log("norm");
-        },
-        error: function () {
-            console.log("ne norm");
-        }
-    });
-    */
-
-
 };
 
 function openModal() {
