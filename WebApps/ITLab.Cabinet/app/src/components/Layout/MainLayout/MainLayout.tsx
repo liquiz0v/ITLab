@@ -36,7 +36,7 @@ class MainLayout extends React.Component<any> {
         const myHometasks = (<>{emptyPageMessage}</>);
 
         let { student } = this.props;
-        let userAvatar = 'avatar_error';
+        let userAvatar = undefined;
         if (student) {
             userAvatar = student.AvatarPhoto;
         }
