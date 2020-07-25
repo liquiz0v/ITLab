@@ -36,7 +36,7 @@ namespace ITLab
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddDbContext<ITLabContext>();
+            services.AddDbContext<ITLabContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<CabinetContext>(i => i.UseSqlServer(Configuration.GetConnectionString("CabinetConnection")));
         }
 
