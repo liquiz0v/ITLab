@@ -13,9 +13,7 @@ export const getStudentInfoRequest = () => {
 };
 
 export const getStudentInfoSuccess = (student: Student) => {
-    console.log(student);
     return {
-        
         type: GET_STUDENT_INFORMATION.SUCCESS,
         student: student
     };
@@ -30,7 +28,7 @@ export const getStudentInfo = (userId: number) => {
                 dispatch(getStudentInfoSuccess(response.data));
             })
             .catch((error: any) => {
-                alert(error.response);
+                alert(error.response); //wii be antd alert with good design
             });
     };
 };
