@@ -82,14 +82,10 @@ namespace ITLab.Cabinet.Logic.Queries
                                   JOIN [dbo].[Students] on [Students].[StudentId] = [StudentsCourses].[StudentId]
                                   WHERE [Students].[StudentId] = {studentId}";
 
-            var courses = new List<Course>();
-
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                courses = db.Query<Course>(sqlstring).ToList();
+                return db.Query<Course>(sqlstring).ToList();
             }
-
-            return courses;
         }
     }
 }
