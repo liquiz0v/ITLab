@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ITLab.Cabinet.Logic.Services;
+using ITLab.Cabinet.Logic.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,26 +13,30 @@ namespace ITLab.Cabinet.API.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        StudentService _studentProfileService = new StudentService();
+        private readonly IStudentService _studentService;
+        public StudentController(StudentService studentService)
+        {
+            _studentService = studentService;
+        }
 
         [HttpGet]
         public object GetStudent(int studentId)
         {
-            var response = _studentProfileService.GetStudent(studentId);
+            var response = _studentService.GetStudent(studentId);
             return response;
         }
 
         [HttpGet]
         public object GetStudentCources(int studentId)
         {
-            var response = _studentProfileService.GetStudentCources(studentId);
+            var response = _studentService.GetStudentCources(studentId);
             return response;
         }
         
         [HttpGet]
         public object GetStudentLessons(int studentId)
         {
-            var response = _studentProfileService.GetStudentLessons(studentId);
+            var response = _studentService.GetStudentLessons(studentId);
             return response;
         }
     }

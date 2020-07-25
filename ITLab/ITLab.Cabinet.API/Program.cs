@@ -1,7 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using ITLab.Cabinet.API.configs;
+using ITLab.Cabinet.Logic.Helpers.Sql;
+using ITLab.Cabinet.Logic.Queries;
+using ITLab.Cabinet.Logic.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -18,9 +25,18 @@ namespace ITLab.Cabinet.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+            // Injection of StudentService
+            .ConfigureContainer<ContainerBuilder>(builder =>
+            {
+                ITLabCabinetAutofacConfig.ContainerBuilderConfig(builder);
+            })
+
+            .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    .UseContentRoot(Directory.GetCurrentDirectory())
+                    .UseStartup<Startup>();
                 });
     }
 }
