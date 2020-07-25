@@ -14,9 +14,11 @@ namespace ITLab.Cabinet.API.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-        public StudentController(StudentService studentService)
+        private readonly ICoursesService _coursesService;
+        public StudentController(StudentService studentService, CoursesService coursesService)
         {
             _studentService = studentService;
+            _coursesService = coursesService;
         }
 
         [HttpGet]

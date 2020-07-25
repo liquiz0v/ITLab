@@ -1,12 +1,11 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ITlab Одесса - полная новость</title>
+    <title>ITlab Одесса - проекты</title>
     <!-- META tags -->
     <meta charset="utf-8">
     <meta name="author" content="ITL">
@@ -44,7 +43,7 @@
             </ul>
         </div>
         <nav>
-            <span>IT Lab Odessa</span>
+            <span><a href="/">IT Lab Odessa</a></span>
             <ul>
                 <li><a href="/Landing/Cources">Курсы</a></li>
                 <li><a href="/Landing/Project">Проекты</a></li>
@@ -55,73 +54,101 @@
         </nav>
     </header>
     <main>
-        <section id="newsBlock">
+        <section id="projectBlock">
             <div class="filter">
                 <div class="prev-lab">
-                    <div class="prev-lab-news">
-                        <h1>Некст профориентация на<br> Морвокзале</h1>
-                        <p>
-                            Подпишитесь на рассылку — оставайтесь в курсе
-                            <br>новостей <span>IT Lab Odessa</span>
-                        </p>
-                        <input id="subEmail" type="email" placeholder="E-mail">
-                        <button id="subscribe_on_news">Подписаться</button>
-                        <br>
+                    <div class="prev-lab-project">
+                        <h1>Проект <br> «Інтернет - Батько»</h1>
+                        <p>Лучшая программа подготовки детей к будущему</p>
                     </div>
                     <img src="~/images/arrowDown.png" class="animated infinite pulse delay-.7s" onclick="toElem(news_block)">
                 </div>
             </div>
         </section>
-        <section id="news_block">
-            <div class="news_block_wrapper">
-                <div id="basic_news"></div>
-
-                <div id="videos"></div>
-
-                <div id="photos"></div>
-
-                <div id="additional_news"></div>
-
-                <hr>
-                <div class="news_footer">
-                    <ul id="estimate">
-                        <li data-val="1">✩</li>
-                        <li data-val="2">✩</li>
-                        <li data-val="3">✩</li>
-                        <li data-val="4">✩</li>
-                        <li data-val="5">✩</li>
-                    </ul>
-
-                    <ul class="news_soc">
-                        <li><a href="#"><img src="~/images/news_fb.png"></a></li>
-                        <li><a href="#"><img src="~/images/news_tg.png"></a></li>
-                        <li><a href="#"><img src="~/images/news_inst.png"></a></li>
-                        <li><a href="#"><img src="~/images/news_viber.png"></a></li>
-                    </ul>
-
-                    <div id="comments"></div>
-
-                    <div class="comment_block">
-                        <div class="news_comments">
-                            <p>Посмотреть предыдущие комментарии (5)</p>
-                        </div>
-                        <div class="new_comment">
-                            <div class="comment_avatar">
-                                <img src="https://www.w3schools.com/images/colorpicker.gif">
-                            </div>
-                            <textarea class="send_news_comment_area"></textarea>
-                            <div id="send_news_comment"></div>
-
-                        </div>
-
-                        <div id="comments_block"> </div>
-                    </div>
-
+        <section id="about-project">
+            <div class="ac-b" id="project">
+                <div class="about-project-block">
+                    <hr>
+                    <img src="~/images/ac1.png" class="wow fadeInLeft" data-wow-delay="0.1s">
+                </div>
+                <div class="about-project-block">
+                    <p>О проекте</p>
+                    <b class="wow fadeInLeft" data-wow-delay="0.1s">Інтернет - Батько</b>
+                    <hr class="wow fadeInLeft" data-wow-delay="0.25s">
                 </div>
             </div>
         </section>
-        <h3 class="same_news">Похожие материалы</h3>
-        <section id="fullNews_shortNews_block"></section>
+        <section id="project-info">
+            <div class="project-info-block">
+                <img src="~/images/project-error-img.png" width="50">
+                <h2>Проблема</h2>
+                <hr>
+                <p>
+                    Маленькие исследователи смогут компоновать детали
+                    для создания различных механизмов,программировать
+                    в среде LEGO Education WeDo 2.0, работать в команде,
+                    находить общий язык с напарником и решать сложные
+                    задачи при работе над проектом.
+                    <br>
+                    Дети оперируют понятиями: робот, датчик,
+                    компьютерная игра, манипулятор, виртуальная
+                    реальность, инфракрасное излучение, беспроводное
+                    соединение, механизмы (кривошип, зубчатая передача
+                    движения, редуктор, передаточное отношение, кожаный
+                    механизм, червячная передача движения).
+                </p>
+            </div>
+            <div class="project-info-block">
+                <img src="~/images/project-work-img.png" width="50">
+                <h2>Решение</h2>
+                <hr>
+                <p>
+                    На этом курсе дети конструируют и программируют
+                    автономных роботов, создают научные проекты, изучают
+                    животный мир, узнают о новейших технологиях,
+                    исследуют космическое пространство.
+                    <br>
+                    В течение этого вводного курса дети изучают основы
+                    механики, математики и программирования.
+                    Главный принцип обучения на этом курсе - «а что,
+                    если ...»: дети экспериментируют, проверяют свои
+                    теории и не боятся делать ошибки.
+                </p>
+            </div>
+            <div class="project-info-block">
+                <img src="~/images/project-res-img.png" width="50">
+                <h2>Результат</h2>
+                <hr>
+                <p>
+                    На этом курсе дети конструируют и программируют
+                    автономных роботов, создают научные проекты, изучают
+                    животный мир, узнают о новейших технологиях,
+                    исследуют космическое пространство.
+                    <br>
+                    В течение этого вводного курса дети изучают основы
+                    механики, математики и программирования.
+                    Главный принцип обучения на этом курсе - «а что,
+                    если ...»: дети экспериментируют, проверяют свои
+                    теории и не боятся делать ошибки.
+                </p>
+            </div>
+        </section>
+        <section id="projectSub">
+            <div class="bs-rad">
+                <div class="bs-rad-block project-rad-block">
+                    <p>
+                        Для получения подробной информации о проекте<br>
+                        <Інтернет Батько> введите Вашу почту
+                    </p>
+                </div>
+                <div class="bs-rad-block">
+                    <div class="sub-wrapper">
+                        <input type="email" class="project-rad-input" placeholder="E-mail">
+                        <img src="~/images/comment_arrow.png" width="30">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-block">
@@ -166,12 +193,12 @@
             </div>
         </div>
     </footer>
-    <script src="~/lib/moment/moment-with-locales.min.js"></script>
-    <script src="~/js/dateHelper.js"></script>
     <script src="~/js/wow.min.js"></script>
-    <script src="~/js/renderers/shortNews.js"></script>
-    <script src="~/js/fullNews.js"></script>
     <script src="~/js/main.js"></script>
-
 </body>
 </html>
+
+
+
+
+

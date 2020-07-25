@@ -36,7 +36,7 @@
         <input type="text" id="ffb-email" placeholder="E-mail">
         <input type="text" id="ffb-age" placeholder="Возраст">
         <button id="fb-first-lesson">Записаться</button>
-        <p class="modal-info">Нажимая «Записаться», вы соглашаетесь с политикой обработки персональный данных</p>
+        <p class="modal-info">Нажимая «Записаться», Вы соглашаетесь с политикой обработки персональный данных</p>
     </div>
     <header>
         <div class="header-contact">
@@ -52,9 +52,9 @@
                 <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
                 <li>
                     <ul class="h-social">
-                        <li><a href=""><img src="~/images/facebook.png"></a></li>
-                        <li><a href=""><img src="~/images/youtube.png"></a></li>
-                        <li><a href=""><img src="~/images/insta.png"></a></li>
+                        <li><a href="https://www.facebook.com/itlabnetua/" target="_blank"><img src="~/images/facebook.png"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCPolZba5BAD8vJqtmKT3vEg" target="_blank"><img src="~/images/youtube.png"></a></li>
+                        <li><a href="https://www.instagram.com/itlab_odessa/" target="_blank"><img src="~/images/insta.png"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -63,11 +63,11 @@
             <span><a href="/">IT Lab Odessa</a></span>
             <ul>
                 <li><a href="/Landing/Cources">Курсы</a></li>
-                <li><a href="#">Проекты</a></li>
+                <li><a href="/Landing/Project">Проекты</a></li>
                 <li><a href="/Landing/Contacts">Контакты</a></li>
                 <li><span>UA</span> / <span class="active-lang">RU</span></li>
                 <!-- testing <a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in">-->
-                <li><button id="logIn">Вход</button></a></li>
+                <li><button id="logIn">Вход</button></li>
             </ul>
         </nav>
     </header>
@@ -94,75 +94,11 @@
                 <h2 class="wow fadeInLeft" data-wow-delay="0.1s">Наши курсы</h2>
                 <hr class="wow fadeInRight" data-wow-delay="0.25s">
             </div>
+
             <div class="courses-block">
-                <div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
-                    <div class="cours-header">
-                        <div class="cours-bg i1"></div>
-                        <div class="cours-name">Робототехника и<br> мехатроника</div>
-                    </div>
-                    <div class="cours-body">
-                        <div class="decore-line"></div>
-                        <div class="cours-time">
-                            <ul>
-                                <li>Среда</li>
-                                <li>Суббота</li>
-                            </ul>
-                            <ul>
-                                <li><img src="~/images/clock.png">  17:00 - 18:30</li>
-                                <li><img src="~/images/clock.png">  13:00 - 14:30</li>
-                            </ul>
-                        </div>
-                        <div class="cours-button">
-                            <button id="mfb1">Записаться на занятие</button>
-                            <button>Подробнее о курсе</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="cours-block wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="cours-header">
-                        <div class="cours-bg i2"></div>
-                        <div class="cours-name">Робототехника и<br> мехатроника</div>
-                    </div>
-                    <div class="cours-body">
-                        <div class="decore-line"></div>
-                        <div class="cours-time">
-                            <ul>
-                                <li>Пятница</li>
-                                <li>Воскресенье</li>
-                            </ul>
-                            <ul>
-                                <li><img src="images/clock.png">  17:00 - 18:30</li>
-                                <li><img src="images/clock.png">  10:00 - 11:30</li>
-                            </ul>
-                        </div>
-                        <div class="cours-button">
-                            <button id="mfb2">Записаться на занятие</button>
-                            <button>Подробнее о курсе</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
-                    <div class="cours-header">
-                        <div class="cours-bg i3"></div>
-                        <div class="cours-name">Программирование   в <br>мире Minecraft</div>
-                    </div>
-                    <div class="cours-body">
-                        <div class="decore-line"></div>
-                        <div class="cours-time">
-                            <ul>
-                                <li>Суббота</li>
-                            </ul>
-                            <ul>
-                                <li><img src="~/images/clock.png">  10:00 - 11:30</li>
-                            </ul>
-                        </div>
-                        <div class="cours-button">
-                            <button id="mfb3">Записаться на занятие</button>
-                            <button>Подробнее о курсе</button>
-                        </div>
-                    </div>
-                </div>
+                <div id="course"></div>
             </div>
+
         </section>
         <section id="features">
             <div class="features-header">
@@ -246,20 +182,20 @@
             <div class="filter">
                 <div class="st-container">
                     <div class="st-block">
-                        <img src="~/images/sClock.png">
+                        <img src="~/images/con_clock.png">
                         <b id="yCounter">2015</b>
                         <br>
                         <span>Год основания</span>
                     </div>
                     <div class="st-block">
                         <img src="~/images/wr.png">
-                        <b><span id="prCounter">14</span>+</b>
+                        <b><span id="prCounter">10</span>+</b>
                         <br>
                         <span>Успешных проектов</span>
                     </div>
                     <div class="st-block">
                         <img src="~/images/sPeople.png">
-                        <b><span id="pCounter">1000</span>+</b>
+                        <b><span id="pCounter">500</span>+</b>
                         <br>
                         <span>Учеников</span>
                     </div>
@@ -273,11 +209,11 @@
                     <hr class="wow fadeInLeft" data-wow-delay="0.5s">
                 </div>
                 <div class="feedback-body">
-                    <input type="text" class="fName" placeholder="ФИО"><br>
+                    <input type="text" class="fName" placeholder="Фамилия и Имя"><br>
                     <input type="tel" class="fTel" placeholder="Телефон"><br>
                     <textarea type="text" class="fAsk" placeholder="Задайте Ваш вопрос"></textarea><br>
                     <button id="sendFeedback">Отправить</button>
-                    <p>Нажимая <span>«Отправить»</span>, вы соглашаетесь с политикой обработки персональных данных</p>
+                    <p>Нажимая <span>«Отправить»</span>, Вы соглашаетесь с политикой обработки персональных данных</p>
                 </div>
             </div>
         </section>
@@ -289,7 +225,7 @@
                 <p class="wow fadeInLeft" data-wow-delay="0.5s">
                     Образование - это самая важная вещь, которую родитель может предоставить своему ребенку. Вот почему выбор идеальной STEM-школы так важен!
                 </p>
-                <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
+                <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2020. Все права защищены.</div>
             </div>
             <div class="footer-section wow fadeInUp" data-wow-delay="0.5s">
                 <div class="sf-block">
@@ -317,9 +253,9 @@
                         <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com' class="fEmail">it.ddo.od@gmail.com</a></li>
                     </ul>
                     <ul class="social-footer">
-                        <li><a href=""><img src="~/images/facebook.png"></a></li>
-                        <li><a href=""><img src="~/images/youtube.png"></a></li>
-                        <li><a href=""><img src="~/images/insta.png"></a></li>
+                        <li><a href="https://www.facebook.com/itlabnetua/" target="_blank"><img src="~/images/facebook.png"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCPolZba5BAD8vJqtmKT3vEg" target="_blank"><img src="~/images/youtube.png"></a></li>
+                        <li><a href="https://www.instagram.com/itlab_odessa/" target="_blank"><img src="~/images/insta.png"></a></li>
                     </ul>
                 </div>
             </div>
@@ -378,6 +314,7 @@
     <script src="~/lib/moment/moment-with-locales.min.js"></script>
     <script src="~/js/dateHelper.js"></script>
     <script src="~/js/wow.min.js"></script>
+    <script src="~/js/renderers/shortCourses.js"></script>
     <script src="~/js/renderers/shortNews.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/home.js"></script>

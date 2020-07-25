@@ -39,9 +39,9 @@
                 <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com'>it.ddo.od@gmail.com</a></li>
                 <li>
                     <ul class="h-social">
-                        <li><a href=""><img src="~/images/facebook.png"></a></li>
-                        <li><a href=""><img src="~/images/youtube.png"></a></li>
-                        <li><a href=""><img src="~/images/insta.png"></a></li>
+                        <li><a href="https://www.facebook.com/itlabnetua/" target="_blank"><img src="~/images/facebook.png"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCPolZba5BAD8vJqtmKT3vEg" target="_blank"><img src="~/images/youtube.png"></a></li>
+                        <li><a href="https://www.instagram.com/itlab_odessa/" target="_blank"><img src="~/images/insta.png"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -49,16 +49,16 @@
         <nav>
             <span>IT Lab Odessa</span>
             <ul>
-                <li><a href="#courses">Курсы</a></li>
-                <li><a href="#">Проекты</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/Landing/Cources">Курсы</a></li>
+                <li><a href="/Landing/Project">Проекты</a></li>
+                <li><a href="/Landing/Contacts">Контакты</a></li>
                 <li><span>UA</span> / <span class="active-lang">RU</span></li>
                 <li><a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in"><button>Вход</button></a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="newsBlock">
+        <section id="mainNewsBlock">
             <div class="filter">
                 <div class="prev-lab">
                     <div class="prev-lab-news">
@@ -94,23 +94,22 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="slider-news">
-                            <div class="news-date">
-                                <span>@item.TimeDate</span>
-                            </div>
-                            <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
-                            <div class="news-body">
-                                <span>«@item.Title</span>
-                                <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
-                                <p>
-                                    @item.ShortDescription
-                                </p>
-                            </div>
-                            <div class="news-button">
-                                <button>Подробнее</button>
-                            </div>
-                        </div>
-                    }
+        <div class="slider-news">
+            <div class="news-date">
+                <span>@item.TimeDate</span>
+            </div>
+            <div class="slider-news-header" style="background-image: url('@item.HeadPhoto')"></div>
+            <div class="news-body">
+                <span>«@item.Title</span>
+                <p><span>@item.CommentsCount</span> комментариев / <span>@item.ViewsCount</span> просмотров</p>
+                <p>
+                    @item.ShortDescription
+                </p>
+            </div>
+            <div class="news-button">
+                <button>Подробнее</button>
+            </div>
+        </div>}
 
 
                     <!--end news template-->
@@ -128,15 +127,15 @@
                 <p class="wow fadeInLeft" data-wow-delay="0.5s">
                     Образование - это самая важная вещь, которую родитель может предоставить своему ребенку. Вот почему выбор идеальной STEM-школы так важен!
                 </p>
-                <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2019. Все права защищены.</div>
+                <div class="copyright wow fadeInUp" data-wow-delay="0.5s">© 2020. Все права защищены.</div>
             </div>
             <div class="footer-section wow fadeInUp" data-wow-delay="0.5s">
                 <div class="sf-block">
                     <b>Навигация</b>
                     <ul>
-                        <li><a href="#">Курсы</a></li>
+                        <li><a href="/Landing/Cources">Курсы</a></li>
                         <li><a href="#">Проекты</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="/Landing/Contacts">Контакты</a></li>
                         <li><a href="#">Вход</a></li>
                     </ul>
                 </div>
@@ -145,20 +144,20 @@
                 <div class="s-footer">
                     <b>Контактная информация</b>
                     <ul>
-                        <li><img src="images/place.png">ул. Кузнечная,1</li>
+                        <li><img src="~/images/place.png">ул. Кузнечная,1</li>
                         <li>
-                            <img src="images/phone.png">
+                            <img src="~/images/phone.png">
                             <ul class="tel-list">
                                 <li><a href='tel:380683030810'>+38(068)30-30-810</a></li>
                                 <li><a href='tel:380665556272'>+38(066)555-62-72</a></li>
                             </ul>
                         </li>
-                        <li><img src="images/mail.png"><a href='mailto:it.ddo.od@gmail.com' class="fEmail">it.ddo.od@gmail.com</a></li>
+                        <li><img src="~/images/mail.png"><a href='mailto:it.ddo.od@gmail.com' class="fEmail">it.ddo.od@gmail.com</a></li>
                     </ul>
                     <ul class="social-footer">
-                        <li><a href=""><img src="images/facebook.png"></a></li>
-                        <li><a href=""><img src="images/youtube.png"></a></li>
-                        <li><a href=""><img src="images/insta.png"></a></li>
+                        <li><a href="https://www.facebook.com/itlabnetua/" target="_blank"><img src="~/images/facebook.png"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCPolZba5BAD8vJqtmKT3vEg" target="_blank"><img src="~/images/youtube.png"></a></li>
+                        <li><a href="https://www.instagram.com/itlab_odessa/" target="_blank"><img src="~/images/insta.png"></a></li>
                     </ul>
                 </div>
             </div>

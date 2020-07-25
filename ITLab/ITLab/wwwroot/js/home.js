@@ -1,6 +1,9 @@
 // Для статистики
+
 let toSt = false;
 render_short_news_block('newsBlock');
+render_short_course_block('course');
+
 window.addEventListener("scroll", function () {
     let elementTarget = document.getElementById("statistics");
     if (window.scrollY + document.documentElement.clientHeight
@@ -11,10 +14,10 @@ window.addEventListener("scroll", function () {
         counterAnimation(2015, 1500, 65, el);
 
         el = document.getElementById('prCounter');
-        counterAnimation(14, 1500, 1, el);
+        counterAnimation(10, 1500, 1, el);
 
         el = document.getElementById('pCounter');
-        counterAnimation(1000, 1500, 10, el);
+        counterAnimation(500, 1500, 10, el);
     }
 });
 
@@ -106,6 +109,8 @@ sendFeedback.onclick = function () {
     }
 };
 
+
+// Functions for open/close modal window (trial lesson popup)
 function openModal() {
     document.getElementById('global-filter').style.display = 'block';
     document.getElementById('modalFB').style.display = 'block';
@@ -114,37 +119,26 @@ function closeModal() {
     document.getElementById('global-filter').style.display = 'none';
     document.getElementById('modalFB').style.display = 'none';
 }
-
-
-
-//хз что снизу
-function openModal() {
-    document.getElementById('global-filter').style.display = 'block';
-    document.getElementById('modalFB').style.display = 'block';
-}
-function closeModal() {
-    document.getElementById('global-filter').style.display = 'none';
-    document.getElementById('modalFB').style.display = 'none';
-}
-
-document.getElementById('mfb1').onclick = openModal;
-document.getElementById('mfb2').onclick = openModal;
-document.getElementById('mfb3').onclick = openModal;
 
 document.getElementById('close-modal').onclick = closeModal;
+document.getElementById('global-filter').onclick = closeModal;
+
+// ================================================================
 
 
 document.getElementById('fb-first-lesson').onclick = function () {
     let name = document.getElementById('ffb-name').value;
-    let phone = document.getElementById('ffb-name').value;
-    let email = document.getElementById('ffb-name').value;
-    let age = document.getElementById('ffb-name').value;
+    let phone = document.getElementById('ffb-phone').value;
+    let email = document.getElementById('ffb-email').value;
+    let age = document.getElementById('ffb-age').value;
 
     let data = { name: name, phone: phone, email: email, age: age };
 
     let xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open('POST', 'http://localhost:3000');
+    let hname = window.location.hostname
+
+    xmlhttp.open('POST', `http://${hname}:3000`);
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(JSON.stringify(data));
 
