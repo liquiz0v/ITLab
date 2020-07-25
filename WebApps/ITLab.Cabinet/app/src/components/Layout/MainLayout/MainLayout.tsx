@@ -37,10 +37,10 @@ class MainLayout extends React.Component<any> {
 
         let { student } = this.props;
         let userAvatar = 'avatar_error';
-        if(student){
+        if (student) {
             userAvatar = student.AvatarPhoto;
         }
-        
+
         const navBar: JSX.Element = (
             <div>
                 <header>
@@ -48,17 +48,17 @@ class MainLayout extends React.Component<any> {
                         <nav>
                             <ul>
                                 <li><a href="/"><span>IT Lab Odessa</span></a></li>
-                                <li><a href="">Профиль</a></li>
+                                <li><Link to='general'>Профиль</Link></li>
                             </ul>
                         </nav>
                         <div className="Header-profile">
 
                             <div className="Avatar">
-                                <img src={userAvatar}></img>
+                                <img src={userAvatar} alt='photo_error'></img>
                             </div>
                             <ul>
-                                <li><a href="#">Редактирование профиля</a></li>
-                                <li><a href="#">Выход</a></li>
+                                <li><a >Редактирование профиля</a></li>
+                                <li><a >Выход</a></li>
                             </ul>
                         </div>
                     </div>

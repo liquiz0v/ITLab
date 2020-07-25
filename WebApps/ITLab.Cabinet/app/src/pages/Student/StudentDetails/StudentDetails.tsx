@@ -42,7 +42,7 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
                 <div className="Profile-data">
                     <div className="Profile-block-left">
                         <div className="Main-avatar">
-                            <img src={avatar} />
+                            <img src={avatar} alt='photo_error'/>
                         </div>
                         <b className="Profile-name">{name}</b>
                         <button id="Edit_profile">Редактировать профиль</button>
