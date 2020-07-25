@@ -33,6 +33,21 @@ export const getStudentInfo = (userId: number) => {
     };
 };
 
+export const getStudentCourses = (userId: number) => {
+    return (dispatch: any) => {
+        dispatch(getStudentInfoRequest());
+        const queryParams = `?studentId=${userId}`;
+        axios.get(`Course/GetStudentCourses${queryParams}`)
+            .then(response => {
+                dispatch(getStudentInfoSuccess(response.data));
+            })
+            .catch((error: any) => {
+                alert(error.response); //wii be antd alert with good design
+            });
+    };
+};
+
+
 //for test POST METHOD 
 export const getUserInfoPost = (userId: number) => {
     return (dispatch: any) => {

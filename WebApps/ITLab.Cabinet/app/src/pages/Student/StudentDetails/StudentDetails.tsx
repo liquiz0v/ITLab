@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from 'reducer';
-import { getStudentInfo } from './actions'
+import { getStudentInfo, getStudentCourses } from './actions'
 import { Student, Course } from '../reducer';
 import '../../../App.css';
+import StudentCourse from './StudentCourse/StudentCourse'
+
+
 interface StateFromProps {
     student?: Student,
     studentCources?: Course[]
@@ -22,7 +25,7 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
         super(props);
 
         this.state = {
-            
+
         };
 
     }
@@ -42,14 +45,12 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
                 <div className="Profile-data">
                     <div className="Profile-block-left">
                         <div className="Main-avatar">
-                            <img src={avatar} alt='photo_error'/>
+                            <img src={avatar} alt='photo_error' />
                         </div>
                         <b className="Profile-name">{name}</b>
                         <button id="Edit_profile">Редактировать профиль</button>
                     </div>
-                    <div className="Profile-block-right">
-                        <p>На данный момент Вы не записаны на наши курсы.</p>
-                    </div>
+                    <StudentCourse/>
                 </div>
             </>
         );
@@ -65,5 +66,6 @@ const mapStateToProps = (state: AppState): StateFromProps => {
 };
 
 export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {
-    getStudentInfo
+    getStudentInfo,
+    getStudentCourses
 })(StudentDetails);
