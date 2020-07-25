@@ -10,5 +10,6 @@ namespace ITLab.Cabinet.Logic.Queries.Interfaces
     {
         public List<CourseDTO> GetCourseWithSchedule();
         public List<CourseScheduleDTO> GetSchedule(int courseId);
+        public List<Course> GetStudentCourses(int studentId);
     }
 }
