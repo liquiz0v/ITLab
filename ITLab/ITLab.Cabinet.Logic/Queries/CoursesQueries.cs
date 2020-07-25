@@ -72,5 +72,24 @@ namespace ITLab.Cabinet.Logic.Queries
 
             return lessons;
         }
+
+        public List<Course> GetStudentCourses(int studentId)
+        {
+            var sqlstring = @$"SELECT [dbo].[Courses].[CourseId]
+                                      ,[dbo].[Courses].[Name]
+                                  FROM [dbo].[Courses]
+                                  JOIN [dbo].[StudentsCourses] on [StudentsCourses].[CourseId] = [Courses].[CourseId]
+                                  JOIN [dbo].[Students] on [Students].[StudentId] = [StudentsCourses].[StudentId]
+                                  WHERE [Students].[StudentId] = {studentId}";
+
+            var courses = new List<Course>();
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                courses = db.Query<Course>(sqlstring).ToList();
+            }
+
+            return courses;
+        }
     }
 }
