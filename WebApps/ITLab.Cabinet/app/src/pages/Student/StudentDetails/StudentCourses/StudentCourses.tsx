@@ -18,7 +18,8 @@ interface DispatchFromProps {
 }
 
 interface OwnStateProps {
-    currentLesson: number
+    currentLesson: number;
+    courseSelected?: number;
 
 }
 interface PassedProps {
@@ -30,7 +31,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         super(props);
 
         this.state = {
-            currentLesson: 1
+            currentLesson: 0
         };
 
     }
@@ -46,7 +47,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
     onCourseSelected = (e: any) => {
 
-        alert(e.target.value);
+        this.setState({ courseSelected: e.value });
     }
 
     getCoursesContent = () => {
@@ -76,7 +77,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
         const haveCources = studentCources ? studentCources.length > 0 : false;
 
-        const progressColor = {
+        const progressColor = { //have stayed here as template, for how set colors and etc
             '0%': '#108ee9',
             '100%': '#87d068',
         };
@@ -85,13 +86,12 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
             <>
                 <div className="Profile-block-right">
                     <Row>
-                        <Col span={12}>
+                        <Col span={24}>
                             {haveCources ? this.getCoursesContent() : this.getEmptyCoursesContent()}
                         </Col>
-
                     </Row>
                     <Row>
-                        <Col span={12} >
+                        <Col span={24} >
 
                             <Steps progressDot current={1} size="small">
                                 <Step title="1" description="" />
@@ -100,13 +100,13 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                 <Step title="4" description="" />
                             </Steps>
                         </Col>
-                        <Col>
-                            <Row>
+                        <Col span={24}>
+                           
                                 <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '2'} />
-                                <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={20} format={() => '2 из 10'}/>
-                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '3'} status="exception"/>
-                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '9 из 9'}/>
-                            </Row>
+                                <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={20} format={() => '2 из 10'} />
+                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '3'} status="exception" />
+                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '9 из 9'} />
+                            
                         </Col>
                     </Row>
                 </div>
@@ -118,7 +118,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
-        //studentCources: state.student.studentCourses
 
     };
 };
