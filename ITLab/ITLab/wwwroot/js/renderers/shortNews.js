@@ -21,7 +21,7 @@ let render_short_news_block = (blockForRenderId, type = 'render') => {
         let newsArr = [];
 
         for (item in obj) {
-            let newsObj = new News(
+            const newsObj = new News(
                 obj[item].id,
                 obj[item].title,
                 obj[item].shortDescription,
@@ -38,7 +38,7 @@ let render_short_news_block = (blockForRenderId, type = 'render') => {
         }
 
         //console.log(newsHtmlString);
-        if (type == "refresh") {
+        if (type === "refresh") {
             document.getElementById(blockForRenderId).innerHTML = newsHtmlString;
         }
         else {
@@ -49,6 +49,7 @@ let render_short_news_block = (blockForRenderId, type = 'render') => {
 
     /*end2*/
 }
+
 class News {
     constructor(id, title, shortDescription, commentsCount, viewsCount, headPhoto, timeDate) {
         this.Id = id;
@@ -63,7 +64,9 @@ class News {
     generateHtml() {
         var newsDate = formatDateString(this.TimeDate);
 
-        let fullNewsLink = `https://localhost:5001/Landing/FullNews?newsId=${this.Id}`; // Не забыть поменять на наш будущий домен.
+        let hname = window.location.hostname
+
+        let fullNewsLink = `http://${hname}:80/Landing/FullNews?newsId=${this.Id}`; // Не забыть поменять на наш будущий домен.
 
         let htmlString = `<div class="slider-news news_block">
         

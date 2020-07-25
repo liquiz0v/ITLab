@@ -18,7 +18,6 @@ namespace ITLab.Controllers
 {
     public class LandingController : Controller
     {
-
         private readonly ITLabContext _context;
         private static IConfiguration _configuration;
 
@@ -34,6 +33,11 @@ namespace ITLab.Controllers
         
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Project()
         {
             return View();
         }
