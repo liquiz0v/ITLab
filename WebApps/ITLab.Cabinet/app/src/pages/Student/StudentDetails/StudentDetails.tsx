@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import { AppState } from 'reducer';
 import { getStudentInfo, getStudentCourses } from './actions'
 import { Student, Course } from '../reducer';
-import '../../../App.css';
-import StudentCourse from './StudentCourse/StudentCourse'
-
+import './StudentDetails.css'
+import StudentCourses from './StudentCourses/StudentCourses'
+  
 
 interface StateFromProps {
     student?: Student,
-    studentCources?: Course[]
+    studentCourses?: Course[]
 }
 
 interface DispatchFromProps {
     getStudentInfo: (userId: number) => void;
+    getStudentCourses: (userId: number) => void;
 }
 
 interface OwnStateProps {
@@ -31,7 +32,8 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
     }
 
     componentDidMount = () => {
-        this.props.getStudentInfo(2);
+        this.props.getStudentInfo(1);
+        this.props.getStudentCourses(1);
     }
 
     render() {
@@ -50,7 +52,7 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
                         <b className="Profile-name">{name}</b>
                         <button id="Edit_profile">Редактировать профиль</button>
                     </div>
-                    <StudentCourse/>
+                    <StudentCourses studentCources={this.props.studentCourses}/>
                 </div>
             </>
         );
@@ -60,7 +62,7 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
 const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
-        studentCources: state.student.studentCourses
+        studentCourses: state.student.studentCourses
 
     };
 };

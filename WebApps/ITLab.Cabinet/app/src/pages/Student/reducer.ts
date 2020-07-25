@@ -1,5 +1,6 @@
 import { updateObject } from '../../helpers/updateObjectHelper'
 import { GET_STUDENT_INFORMATION } from './StudentDetails/actions'
+import { GET_STUDENT_COURSES } from './StudentDetails/actions'
 
 export type Student = {
     StudentId: number;
@@ -37,6 +38,10 @@ export const reducer = (state: StudentState = initialState, action: any) => {
             return updateObject(state, { student : undefined });
         case GET_STUDENT_INFORMATION.SUCCESS:
             return updateObject(state, { student: action.student });
+        case GET_STUDENT_COURSES.REQUEST:
+            return updateObject(state, { studentCourses : undefined });
+        case GET_STUDENT_COURSES.SUCCESS:
+            return updateObject(state, { studentCourses: action.studentCourses });
 
         default:
             return state;
