@@ -41,14 +41,6 @@
 
 /* Cabinet css */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
-
-@font-face{
-	font-family: 'FREESCPT';
-	src: url('./static/fonts/FREESCPT.TTF') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
 
 *{
 	margin: 0;
@@ -141,7 +133,7 @@ Header{
 }
 #Profile{
 	height: calc(100vh - 100px);
-	background-image: url('./static/images/st.png');
+	background-image: url('../../../static/images/st.png');
 	position: relative;
 }
 .Color-filter{
@@ -238,17 +230,17 @@ Header{
 	background-repeat: no-repeat;
 }
 .Cabinet-main > ul > li:nth-child(1):before{
-	background-image: url('./static/images/pr-man.png');
+	background-image: url('../../../static/images/pr-man.png');
 }
 .Cabinet-main > ul > li:nth-child(2):before{
-	background-image: url('./static/images/pr-cal.png');
+	background-image: url('../../../static/images/pr-cal.png');
 }
 .Cabinet-main > ul > li:nth-child(3):before{
-	background-image: url('./static/images/pr-list.png');
+	background-image: url('../../../static/images/pr-list.png');
 	background-size: 33px;
 }
 .Cabinet-main > ul > li:nth-child(4):before{
-	background-image: url('./static/images/pr-book.png');
+	background-image: url('../../../static/images/pr-book.png');
 	background-size: 42px;
 }
 .Cabinet-main > ul > li > a{
@@ -265,20 +257,20 @@ Header{
 	display: block;
 }
 .Cabinet-main > ul > li:hover:before{
-	background-image: url('./static/images/pr-cal-white.png');
+	background-image: url('../../../static/images/pr-cal-white.png');
 	background-color: #00a3af;
 }
 .Cabinet-main > ul > li:nth-child(1):hover:before{
-	background-image: url('./static/images/pr-man-white.png');
+	background-image: url('../../../static/images/pr-man-white.png');
 }
 .Cabinet-main > ul > li:nth-child(2):hover:before{
-	background-image: url('./static/images/pr-cal-white.png');
+	background-image: url('../../../static/images/pr-cal-white.png');
 }
 .Cabinet-main > ul > li:nth-child(3):hover:before{
-	background-image: url('./static/images/pr-list-white.png');
+	background-image: url('../../../static/images/pr-list-white.png');
 }
 .Cabinet-main > ul > li:nth-child(4):hover:before{
-	background-image: url('./static/images/pr-book-white.png');
+	background-image: url('../../../static/images/pr-book-white.png');
 }
 
 /* Cabinet css */

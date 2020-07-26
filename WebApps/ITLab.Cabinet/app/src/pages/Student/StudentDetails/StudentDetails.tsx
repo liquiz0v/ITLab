@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from 'reducer';
-import { getStudentInfo } from './actions'
+import { getStudentInfo, getStudentCourses } from './actions'
 import { Student, Course } from '../reducer';
-import '../../../App.css';
+import './StudentDetails.css'
+import StudentCourses from './StudentCourses/StudentCourses'
+  
+
 interface StateFromProps {
     student?: Student,
-    studentCources?: Course[]
+    studentCourses?: Course[]
 }
 
 interface DispatchFromProps {
     getStudentInfo: (userId: number) => void;
+    getStudentCourses: (userId: number) => void;
 }
 
 interface OwnStateProps {
@@ -22,13 +26,14 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
         super(props);
 
         this.state = {
-            
+
         };
 
     }
 
     componentDidMount = () => {
-        this.props.getStudentInfo(2);
+        this.props.getStudentInfo(1);
+        this.props.getStudentCourses(1);
     }
 
     render() {
@@ -42,14 +47,12 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
                 <div className="Profile-data">
                     <div className="Profile-block-left">
                         <div className="Main-avatar">
-                            <img src={avatar} alt='photo_error'/>
+                            <img src={avatar} alt='photo_error' />
                         </div>
                         <b className="Profile-name">{name}</b>
                         <button id="Edit_profile">Редактировать профиль</button>
                     </div>
-                    <div className="Profile-block-right">
-                        <p>На данный момент Вы не записаны на наши курсы.</p>
-                    </div>
+                    <StudentCourses studentCources={this.props.studentCourses}/>
                 </div>
             </>
         );
@@ -59,11 +62,12 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
 const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
-        studentCources: state.student.studentCourses
+        studentCourses: state.student.studentCourses
 
     };
 };
 
 export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {
-    getStudentInfo
+    getStudentInfo,
+    getStudentCourses
 })(StudentDetails);

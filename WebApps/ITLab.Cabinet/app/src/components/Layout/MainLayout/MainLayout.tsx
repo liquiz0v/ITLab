@@ -40,7 +40,7 @@ class MainLayout extends React.Component<any> {
         if (student) {
             userAvatar = student.AvatarPhoto;
         }
-
+        
         const navBar: JSX.Element = (
             <div>
                 <header>
