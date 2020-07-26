@@ -16,7 +16,6 @@ interface DispatchFromProps {
 }
 
 interface OwnStateProps {
-    currentLesson: number;
     courseSelected?: number;
 
 }
@@ -29,7 +28,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         super(props);
 
         this.state = {
-            currentLesson: 0
+            
         };
 
     }
@@ -64,10 +63,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         }
 
         return null;
-    }
-
-    onLessonsStepClick = (currentLesson: number) => {
-        this.setState({ currentLesson: currentLesson })
     }
 
     render() {
