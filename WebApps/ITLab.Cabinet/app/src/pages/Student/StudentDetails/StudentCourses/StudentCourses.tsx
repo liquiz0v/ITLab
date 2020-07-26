@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import { AppState } from '../../../../reducer';
 import { Student, Course } from '../../reducer';
 import '../../../../App.css';
-import { Col, Row, Radio, Steps, Progress } from 'antd';
+import { Col, Row, Radio } from 'antd';
 
 import './StudentCourses.css'
-
-const { Step } = Steps;
 
 interface StateFromProps {
     student?: Student,
@@ -77,36 +75,12 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
         const haveCources = studentCources ? studentCources.length > 0 : false;
 
-        const progressColor = { //have stayed here as template, for how set colors and etc
-            '0%': '#108ee9',
-            '100%': '#87d068',
-        };
-
         return (
             <>
                 <div className="Profile-block-right">
                     <Row>
                         <Col span={24}>
                             {haveCources ? this.getCoursesContent() : this.getEmptyCoursesContent()}
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col span={24} >
-
-                            <Steps progressDot current={1} size="small">
-                                <Step title="1" description="" />
-                                <Step title="2" description="" />
-                                <Step title="3" description="" />
-                                <Step title="4" description="" />
-                            </Steps>
-                        </Col>
-                        <Col span={24}>
-                           
-                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '2'} />
-                                <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={20} format={() => '2 из 10'} />
-                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '3'} status="exception" />
-                                <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '9 из 9'} />
-                            
                         </Col>
                     </Row>
                 </div>
