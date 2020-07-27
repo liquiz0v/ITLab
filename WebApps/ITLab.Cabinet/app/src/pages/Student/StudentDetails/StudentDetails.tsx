@@ -41,7 +41,6 @@ class StudentDetails extends React.Component<StateFromProps & DispatchFromProps,
 
         let name = student ? student.Name : 'name_error';
         let avatar = student ? student.AvatarPhoto : undefined;
-
         return (
             <>
                 <div className="Profile-data">
@@ -63,7 +62,6 @@ const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
         studentCourses: state.student.studentCourses
-
     };
 };
 
