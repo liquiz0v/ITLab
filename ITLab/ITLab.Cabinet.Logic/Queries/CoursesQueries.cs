@@ -89,7 +89,7 @@ namespace ITLab.Cabinet.Logic.Queries
 
         public List<LessonDTO> GetCourseLessons(int courseId)
         {
-            var query = $@"SELECT Lessons.LessonId,
+            var query = $@"SELECT Lessons.LessonId
                                 ,Lessons.Name
                                 ,Lessons.Description
                                 ,Lessons.LessonDateFrom
