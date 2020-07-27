@@ -1,5 +1,5 @@
 import axios from '../../../api/axiosInstance';
-import { Student, Course } from '../reducer';
+import { Student, Course, Lesson } from '../reducer';
 
 //Get student info
 export enum GET_STUDENT_INFORMATION {
@@ -63,12 +63,43 @@ export const getStudentCourses = (userId: number) => {
                 dispatch(getStudentCoursesSuccess(response.data));
             })
             .catch((error: any) => {
-                alert(error.response); //wii be antd alert with good design
+                console.log(error); //wii be antd alert with good design
             });
     };
 };
 
 
+//Get course lessons
+export enum GET_COURSE_LESSONS {
+    REQUEST = 'GET_COURSE_LESSONS_REQUEST',
+    SUCCESS = 'GET_COURSE_LESSONS_SUCCESS',
+}
+export const getCourseLessonsRequest = () => {
+    return {
+        type: GET_COURSE_LESSONS.REQUEST
+    };
+};
+
+export const getCourseLessonsSuccess = (courseLessons: Lesson[]) => {
+    return {
+        type: GET_COURSE_LESSONS.SUCCESS,
+        courseLessons: courseLessons
+    };
+};
+
+export const getCourseLessons = (courseId: number) => {
+    return (dispatch: any) => {
+        dispatch(getCourseLessonsRequest());
+        const queryParams = `?courseId=${courseId}`;
+        axios.get(`Course/GetCourseLessons${queryParams}`)
+            .then(response => {
+                dispatch(getCourseLessonsSuccess(response.data));
+            })
+            .catch((error: any) => {
+                alert(error.response); 
+            });
+    };
+};
 
 
 //for test POST METHOD 
