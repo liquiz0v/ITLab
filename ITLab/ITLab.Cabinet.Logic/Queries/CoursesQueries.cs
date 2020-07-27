@@ -52,7 +52,6 @@ namespace ITLab.Cabinet.Logic.Queries
             return courses;
         }
 
-
         public List<CourseScheduleDTO> GetSchedule(int courseId)
         {
             var sqlquery = $@"SELECT DISTINCT
@@ -85,6 +84,23 @@ namespace ITLab.Cabinet.Logic.Queries
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 return db.Query<Course>(sqlstring).ToList();
+            }
+        }
+
+        public List<LessonDTO> GetCourseLessons(int courseId)
+        {
+            var query = $@"SELECT Lessons.LessonId
+                                ,Lessons.Name
+                                ,Lessons.Description
+                                ,Lessons.LessonDateFrom
+                                ,Lessons.LessonDateTo
+                            FROM Courses
+                            JOIN Lessons ON Lessons.CourseId = Courses.CourseId
+                            WHERE Courses.CourseId = @courseId";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return db.Query<LessonDTO>(query, new { courseId }).ToList();
             }
         }
     }

@@ -21,6 +21,8 @@ namespace ITLab.Cabinet.API.Controllers
             _coursesService = coursesService;
         }
 
+        //TODO: rewrite using object to another type, like in .NET Framework - IActionResult
+
         [HttpPost]
         public object GetCourseSchedule()
         {
@@ -33,6 +35,13 @@ namespace ITLab.Cabinet.API.Controllers
         {
             var response = _coursesService.GetStudentCourses(studentId);
             return response;
+        }
+
+        [HttpGet]
+        public object GetCourseLessons(int courseId)
+        {
+            var lessons = _coursesService.GetCourseLessons(courseId);
+            return lessons;
         }
     }
 }

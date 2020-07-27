@@ -26,5 +26,11 @@ namespace ITLab.Cabinet.Logic.Services
         {
             return _queries.GetCourseWithSchedule();
         }
+
+        public List<LessonDTO> GetCourseLessons(int courseId)
+        {
+            var lessons = _queries.GetCourseLessons(courseId);
+            return lessons;
+        }
     }
 }
