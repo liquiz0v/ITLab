@@ -37,11 +37,17 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
     }
 
-    componentDidUpdate = (prevProps: any, prevState: OwnStateProps) => {
+    componentDidMount = () => {
+        if(this.props.studentCources && this.props.studentCources[0]){ //prevProps.studentCourses !== this.props.studentCources &&
+            this.props.getCourseLessons(this.props.studentCources[0].CourseId);
+        }
+    };
 
+    componentDidUpdate = (prevProps: any, prevState: OwnStateProps) => {
         if(prevState.courseSelected && prevState.courseSelected !== this.state.courseSelected){
-            if(this.state.courseSelected)
+            if(this.state.courseSelected){
                 this.props.getCourseLessons(this.state.courseSelected);
+            }
         }
     }
 
@@ -50,8 +56,8 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
     }
 
     onCourseSelected = (e: any) => {
-        this.props.getCourseLessons(e.value);
-        this.setState({ courseSelected: e.value });
+        this.setState({ courseSelected: e.target.value });
+        // this.props.getCourseLessons(e.target.value);
     }
 
     getCoursesContent = () => {
@@ -63,7 +69,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         if (studentCources && courseLessons) {
             return (
                 <>
-                    <Radio.Group defaultValue={studentCources[0].CourseId} buttonStyle="solid" onChange={(e: any) => this.onCourseSelected(e)}>
+                    <Radio.Group defaultValue={this.state.courseSelected ? this.state.courseSelected : studentCources[0].CourseId} buttonStyle="solid" onChange={this.onCourseSelected}>
                         {
                             studentCources.map((course: Course) => {
                                 return <Radio.Button className='radio-button' value={course.CourseId}>{course.Name}</Radio.Button>
@@ -71,9 +77,9 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                         }
                     </Radio.Group>
 
-                    <ProgressBar>
+                    <ProgressBar percent={75}>
                     {
-                        courseLessons.map((lesson: Lesson) => {
+                        courseLessons.map((lesson: Lesson, index: number) => {
                             console.log(lesson);
                             let stepContent;
                             const lessonDate = new Date(lesson.LessonDateFrom)
@@ -83,7 +89,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                         <div
                                             className={`indexedStep ${accomplished ? "accomplished" : null}`}
                                         >
-                                            1
+                                            {index + 1}
                                         </div>
                                     )}
                                 </Step>);
@@ -95,7 +101,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                         <div
                                             className={`indexedStep`}
                                         >
-                                            1
+                                            {index + 1}
                                         </div>
                                     )}
                                 </Step>);
