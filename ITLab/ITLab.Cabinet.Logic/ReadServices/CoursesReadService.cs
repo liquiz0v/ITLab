@@ -1,18 +1,16 @@
-﻿using ITLab.Cabinet.Database.Models;
+﻿using System.Collections.Generic;
+using ITLab.Cabinet.Database.Models;
 using ITLab.Cabinet.Logic.DTOModels;
 using ITLab.Cabinet.Logic.Queries.Interfaces;
-using ITLab.Cabinet.Logic.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ITLab.Cabinet.Logic.ReadServices.Interfaces;
 
-namespace ITLab.Cabinet.Logic.Services
+namespace ITLab.Cabinet.Logic.ReadServices
 {
-    public class CoursesService : ICoursesService
+    public class CoursesReadService : ICoursesReadService
     {
         readonly ICoursesQueries _queries;
 
-        public CoursesService(ICoursesQueries queries)
+        public CoursesReadService(ICoursesQueries queries)
         {
             _queries = queries;
         }

@@ -5,6 +5,10 @@ namespace ITLab.Cabinet.Database.Models
 {
     public class CabinetContext : DbContext
     {
+        public CabinetContext()
+        {
+            
+        }
         public CabinetContext(DbContextOptions options) : base(options)
         {
             
