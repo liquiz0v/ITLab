@@ -1,11 +1,9 @@
-﻿using ITLab.Cabinet.Logic.DTOModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using ITLab.Cabinet.Logic.DTOModels;
 
-namespace ITLab.Cabinet.Logic.Services.Interfaces
+namespace ITLab.Cabinet.Logic.ReadServices.Interfaces
 {
-    public interface IStudentService
+    public interface IStudentReadService
     {
         public StudentDTO GetStudent(int studentId);
 

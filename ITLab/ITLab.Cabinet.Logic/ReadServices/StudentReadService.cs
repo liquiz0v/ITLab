@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ITLab.Cabinet.Logic.Queries;
-using ITLab.Cabinet.Logic.Services.Interfaces;
+﻿using System.Collections.Generic;
 using ITLab.Cabinet.Logic.DTOModels;
 using ITLab.Cabinet.Logic.Queries.Interfaces;
+using ITLab.Cabinet.Logic.ReadServices.Interfaces;
 
-namespace ITLab.Cabinet.Logic.Services
+namespace ITLab.Cabinet.Logic.ReadServices
 {
-    public class StudentService : IStudentService
+    public class StudentReadService : IStudentReadService
     {
-        IStudentQueries _queries;
+        readonly IStudentQueries _queries;
 
-        public StudentService(IStudentQueries queries)
+        public StudentReadService(IStudentQueries queries)
         {
             _queries = queries;
         }

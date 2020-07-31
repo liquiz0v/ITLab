@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ITLab.Cabinet.Logic.Services;
-using ITLab.Cabinet.Logic.Services.Interfaces;
+using ITLab.Cabinet.Logic.ReadServices;
+using ITLab.Cabinet.Logic.ReadServices.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +13,9 @@ namespace ITLab.Cabinet.API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
-        private readonly IStudentService _studentService;
-        private readonly ICoursesService _coursesService;
-        public CourseController(StudentService studentService, CoursesService coursesService)
+        private readonly IStudentReadService _studentService;
+        private readonly ICoursesReadService _coursesService;
+        public CourseController(StudentReadService studentService, CoursesReadService coursesService)
         {
             _studentService = studentService;
             _coursesService = coursesService;

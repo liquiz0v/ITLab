@@ -1,12 +1,10 @@
-﻿using ITLab.Cabinet.Database.Models;
+﻿using System.Collections.Generic;
+using ITLab.Cabinet.Database.Models;
 using ITLab.Cabinet.Logic.DTOModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ITLab.Cabinet.Logic.Services.Interfaces
+namespace ITLab.Cabinet.Logic.ReadServices.Interfaces
 {
-    public interface ICoursesService
+    public interface ICoursesReadService
     {
         public List<CourseDTO> GetCourseSchedule();
         public List<Course> GetStudentCourses(int studentId);
