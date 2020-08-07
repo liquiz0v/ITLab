@@ -8,7 +8,6 @@ using Autofac.Extensions.DependencyInjection;
 using ITLab.Cabinet.API.configs;
 using ITLab.Cabinet.Logic.Helpers.Sql;
 using ITLab.Cabinet.Logic.Queries;
-using ITLab.Cabinet.Logic.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;

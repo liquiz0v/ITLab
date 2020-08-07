@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ITLab.Cabinet.API.configs;
-using ITLab.Cabinet.Logic.Services;
-using ITLab.Cabinet.Logic.Services.Interfaces;
+using ITLab.Cabinet.Logic.ReadServices;
 //using Autofac;
 //using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +19,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Newtonsoft.Json.Serialization;
+using ITLab.Cabinet.Database.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ITLab.Cabinet.API
 {
@@ -65,6 +66,10 @@ namespace ITLab.Cabinet.API
 
                                   });
             });
+
+            services.AddDbContext<CabinetContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("CabinetConnection")));
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

@@ -2,13 +2,18 @@
 using ITLab.Cabinet.Logic.Helpers.Sql;
 using ITLab.Cabinet.Logic.Queries;
 using ITLab.Cabinet.Logic.Queries.Interfaces;
-using ITLab.Cabinet.Logic.Services;
-using ITLab.Cabinet.Logic.Services.Interfaces;
+using ITLab.Cabinet.Logic.ReadServices;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using ITLab.Cabinet.Database.Models;
+using ITLab.Cabinet.Logic.ReadServices.Interfaces;
+using ITLab.Cabinet.Logic.Repository;
+using ITLab.Cabinet.Logic.Repository.Interfaces;
+using ITLab.Cabinet.Logic.WriteServices;
+using ITLab.Cabinet.Logic.WriteServices.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace ITLab.Cabinet.API.configs
@@ -25,8 +30,32 @@ namespace ITLab.Cabinet.API.configs
                 .As<IStudentQueries>()
                 .InstancePerLifetimeScope();
 
-            builder.Register(c => new StudentService(c.Resolve<IStudentQueries>()))
-                .As<IStudentService>()
+            builder.Register(c => new StudentReadService(c.Resolve<IStudentQueries>()))
+                .As<IStudentReadService>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new CoursesQueries(c.Resolve<IConnectionStringHelper>()))
+                .As<ICoursesQueries>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new CoursesReadService(c.Resolve<ICoursesQueries>()))
+                .As<ICoursesReadService>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new CoursesRepository())
+                .As<ICoursesRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new StudentRepository())
+                .As<IStudentRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new CoursesWriteService(c.Resolve<ICoursesRepository>(), c.Resolve<ICoursesQueries>()))
+                .As<ICoursesWriteService>()
+                .InstancePerLifetimeScope();
+
+            builder.Register(c => new StudentWriteService(c.Resolve<IStudentRepository>(), c.Resolve<IStudentQueries>()))
+                .As<IStudentWriteService>()
                 .InstancePerLifetimeScope();
         }
 
@@ -34,7 +63,13 @@ namespace ITLab.Cabinet.API.configs
         {
             builder.RegisterType<ConnectionStringHelper>();
             builder.RegisterType<StudentQueries>();
-            builder.RegisterType<StudentService>();
+            builder.RegisterType<StudentReadService>();
+            builder.RegisterType<CoursesQueries>();
+            builder.RegisterType<CoursesReadService>();
+            builder.RegisterType<CoursesRepository>();
+            builder.RegisterType<StudentRepository>();
+            builder.RegisterType<CoursesWriteService>();
+            builder.RegisterType<StudentWriteService>();
 
             return builder;
         }

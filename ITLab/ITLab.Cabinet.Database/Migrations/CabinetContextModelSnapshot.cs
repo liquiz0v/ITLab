@@ -29,10 +29,15 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("HeadPhotoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CourseId");
+
+                    b.HasIndex("HeadPhotoId");
 
                     b.ToTable("Courses");
                 });
@@ -49,6 +54,12 @@ namespace ITLab.Cabinet.Database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LessonDateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LessonDateTo")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -67,6 +78,9 @@ namespace ITLab.Cabinet.Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -83,6 +97,8 @@ namespace ITLab.Cabinet.Database.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("PhotoId");
+
+                    b.HasIndex("CourseId");
 
                     b.HasIndex("LessonId");
 
@@ -236,6 +252,13 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.ToTable("Videos");
                 });
 
+            modelBuilder.Entity("ITLab.Cabinet.Database.Models.Course", b =>
+                {
+                    b.HasOne("ITLab.Cabinet.Database.Models.Photo", "HeadPhoto")
+                        .WithMany()
+                        .HasForeignKey("HeadPhotoId");
+                });
+
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.Lesson", b =>
                 {
                     b.HasOne("ITLab.Cabinet.Database.Models.Course", "Course")
@@ -245,6 +268,10 @@ namespace ITLab.Cabinet.Database.Migrations
 
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.Photo", b =>
                 {
+                    b.HasOne("ITLab.Cabinet.Database.Models.Course", null)
+                        .WithMany("Photos")
+                        .HasForeignKey("CourseId");
+
                     b.HasOne("ITLab.Cabinet.Database.Models.Lesson", null)
                         .WithMany("Photos")
                         .HasForeignKey("LessonId");

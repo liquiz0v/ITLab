@@ -76,7 +76,6 @@ namespace ITLab.Cabinet.Logic.Queries
                 return db.Query<StudentDTO>(query, new { studentId }).FirstOrDefault();
             }
         }
-        
 
     }
 }
