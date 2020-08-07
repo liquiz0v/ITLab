@@ -127,6 +127,9 @@ document.getElementById('global-filter').onclick = closeModal;
 
 
 document.getElementById('fb-first-lesson').onclick = function () {
+    document.getElementById('modelAlert').style.display = 'flex'; // Show success notification
+    document.getElementById('fb-first-lesson').style.display = 'none'; // Hide send button
+
     let name = document.getElementById('ffb-name').value;
     let phone = document.getElementById('ffb-phone').value;
     let email = document.getElementById('ffb-email').value;

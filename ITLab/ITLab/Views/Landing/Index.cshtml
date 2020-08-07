@@ -36,6 +36,10 @@
         <input type="text" id="ffb-email" placeholder="E-mail">
         <input type="text" id="ffb-age" placeholder="Возраст">
         <button id="fb-first-lesson">Записаться</button>
+        <div id="modelAlert">
+            <img src="~/images/doneCircle.png" width="20" height="20"/>
+            <p>Ваша заявка успешно отправлена.<br />Мы свяжемся с Вами в ближайшее время.</p>
+        </div>
         <p class="modal-info">Нажимая «Записаться», Вы соглашаетесь с политикой обработки персональный данных</p>
     </div>
     <header>
@@ -62,8 +66,21 @@
         <nav>
             <span><a href="/">IT Lab Odessa</a></span>
             <ul>
-                <li><a href="/Landing/Cources">Курсы</a></li>
-                <li><a href="/Landing/Project">Проекты</a></li>
+                <li>Курсы
+                        <ul class="header-dropdown">
+                            <li><a href="#">Робототехника и мехатроника</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                   
+                </li>
+                <li>Проекты
+                    <ul class="header-dropdown">
+                        <li><a href="#">Робототехника и мехатроника</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </li>
                 <li><a href="/Landing/Contacts">Контакты</a></li>
                 <li><span>UA</span> / <span class="active-lang">RU</span></li>
                 <!-- testing <a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in">-->
@@ -245,26 +262,24 @@
             </div>
         </section>
         <section id="statistics">
-            <div class="filter">
-                <div class="st-container">
-                    <div class="st-block">
-                        <img src="~/images/con_clock.png">
-                        <b id="yCounter">2015</b>
-                        <br>
-                        <span>Год основания</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="~/images/wr.png">
-                        <b><span id="prCounter">10</span>+</b>
-                        <br>
-                        <span>Успешных проектов</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="~/images/sPeople.png">
-                        <b><span id="pCounter">500</span>+</b>
-                        <br>
-                        <span>Учеников</span>
-                    </div>
+            <div class="st-container">
+                <div class="st-block">
+                    <img src="~/images/con_clock.png">
+                    <b id="yCounter">2015</b>
+                    <br>
+                    <span>Год основания</span>
+                </div>
+                <div class="st-block">
+                    <img src="~/images/wr.png">
+                    <b><span id="prCounter">10</span>+</b>
+                    <br>
+                    <span>Успешных проектов</span>
+                </div>
+                <div class="st-block">
+                    <img src="~/images/sPeople.png">
+                    <b><span id="pCounter">500</span>+</b>
+                    <br>
+                    <span>Учеников</span>
                 </div>
             </div>
         </section>
