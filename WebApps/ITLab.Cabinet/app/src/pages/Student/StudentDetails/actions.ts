@@ -30,7 +30,7 @@ export const getStudentInfo = (userId: number) => {
                 dispatch(getStudentInfoSuccess(response.data));
             })
             .catch((error: any) => {
-                alert(error.response); //wii be antd alert with good design
+                console.log('ERROR: ',error.response);  //wii be antd alert with good design
             });
     };
 };
@@ -63,7 +63,7 @@ export const getStudentCourses = (userId: number) => {
                 dispatch(getStudentCoursesSuccess(response.data));
             })
             .catch((error: any) => {
-                console.log(error); //wii be antd alert with good design
+                console.log('ERROR: ',error.response);  //wii be antd alert with good design
             });
     };
 };
@@ -96,7 +96,7 @@ export const getCourseLessons = (courseId: number) => {
                 dispatch(getCourseLessonsSuccess(response.data));
             })
             .catch((error: any) => {
-                alert(error.response); 
+                console.log('ERROR: ',error.response); 
             });
     };
 };
@@ -111,7 +111,7 @@ export const getUserInfoPost = (userId: number) => {
                 dispatch(getStudentInfoSuccess(response.data));
             })
             .catch((error: any) => {
-                alert(error.response);
+                console.log('ERROR: ',error.response); 
             });
     };
 };
