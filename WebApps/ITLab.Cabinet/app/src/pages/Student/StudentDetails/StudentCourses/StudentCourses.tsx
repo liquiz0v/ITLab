@@ -37,17 +37,19 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
     }
 
-    componentDidMount = () => {
-        if(this.props.studentCources && this.props.studentCources[0]){ //prevProps.studentCourses !== this.props.studentCources &&
-            this.props.getCourseLessons(this.props.studentCources[0].CourseId);
-        }
-    };
-
     componentDidUpdate = (prevProps: any, prevState: OwnStateProps) => {
-        if(prevState.courseSelected && prevState.courseSelected !== this.state.courseSelected){
-            if(this.state.courseSelected){
-                this.props.getCourseLessons(this.state.courseSelected);
+
+        if(prevProps.studentCources != this.props.studentCources){
+
+            if(this.props.studentCources && this.props.studentCources.length > 0 && this.props.studentCources[0]){
+                this.props.getCourseLessons(this.props.studentCources[0].CourseId);
             }
+
+        }
+
+        if(this.state.courseSelected && prevState.courseSelected !== this.state.courseSelected){
+
+            this.props.getCourseLessons(this.state.courseSelected);
         }
     }
 
@@ -57,21 +59,19 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
     onCourseSelected = (e: any) => {
         this.setState({ courseSelected: e.target.value });
-        // this.props.getCourseLessons(e.target.value);
+        
     }
 
     getCoursesContent = () => {
         let { studentCources, courseLessons } = this.props;
         let currDate = new Date();
 
-        console.log(courseLessons);
-
         if (studentCources && courseLessons) {
             return (
                 <>
                     <Radio.Group defaultValue={this.state.courseSelected ? this.state.courseSelected : studentCources[0].CourseId} buttonStyle="solid" onChange={this.onCourseSelected}>
                         {
-                            studentCources.map((course: Course) => {
+                           studentCources.map((course: Course) => {
                                 return <Radio.Button className='radio-button' value={course.CourseId}>{course.Name}</Radio.Button>
                             })
                         }
@@ -80,7 +80,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                     <ProgressBar percent={75}>
                     {
                         courseLessons.map((lesson: Lesson, index: number) => {
-                            console.log(lesson);
                             let stepContent;
                             const lessonDate = new Date(lesson.LessonDateFrom)
                             if (lessonDate.getTime() < currDate.getTime()) {
@@ -122,7 +121,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
         const haveCources = studentCources ? studentCources.length > 0 : false;
 
-        console.log(studentCources);
         
         return (
             <>
