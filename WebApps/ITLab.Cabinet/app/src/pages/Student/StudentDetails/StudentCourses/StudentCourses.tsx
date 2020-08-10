@@ -1,18 +1,22 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../../../reducer';
-import { Student, Course } from '../../reducer';
+import { Student, Course, Lesson } from '../../reducer';
 import '../../../../App.css';
 import { Col, Row, Radio } from 'antd';
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from 'react-step-progress-bar';
+import { getCourseLessons } from '../actions';
 
 import './StudentCourses.css'
 
 interface StateFromProps {
     student?: Student,
+    courseLessons?: Lesson[]
 }
 
 interface DispatchFromProps {
-
+    getCourseLessons: (courseId: number) => void;
 }
 
 interface OwnStateProps {
@@ -20,45 +24,92 @@ interface OwnStateProps {
 
 }
 interface PassedProps {
-    studentCources?: Course[]
+    studentCources?: Course[];
 }
 
 class StudentCourses extends React.Component<StateFromProps & DispatchFromProps & PassedProps, OwnStateProps> {
-    constructor(props: StateFromProps & DispatchFromProps) {
+    constructor(props: StateFromProps & DispatchFromProps & PassedProps) {
         super(props);
 
         this.state = {
-            
+
         };
 
     }
 
-    componentDidMount = () => {
+    componentDidUpdate = (prevProps: any, prevState: OwnStateProps) => {
 
+        if(prevProps.studentCources != this.props.studentCources){
+
+            if(this.props.studentCources && this.props.studentCources.length > 0 && this.props.studentCources[0]){
+                this.props.getCourseLessons(this.props.studentCources[0].CourseId);
+            }
+
+        }
+
+        if(this.state.courseSelected && prevState.courseSelected !== this.state.courseSelected){
+
+            this.props.getCourseLessons(this.state.courseSelected);
+        }
     }
-
 
     getEmptyCoursesContent = () => {
         return <p>На данный момент Вы не записаны на наши курсы.</p>;
     }
 
     onCourseSelected = (e: any) => {
-
-        this.setState({ courseSelected: e.value });
+        this.setState({ courseSelected: e.target.value });
+        
     }
 
     getCoursesContent = () => {
-        let { studentCources } = this.props;
-        if (studentCources) {
-            return (
+        let { studentCources, courseLessons } = this.props;
+        let currDate = new Date();
 
-                <Radio.Group defaultValue={studentCources[0].CourseId} buttonStyle="solid" onChange={(e: any) => this.onCourseSelected(e)}>
+        if (studentCources && courseLessons) {
+            return (
+                <>
+                    <Radio.Group defaultValue={this.state.courseSelected ? this.state.courseSelected : studentCources[0].CourseId} buttonStyle="solid" onChange={this.onCourseSelected}>
+                        {
+                           studentCources.map((course: Course) => {
+                                return <Radio.Button className='radio-button' value={course.CourseId}>{course.Name}</Radio.Button>
+                            })
+                        }
+                    </Radio.Group>
+
+                    <ProgressBar percent={75}>
                     {
-                        studentCources.map((course: Course) => {
-                            return <Radio.Button className='radio-button' value={course.CourseId}>{course.Name}</Radio.Button>
+                        courseLessons.map((lesson: Lesson, index: number) => {
+                            let stepContent;
+                            const lessonDate = new Date(lesson.LessonDateFrom)
+                            if (lessonDate.getTime() < currDate.getTime()) {
+                                stepContent = (<Step transition="scale">
+                                    {(accomplished: true) => (
+                                        <div
+                                            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                        >
+                                            {index + 1}
+                                        </div>
+                                    )}
+                                </Step>);
+                                return stepContent;
+                            }
+                            else {
+                                stepContent = (<Step transition="scale">
+                                    {(accomplished: true) => (
+                                        <div
+                                            className={`indexedStep`}
+                                        >
+                                            {index + 1}
+                                        </div>
+                                    )}
+                                </Step>);
+                                return stepContent;
+                            }
                         })
                     }
-                </Radio.Group>
+                    </ProgressBar>
+                </>
             );
         }
 
@@ -70,6 +121,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
         const haveCources = studentCources ? studentCources.length > 0 : false;
 
+        
         return (
             <>
                 <div className="Profile-block-right">
@@ -87,8 +139,8 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
-
+        courseLessons: state.student.courseLessons
     };
 };
 
-export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {})(StudentCourses);
+export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {getCourseLessons})(StudentCourses);

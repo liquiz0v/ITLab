@@ -57,8 +57,8 @@ class MainLayout extends React.Component<any> {
                                 <img src={userAvatar} alt='photo_error'></img>
                             </div>
                             <ul>
-                                <li><a >Редактирование профиля</a></li>
-                                <li><a >Выход</a></li>
+                                <li><a>Редактирование профиля</a></li>
+                                <li><a>Выход</a></li>
                             </ul>
                         </div>
                     </div>
