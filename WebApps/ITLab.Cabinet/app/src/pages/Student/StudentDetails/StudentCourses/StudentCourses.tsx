@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { AppState } from '../../../../reducer';
 import { Student, Course, Lesson } from '../../reducer';
 import '../../../../App.css';
-import { Col, Row, Radio } from 'antd';
+import { Col, Row, Radio,  Progress } from 'antd';
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from 'react-step-progress-bar';
 import { getCourseLessons } from '../actions';
@@ -66,6 +66,11 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         let { studentCources, courseLessons } = this.props;
         let currDate = new Date();
 
+        const progressColor = { //have stayed here as template, for how set colors and etc
+            '0%': '#108ee9',
+            '100%': '#87d068',
+        };
+
         if (studentCources && courseLessons) {
             return (
                 <>
@@ -76,39 +81,55 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                             })
                         }
                     </Radio.Group>
+                    
+                    <Row>
+                        <Col span={24} >
 
-                    <ProgressBar percent={75}>
-                    {
-                        courseLessons.map((lesson: Lesson, index: number) => {
-                            let stepContent;
-                            const lessonDate = new Date(lesson.LessonDateFrom)
-                            if (lessonDate.getTime() < currDate.getTime()) {
-                                stepContent = (<Step transition="scale">
-                                    {(accomplished: true) => (
-                                        <div
-                                            className={`indexedStep ${accomplished ? "accomplished" : null}`}
-                                        >
-                                            {index + 1}
-                                        </div>
-                                    )}
-                                </Step>);
-                                return stepContent;
+                            <ProgressBar percent={75}>
+                            {
+                                courseLessons.map((lesson: Lesson, index: number) => {
+                                    let stepContent;
+                                    const lessonDate = new Date(lesson.LessonDateFrom)
+                                    if (lessonDate.getTime() < currDate.getTime()) {
+                                        stepContent = (<Step transition="scale">
+                                            {(accomplished: true) => (
+                                                <div
+                                                    className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                                >
+                                                    {index + 1}
+                                                </div>
+                                            )}
+                                        </Step>);
+                                        return stepContent;
+                                    }
+                                    else {
+                                        stepContent = (<Step transition="scale">
+                                            {(accomplished: true) => (
+                                                <div
+                                                    className={`indexedStep`}
+                                                >
+                                                    {index + 1}
+                                                </div>
+                                            )}
+                                        </Step>);
+                                        return stepContent;
+                                    }
+                                })
                             }
-                            else {
-                                stepContent = (<Step transition="scale">
-                                    {(accomplished: true) => (
-                                        <div
-                                            className={`indexedStep`}
-                                        >
-                                            {index + 1}
-                                        </div>
-                                    )}
-                                </Step>);
-                                return stepContent;
-                            }
-                        })
-                    }
-                    </ProgressBar>
+                            </ProgressBar>
+
+
+                        </Col>
+
+                        <Col span={24} style={{marginTop : 50}}>
+
+                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '2'} />
+                            <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={20} format={() => '2 из 10'} />
+                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '3'} status="exception" />
+                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '9 из 9'} />
+
+                        </Col>
+                </Row>
                 </>
             );
         }
