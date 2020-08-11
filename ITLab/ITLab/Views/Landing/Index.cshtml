@@ -36,6 +36,10 @@
         <input type="text" id="ffb-email" placeholder="E-mail">
         <input type="text" id="ffb-age" placeholder="Возраст">
         <button id="fb-first-lesson">Записаться</button>
+        <div id="modelAlert">
+            <img src="~/images/doneCircle.png" width="20" height="20"/>
+            <p>Ваша заявка успешно отправлена.<br />Мы свяжемся с Вами в ближайшее время.</p>
+        </div>
         <p class="modal-info">Нажимая «Записаться», Вы соглашаетесь с политикой обработки персональный данных</p>
     </div>
     <header>
@@ -62,8 +66,21 @@
         <nav>
             <span><a href="/">IT Lab Odessa</a></span>
             <ul>
-                <li><a href="/Landing/Cources">Курсы</a></li>
-                <li><a href="/Landing/Project">Проекты</a></li>
+                <li>Курсы
+                        <ul class="header-dropdown">
+                            <li><a href="#">Робототехника и мехатроника</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                   
+                </li>
+                <li>Проекты
+                    <ul class="header-dropdown">
+                        <li><a href="#">Робототехника и мехатроника</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </li>
                 <li><a href="/Landing/Contacts">Контакты</a></li>
                 <li><span>UA</span> / <span class="active-lang">RU</span></li>
                 <!-- testing <a href="https://www.youtube.com/watch?v=urU2EcKWDXw" class="sign-in">-->
@@ -94,11 +111,75 @@
                 <h2 class="wow fadeInLeft" data-wow-delay="0.1s">Наши курсы</h2>
                 <hr class="wow fadeInRight" data-wow-delay="0.25s">
             </div>
-
             <div class="courses-block">
-                <div id="course"></div>
+                <div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
+                    <div class="cours-header">
+                        <div class="cours-bg i1"></div>
+                        <div class="cours-name">Робототехника и<br> мехатроника</div>
+                    </div>
+                    <div class="cours-body">
+                        <div class="decore-line"></div>
+                        <div class="cours-time">
+                            <ul>
+                                <li>Среда</li>
+                                <li>Суббота</li>
+                            </ul>
+                            <ul>
+                                <li><img src="~/images/clock.png">  17:00 - 18:30</li>
+                                <li><img src="~/images/clock.png">  13:00 - 14:30</li>
+                            </ul>
+                        </div>
+                        <div class="cours-button">
+                            <button onclick="openModal()">Записаться на занятие</button>
+                            <button>Подробнее о курсе</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cours-block wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="cours-header">
+                        <div class="cours-bg i2"></div>
+                        <div class="cours-name">Робототехника и<br> мехатроника</div>
+                    </div>
+                    <div class="cours-body">
+                        <div class="decore-line"></div>
+                        <div class="cours-time">
+                            <ul>
+                                <li>Пятница</li>
+                                <li>Воскресенье</li>
+                            </ul>
+                            <ul>
+                                <li><img src="images/clock.png">  17:00 - 18:30</li>
+                                <li><img src="images/clock.png">  10:00 - 11:30</li>
+                            </ul>
+                        </div>
+                        <div class="cours-button">
+                            <button onclick="openModal()">Записаться на занятие</button>
+                            <button>Подробнее о курсе</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cours-block wow fadeInDown" data-wow-delay="0.5s">
+                    <div class="cours-header">
+                        <div class="cours-bg i3"></div>
+                        <div class="cours-name">Программирование   в <br>мире Minecraft</div>
+                    </div>
+                    <div class="cours-body">
+                        <div class="decore-line"></div>
+                        <div class="cours-time">
+                            <ul>
+                                <li>Суббота</li>
+                            </ul>
+                            <ul>
+                                <li><img src="~/images/clock.png">  10:00 - 11:30</li>
+                            </ul>
+                        </div>
+                        <div class="cours-button">
+                            <button onclick="openModal()">Записаться на занятие</button>
+                            <button>Подробнее о курсе</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </section>
         <section id="features">
             <div class="features-header">
@@ -179,26 +260,24 @@
             </div>
         </section>
         <section id="statistics">
-            <div class="filter">
-                <div class="st-container">
-                    <div class="st-block">
-                        <img src="~/images/con_clock.png">
-                        <b id="yCounter">2015</b>
-                        <br>
-                        <span>Год основания</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="~/images/wr.png">
-                        <b><span id="prCounter">10</span>+</b>
-                        <br>
-                        <span>Успешных проектов</span>
-                    </div>
-                    <div class="st-block">
-                        <img src="~/images/sPeople.png">
-                        <b><span id="pCounter">500</span>+</b>
-                        <br>
-                        <span>Учеников</span>
-                    </div>
+            <div class="st-container">
+                <div class="st-block">
+                    <img src="~/images/con_clock.png">
+                    <b id="yCounter">2015</b>
+                    <br>
+                    <span>Год основания</span>
+                </div>
+                <div class="st-block">
+                    <img src="~/images/wr.png">
+                    <b><span id="prCounter">10</span>+</b>
+                    <br>
+                    <span>Успешных проектов</span>
+                </div>
+                <div class="st-block">
+                    <img src="~/images/sPeople.png">
+                    <b><span id="pCounter">500</span>+</b>
+                    <br>
+                    <span>Учеников</span>
                 </div>
             </div>
         </section>
@@ -314,7 +393,6 @@
     <script src="~/lib/moment/moment-with-locales.min.js"></script>
     <script src="~/js/dateHelper.js"></script>
     <script src="~/js/wow.min.js"></script>
-    <script src="~/js/renderers/shortCourses.js"></script>
     <script src="~/js/renderers/shortNews.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/home.js"></script>
