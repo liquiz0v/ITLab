@@ -66,11 +66,19 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
         let { studentCources, courseLessons } = this.props;
         let currDate = new Date();
 
+        let accomplishedCount: number;
+        let unAccomplishedCount: number;
+        
+        accomplishedCount = 0;
+        unAccomplishedCount = 0;
+
         const progressColor = { //have stayed here as template, for how set colors and etc
             '0%': '#108ee9',
             '100%': '#87d068',
         };
 
+        const progressPerencent = (accomplishedCount/(accomplishedCount + unAccomplishedCount));
+ 
         if (studentCources && courseLessons) {
             return (
                 <>
@@ -85,32 +93,36 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                     <Row>
                         <Col span={24} >
 
-                            <ProgressBar percent={75}>
+                            <ProgressBar percent={progressPerencent}>
                             {
                                 courseLessons.map((lesson: Lesson, index: number) => {
                                     let stepContent;
                                     const lessonDate = new Date(lesson.LessonDateFrom)
                                     if (lessonDate.getTime() < currDate.getTime()) {
                                         stepContent = (<Step transition="scale">
-                                            {(accomplished: true) => (
+                                            {(accomplished: true) => {
+                                                accomplishedCount =+ 1;
+                                                return (
                                                 <div
                                                     className={`indexedStep ${accomplished ? "accomplished" : null}`}
                                                 >
                                                     {index + 1}
                                                 </div>
-                                            )}
+                                            )}}
                                         </Step>);
                                         return stepContent;
                                     }
                                     else {
                                         stepContent = (<Step transition="scale">
-                                            {(accomplished: true) => (
+                                            {(accomplished: true) => {
+                                                unAccomplishedCount =+ 1;
+                                                return (
                                                 <div
                                                     className={`indexedStep`}
                                                 >
                                                     {index + 1}
                                                 </div>
-                                            )}
+                                            )}}
                                         </Step>);
                                         return stepContent;
                                     }
