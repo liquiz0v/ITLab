@@ -95,7 +95,7 @@ namespace ITLab.Cabinet.Logic.Queries
                                         ,StudentStat.AverageMark
                                         ,StudentCompletedTasks.CompletedTasksCount
                                         ,COUNT(StudentOverallTasks.MarksCount) OVER(ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
-					                    ,StudentsVisitedLessons.CompletedLessons
+					                    ,StudentsVisitedLessons.AccomplishedLessons
 					                    ,StudentsVisitedLessons.VisitedLessons
                                     FROM Students
                                     JOIN
@@ -140,7 +140,7 @@ namespace ITLab.Cabinet.Logic.Queries
                                     (
 			                        	SELECT 
 			                        		SUM(CASE WHEN LessonsVisits.Visited = 1 THEN 1 ELSE 0 END) AS VisitedLessons
-			                        		,COUNT(LessonsVisits.LessonId) AS CompletedLessons
+			                        		,COUNT(LessonsVisits.LessonId) AS AccomplishedLessons
 			                        		,LessonsVisits.StudentId
 			                        	FROM Lessons
 			                        	     JOIN LessonsVisits ON LessonsVisits.LessonId = Lessons.LessonId
