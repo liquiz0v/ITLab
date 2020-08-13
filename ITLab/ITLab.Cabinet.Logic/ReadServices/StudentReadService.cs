@@ -18,7 +18,7 @@ namespace ITLab.Cabinet.Logic.ReadServices
             return _queries.GetStudent(studentId);
         }
 
-        public List<CourseDTO> GetStudentCources(int studentId)
+        public List<CourseDTO> GetStudentCourses(int studentId)
         {
             var response = _queries.GetStudentCources(studentId);
             return response;

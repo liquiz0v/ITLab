@@ -87,6 +87,62 @@ namespace ITLab.Cabinet.Logic.Queries
             }
         }
 
+        public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId)
+        {
+            var sqlQuery = $@"SELECT DISTINCT 
+                                           StudentStat.StudentId, 
+                                           StudentStat.StudentPositionInRating, 
+                                           StudentStat.AverageMark, 
+                                           StudentCompletedTasks.CompletedTasksCount, 
+                                           COUNT(StudentOverallTasks.MarksCount) OVER(
+                                           ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
+                                    FROM Students
+                                    JOIN
+                                    (
+                                        SELECT DISTINCT 
+                                               AvgMarks.StudentId, 
+                                               AvgMarks.AverageMark, 
+                                               ROW_NUMBER() OVER(
+                                               ORDER BY AverageMark DESC) AS StudentPositionInRating
+                                        FROM
+                                        (
+                                            SELECT DISTINCT 
+                                                   StudentMarks.StudentId, 
+                                                   CAST(AVG(StudentMarks.Mark) OVER(
+                                                   ORDER BY StudentId) AS REAL) AS AverageMark
+                                            FROM StudentMarks
+                                        ) AS AvgMarks
+                                        WHERE AvgMarks.StudentId IN
+                                        (
+                                            SELECT Students.StudentId
+                                            FROM Students
+                                        )
+                                    ) AS StudentStat ON StudentStat.StudentId = Students.StudentId
+                                         JOIN StudentsCourses ON StudentsCourses.StudentId = Students.StudentId
+                                                                 AND StudentsCourses.CourseId = {courseId}
+                                    JOIN
+                                    (
+                                        SELECT DISTINCT 
+                                               StudentMarks.StudentId, 
+                                               COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS CompletedTasksCount
+                                        FROM StudentMarks
+                                        WHERE StudentMarks.StudentId = {studentId}
+                                    ) AS StudentCompletedTasks ON StudentCompletedTasks.StudentId = Students.StudentId
+                                    JOIN
+                                    (
+                                        SELECT StudentMarks.StudentId, 
+                                               COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS MarksCount
+                                        FROM StudentMarks
+                                        WHERE StudentMarks.StudentId = {studentId}
+                                    ) AS StudentOverallTasks ON StudentOverallTasks.StudentId = Students.StudentId
+                                    WHERE Students.StudentId = {studentId};";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return db.Query<StudentStatisticsDTO>(sqlQuery).FirstOrDefault();
+            }
+        }
+
         public List<LessonDTO> GetCourseLessons(int courseId)
         {
             var query = $@"SELECT Lessons.LessonId
