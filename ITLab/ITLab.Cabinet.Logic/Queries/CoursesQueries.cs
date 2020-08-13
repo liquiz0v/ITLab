@@ -97,7 +97,7 @@ namespace ITLab.Cabinet.Logic.Queries
                                            COUNT(StudentOverallTasks.MarksCount) OVER(
                                            ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
                                     FROM Students
-                                         JOIN
+                                    JOIN
                                     (
                                         SELECT DISTINCT 
                                                AvgMarks.StudentId, 
@@ -120,7 +120,7 @@ namespace ITLab.Cabinet.Logic.Queries
                                     ) AS StudentStat ON StudentStat.StudentId = Students.StudentId
                                          JOIN StudentsCourses ON StudentsCourses.StudentId = Students.StudentId
                                                                  AND StudentsCourses.CourseId = {courseId}
-                                         JOIN
+                                    JOIN
                                     (
                                         SELECT DISTINCT 
                                                StudentMarks.StudentId, 
@@ -128,7 +128,7 @@ namespace ITLab.Cabinet.Logic.Queries
                                         FROM StudentMarks
                                         WHERE StudentMarks.StudentId = {studentId}
                                     ) AS StudentCompletedTasks ON StudentCompletedTasks.StudentId = Students.StudentId
-                                         JOIN
+                                    JOIN
                                     (
                                         SELECT StudentMarks.StudentId, 
                                                COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS MarksCount
