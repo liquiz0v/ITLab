@@ -4,14 +4,16 @@ using ITLab.Cabinet.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ITLab.Cabinet.Database.Migrations
 {
     [DbContext(typeof(CabinetContext))]
-    partial class CabinetContextModelSnapshot : ModelSnapshot
+    [Migration("20200812130251_AddedStudentMarksTableAndRenamedTasksToHomeTaskTable")]
+    partial class AddedStudentMarksTableAndRenamedTasksToHomeTaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +213,7 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.Property<int?>("HomeTaskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Mark")
+                    b.Property<int>("Mark")
                         .HasColumnType("int");
 
                     b.Property<int?>("StudentId")
