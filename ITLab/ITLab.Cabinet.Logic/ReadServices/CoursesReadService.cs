@@ -30,5 +30,10 @@ namespace ITLab.Cabinet.Logic.ReadServices
             var lessons = _queries.GetCourseLessons(courseId);
             return lessons;
         }
+
+        public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId)
+        {
+            return _queries.GetStudentStatistics(studentId, courseId);
+        }
     }
 }

@@ -43,5 +43,11 @@ namespace ITLab.Cabinet.API.Controllers
             var lessons = _coursesService.GetCourseLessons(courseId);
             return lessons;
         }
+
+        [HttpGet]
+        public object GetStudentStatistics(int studentId, int courseId)
+        {
+            return _coursesService.GetStudentStatistics(studentId, courseId);
+        }
     }
 }

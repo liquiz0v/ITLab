@@ -9,6 +9,6 @@ namespace ITLab.Cabinet.Logic.ReadServices.Interfaces
         public List<CourseDTO> GetCourseSchedule();
         public List<Course> GetStudentCourses(int studentId);
         public List<LessonDTO> GetCourseLessons(int courseId);
-
+        public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId);
     }
 }
