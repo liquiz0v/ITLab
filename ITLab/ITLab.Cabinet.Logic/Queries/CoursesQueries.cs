@@ -90,12 +90,13 @@ namespace ITLab.Cabinet.Logic.Queries
         public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId)
         {
             var sqlQuery = $@"SELECT DISTINCT 
-                                           StudentStat.StudentId, 
-                                           StudentStat.StudentPositionInRating, 
-                                           StudentStat.AverageMark, 
-                                           StudentCompletedTasks.CompletedTasksCount, 
-                                           COUNT(StudentOverallTasks.MarksCount) OVER(
-                                           ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
+                                         StudentStat.StudentId
+                                        ,StudentStat.StudentPositionInRating
+                                        ,StudentStat.AverageMark
+                                        ,StudentCompletedTasks.CompletedTasksCount
+                                        ,COUNT(StudentOverallTasks.MarksCount) OVER(ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
+					                    ,StudentsVisitedLessons.CompletedLessons
+					                    ,StudentsVisitedLessons.VisitedLessons
                                     FROM Students
                                     JOIN
                                     (
@@ -135,7 +136,20 @@ namespace ITLab.Cabinet.Logic.Queries
                                         FROM StudentMarks
                                         WHERE StudentMarks.StudentId = {studentId}
                                     ) AS StudentOverallTasks ON StudentOverallTasks.StudentId = Students.StudentId
-                                    WHERE Students.StudentId = {studentId};";
+                                    LEFT JOIN
+                                    (
+			                        	SELECT 
+			                        		SUM(CASE WHEN LessonsVisits.Visited = 1 THEN 1 ELSE 0 END) AS VisitedLessons
+			                        		,COUNT(LessonsVisits.LessonId) AS CompletedLessons
+			                        		,LessonsVisits.StudentId
+			                        	FROM Lessons
+			                        	     JOIN LessonsVisits ON LessonsVisits.LessonId = Lessons.LessonId
+			                        	WHERE Lessons.CourseId = {courseId}
+			                        	      AND Lessons.LessonDateFrom <= GETDATE()
+			                        	GROUP BY LessonsVisits.StudentId
+
+                                    ) StudentsVisitedLessons on StudentsVisitedLessons.StudentId = Students.StudentId
+                                    WHERE Students.StudentId = {studentId}";
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
