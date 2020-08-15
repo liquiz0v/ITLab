@@ -1,22 +1,25 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../../../reducer';
-import { Student, Course, Lesson } from '../../reducer';
+import { Student, Course, Lesson, StudentStatistics } from '../../reducer';
 import '../../../../App.css';
 import { Col, Row, Radio,  Progress } from 'antd';
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from 'react-step-progress-bar';
-import { getCourseLessons } from '../actions';
+import { getCourseLessons, getStudentStatistics } from '../actions';
 
 import './StudentCourses.css'
+// import { StudentStatistics as StudentStatisticsPage } from 'pages/Student/StudentStatictics/StudentStatistics';
 
 interface StateFromProps {
     student?: Student,
-    courseLessons?: Lesson[]
+    courseLessons?: Lesson[],
+    studentStatistics?: StudentStatistics
 }
 
 interface DispatchFromProps {
     getCourseLessons: (courseId: number) => void;
+    getStudentStatistics: (courseId: number, studentId: number) => void;
 }
 
 interface OwnStateProps {
@@ -39,17 +42,19 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
     componentDidUpdate = (prevProps: any, prevState: OwnStateProps) => {
 
-        if(prevProps.studentCources != this.props.studentCources){
+        if(prevProps.studentCources !== this.props.studentCources){
 
-            if(this.props.studentCources && this.props.studentCources.length > 0 && this.props.studentCources[0]){
+            if(this.props.studentCources && this.props.studentCources.length > 0 && this.props.studentCources[0] && this.props.student){
                 this.props.getCourseLessons(this.props.studentCources[0].CourseId);
+                this.props.getStudentStatistics(this.props.studentCources[0].CourseId, this.props.student.StudentId);
             }
 
         }
 
-        if(this.state.courseSelected && prevState.courseSelected !== this.state.courseSelected){
+        if(this.state.courseSelected && prevState.courseSelected !== this.state.courseSelected && this.props.student){
 
             this.props.getCourseLessons(this.state.courseSelected);
+            this.props.getStudentStatistics(this.state.courseSelected, this.props.student.StudentId);
         }
     }
 
@@ -63,7 +68,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
     }
 
     getCoursesContent = () => {
-        let { studentCources, courseLessons } = this.props;
+        let { studentCources, courseLessons, studentStatistics } = this.props;
         let currDate = new Date();
 
         let accomplishedCount: number;
@@ -79,7 +84,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
         const progressPerencent = (accomplishedCount/(accomplishedCount + unAccomplishedCount));
  
-        if (studentCources && courseLessons) {
+        if (studentCources && courseLessons && studentStatistics) {
             return (
                 <>
                     <Radio.Group defaultValue={this.state.courseSelected ? this.state.courseSelected : studentCources[0].CourseId} buttonStyle="solid" onChange={this.onCourseSelected}>
@@ -135,10 +140,14 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 
                         <Col span={24} style={{marginTop : 50}}>
 
-                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '2'} />
-                            <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={20} format={() => '2 из 10'} />
-                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '3'} status="exception" />
-                            <Progress className='progress-item' type="circle" width={100} percent={100} format={() => '9 из 9'} />
+                            <Progress className='progress-item' type="circle" width={100} percent={100} 
+                            format={() => studentStatistics?.StudentPositionInRating} />
+                            <Progress className='progress-item' type="circle" width={100} strokeColor={progressColor} percent={(studentStatistics?.AverageMark/100)*100} 
+                            format={() => `${studentStatistics?.AverageMark}`} />
+                            <Progress className='progress-item' type="circle" width={100} percent={(studentStatistics?.CompletedTasksCount/studentStatistics?.OverallTasksCount)*100} 
+                            format={() => `${studentStatistics?.CompletedTasksCount} из ${studentStatistics?.OverallTasksCount}`} status="exception" />
+                            <Progress className='progress-item' type="circle" width={100} percent={100} 
+                            format={() => `${studentStatistics?.VisitedLessons}`} />
 
                         </Col>
                 </Row>
@@ -172,8 +181,9 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
 const mapStateToProps = (state: AppState): StateFromProps => {
     return {
         student: state.student.student,
-        courseLessons: state.student.courseLessons
+        courseLessons: state.student.courseLessons,
+        studentStatistics: state.student.studentStatistics
     };
 };
 
-export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {getCourseLessons})(StudentCourses);
+export default connect<StateFromProps, DispatchFromProps, any, AppState>(mapStateToProps, {getCourseLessons, getStudentStatistics })(StudentCourses);

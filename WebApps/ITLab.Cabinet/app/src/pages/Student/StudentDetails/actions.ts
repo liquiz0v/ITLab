@@ -1,5 +1,5 @@
 import axios from '../../../api/axiosInstance';
-import { Student, Course, Lesson } from '../reducer';
+import { Student, Course, Lesson, StudentStatistics } from '../reducer';
 
 //Get student info
 export enum GET_STUDENT_INFORMATION {
@@ -101,6 +101,37 @@ export const getCourseLessons = (courseId: number) => {
     };
 };
 
+//Get course lessons
+export enum GET_STUDENT_STATISTICS {
+    REQUEST = 'GET_STUDENT_STATISTICS_REQUEST',
+    SUCCESS = 'GET_STUDENT_STATISTICS_SUCCESS',
+}
+export const getStudentStatisticsRequest = () => {
+    return {
+        type: GET_STUDENT_STATISTICS.REQUEST
+    };
+};
+
+export const getStudentStatisticsSuccess = (studentStatistics: StudentStatistics) => {
+    return {
+        type: GET_STUDENT_STATISTICS.SUCCESS,
+        studentStatistics: studentStatistics
+    };
+};
+
+export const getStudentStatistics = (courseId: number, studentId?: number) => {
+    return (dispatch: any) => {
+        dispatch(getStudentStatisticsRequest());
+        const queryParams = `?studentId=${studentId}&courseId=${courseId}`;
+        axios.get(`Course/GetStudentStatistics${queryParams}`)
+            .then(response => {
+                dispatch(getStudentStatisticsSuccess(response.data));
+            })
+            .catch((error: any) => {
+                console.log('ERROR: ',error.response); 
+            });
+    };
+};
 
 //for test POST METHOD 
 export const getUserInfoPost = (userId: number) => {
