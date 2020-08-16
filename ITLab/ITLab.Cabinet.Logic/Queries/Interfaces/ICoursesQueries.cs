@@ -12,5 +12,6 @@ namespace ITLab.Cabinet.Logic.Queries.Interfaces
         public List<CourseScheduleDTO> GetSchedule(int courseId);
         public List<Course> GetStudentCourses(int studentId);
         public List<LessonDTO> GetCourseLessons(int courseId);
+        public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId);
     }
 }

@@ -4,14 +4,16 @@ using ITLab.Cabinet.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ITLab.Cabinet.Database.Migrations
 {
     [DbContext(typeof(CabinetContext))]
-    partial class CabinetContextModelSnapshot : ModelSnapshot
+    [Migration("20200812130251_AddedStudentMarksTableAndRenamedTasksToHomeTaskTable")]
+    partial class AddedStudentMarksTableAndRenamedTasksToHomeTaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,31 +99,6 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Lessons");
-                });
-
-            modelBuilder.Entity("ITLab.Cabinet.Database.Models.LessonsVisits", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("LessonId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Visited")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LessonId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("LessonsVisits");
                 });
 
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.Photo", b =>
@@ -236,7 +213,7 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.Property<int?>("HomeTaskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Mark")
+                    b.Property<int>("Mark")
                         .HasColumnType("int");
 
                     b.Property<int?>("StudentId")
@@ -312,7 +289,7 @@ namespace ITLab.Cabinet.Database.Migrations
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.HomeTask", b =>
                 {
                     b.HasOne("ITLab.Cabinet.Database.Models.Lesson", null)
-                        .WithMany("HomeTasks")
+                        .WithMany("Tasks")
                         .HasForeignKey("LessonId");
 
                     b.HasOne("ITLab.Cabinet.Database.Models.Quiz", "Quiz")
@@ -325,17 +302,6 @@ namespace ITLab.Cabinet.Database.Migrations
                     b.HasOne("ITLab.Cabinet.Database.Models.Course", "Course")
                         .WithMany("Lessons")
                         .HasForeignKey("CourseId");
-                });
-
-            modelBuilder.Entity("ITLab.Cabinet.Database.Models.LessonsVisits", b =>
-                {
-                    b.HasOne("ITLab.Cabinet.Database.Models.Lesson", "Lesson")
-                        .WithMany("LessonVisit")
-                        .HasForeignKey("LessonId");
-
-                    b.HasOne("ITLab.Cabinet.Database.Models.Student", "Student")
-                        .WithMany("LessonsVisits")
-                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("ITLab.Cabinet.Database.Models.Photo", b =>

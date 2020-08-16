@@ -29,9 +29,9 @@ namespace ITLab.Cabinet.API.Controllers
         }
 
         [HttpGet]
-        public object GetStudentCources(int studentId)
+        public object GetStudentCourses(int studentId)
         {
-            var response = _studentService.GetStudentCources(studentId);
+            var response = _studentService.GetStudentCourses(studentId);
             return response;
         }
         

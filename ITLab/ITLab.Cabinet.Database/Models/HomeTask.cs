@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ITLab.Cabinet.Database.Models
 {
-    public class Task
+    public class HomeTask
     {
         [Key]
-        public int TaskId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Quiz Quiz { get; set; }

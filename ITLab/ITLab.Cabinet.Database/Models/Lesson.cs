@@ -16,6 +16,9 @@ namespace ITLab.Cabinet.Database.Models
         public ICollection<Presentations> Presentations { get; set; }
         public ICollection<Video> Videos { get; set; }
         public ICollection<Photo> Photos { get; set; }
-        public ICollection<Task> Tasks { get; set; }
+        public ICollection<HomeTask> HomeTasks { get; set; }
+
+
+        public virtual List<LessonsVisits> LessonVisit { get; set; }
     }
 }

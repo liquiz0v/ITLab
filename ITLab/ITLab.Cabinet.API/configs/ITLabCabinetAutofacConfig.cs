@@ -38,6 +38,10 @@ namespace ITLab.Cabinet.API.configs
                 .As<ICoursesQueries>()
                 .InstancePerLifetimeScope();
 
+            builder.Register(c => new LessonsQueries(c.Resolve<IConnectionStringHelper>()))
+                .As<ILessonsQueries>()
+                .InstancePerLifetimeScope();
+           
             builder.Register(c => new CoursesReadService(c.Resolve<ICoursesQueries>()))
                 .As<ICoursesReadService>()
                 .InstancePerLifetimeScope();
@@ -57,6 +61,10 @@ namespace ITLab.Cabinet.API.configs
             builder.Register(c => new StudentWriteService(c.Resolve<IStudentRepository>(), c.Resolve<IStudentQueries>()))
                 .As<IStudentWriteService>()
                 .InstancePerLifetimeScope();
+
+            builder.Register(c => new LessonsReadService(c.Resolve<ILessonsQueries>()))
+                .As<ILessonsReadService>()
+                .InstancePerLifetimeScope();
         }
 
         public static ContainerBuilder ContainerBuilderConfig(ContainerBuilder builder)
@@ -70,6 +78,9 @@ namespace ITLab.Cabinet.API.configs
             builder.RegisterType<StudentRepository>();
             builder.RegisterType<CoursesWriteService>();
             builder.RegisterType<StudentWriteService>();
+
+            builder.RegisterType<LessonsQueries>();
+            builder.RegisterType<LessonsReadService>();
 
             return builder;
         }
