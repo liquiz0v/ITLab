@@ -90,13 +90,14 @@ namespace ITLab.Cabinet.Logic.Queries
         public StudentStatisticsDTO GetStudentStatistics(int studentId, int courseId)
         {
             var sqlQuery = $@"SELECT DISTINCT 
-                                         StudentStat.StudentId
-                                        ,StudentStat.StudentPositionInRating
-                                        ,StudentStat.AverageMark
-                                        ,StudentCompletedTasks.CompletedTasksCount
-                                        ,COUNT(StudentOverallTasks.MarksCount) OVER(ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
-					                    ,StudentsVisitedLessons.AccomplishedLessons
-					                    ,StudentsVisitedLessons.VisitedLessons
+                                           StudentStat.StudentId
+	                                      ,StudentStat.StudentPositionInRating
+	                                      ,StudentStat.AverageMark
+	                                      ,StudentCompletedTasks.CompletedTasksCount
+	                                      ,COUNT(StudentOverallTasks.MarksCount) OVER(
+                                           ORDER BY StudentOverallTasks.StudentId) AS OverallTasksCount
+	                                      ,StudentsVisitedLessons.AccomplishedLessons
+	                                      ,StudentsVisitedLessons.VisitedLessons
                                     FROM Students
                                     JOIN
                                     (
@@ -108,52 +109,76 @@ namespace ITLab.Cabinet.Logic.Queries
                                         FROM
                                         (
                                             SELECT DISTINCT 
-                                                   StudentMarks.StudentId, 
-                                                   CAST(AVG(StudentMarks.Mark) OVER(
-                                                   ORDER BY StudentId) AS REAL) AS AverageMark
-                                            FROM StudentMarks
+                                                   CourseRating.StudentId, 
+                                                   CAST(AVG(CourseRating.Mark) OVER(
+                                                   ORDER BY CourseRating.StudentId) AS REAL) AS AverageMark
+                                            FROM
+                                            (
+                                                SELECT DISTINCT 
+                                                       StudentMarks.StudentId, 
+                                                       (CASE
+                                                            WHEN StudentMarks.Mark IS NULL
+                                                            THEN 0
+                                                            ELSE StudentMarks.Mark
+                                                        END) AS Mark
+                                                FROM [ITLab_Cabinet].[dbo].[StudentMarks]
+                                                     JOIN HomeTasks ON HomeTasks.Id = StudentMarks.HomeTaskId
+                                                     JOIN Lessons ON HomeTasks.LessonId = Lessons.LessonId
+                                                     JOIN Courses ON Courses.CourseId = Lessons.CourseId
+                                                WHERE Courses.CourseId = @CourseId
+                                            ) AS CourseRating
                                         ) AS AvgMarks
+                                        JOIN StudentsCourses ON StudentsCourses.StudentId = AvgMarks.StudentId
                                         WHERE AvgMarks.StudentId IN
                                         (
                                             SELECT Students.StudentId
                                             FROM Students
                                         )
+                                              AND StudentsCourses.CourseId = @CourseId
                                     ) AS StudentStat ON StudentStat.StudentId = Students.StudentId
-                                         JOIN StudentsCourses ON StudentsCourses.StudentId = Students.StudentId
-                                                                 AND StudentsCourses.CourseId = {courseId}
                                     JOIN
                                     (
                                         SELECT DISTINCT 
                                                StudentMarks.StudentId, 
                                                COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS CompletedTasksCount
-                                        FROM StudentMarks
-                                        WHERE StudentMarks.StudentId = {studentId}
+                                        FROM [ITLab_Cabinet].[dbo].[StudentMarks]
+                                             JOIN HomeTasks ON HomeTasks.Id = StudentMarks.HomeTaskId
+                                             JOIN Lessons ON HomeTasks.LessonId = Lessons.LessonId
+                                             JOIN Courses ON Courses.CourseId = Lessons.CourseId
+                                        WHERE StudentMarks.StudentId = @StudentId
+                                              AND Courses.CourseId = @CourseId
                                     ) AS StudentCompletedTasks ON StudentCompletedTasks.StudentId = Students.StudentId
                                     JOIN
                                     (
                                         SELECT StudentMarks.StudentId, 
                                                COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS MarksCount
-                                        FROM StudentMarks
-                                        WHERE StudentMarks.StudentId = {studentId}
+                                        FROM [ITLab_Cabinet].[dbo].[StudentMarks]
+                                             JOIN HomeTasks ON HomeTasks.Id = StudentMarks.HomeTaskId
+                                             JOIN Lessons ON HomeTasks.LessonId = Lessons.LessonId
+                                             JOIN Courses ON Courses.CourseId = Lessons.CourseId
+                                        WHERE StudentMarks.StudentId = @StudentId
+                                              AND Courses.CourseId = @CourseId
                                     ) AS StudentOverallTasks ON StudentOverallTasks.StudentId = Students.StudentId
                                     LEFT JOIN
                                     (
-			                        	SELECT 
-			                        		SUM(CASE WHEN LessonsVisits.Visited = 1 THEN 1 ELSE 0 END) AS VisitedLessons
-			                        		,COUNT(LessonsVisits.LessonId) AS AccomplishedLessons
-			                        		,LessonsVisits.StudentId
-			                        	FROM Lessons
-			                        	     JOIN LessonsVisits ON LessonsVisits.LessonId = Lessons.LessonId
-			                        	WHERE Lessons.CourseId = {courseId}
-			                        	      AND Lessons.LessonDateFrom <= GETDATE()
-			                        	GROUP BY LessonsVisits.StudentId
-
-                                    ) StudentsVisitedLessons on StudentsVisitedLessons.StudentId = Students.StudentId
-                                    WHERE Students.StudentId = {studentId}";
+                                        SELECT SUM(CASE
+                                                       WHEN LessonsVisits.Visited = 1
+                                                       THEN 1
+                                                       ELSE 0
+                                                   END) AS VisitedLessons, 
+                                               COUNT(LessonsVisits.LessonId) AS AccomplishedLessons, 
+                                               LessonsVisits.StudentId
+                                        FROM Lessons
+                                             JOIN LessonsVisits ON LessonsVisits.LessonId = Lessons.LessonId
+                                        WHERE Lessons.CourseId = @CourseId
+                                              AND Lessons.LessonDateFrom <= GETDATE()
+                                        GROUP BY LessonsVisits.StudentId
+                                    ) StudentsVisitedLessons ON StudentsVisitedLessons.StudentId = Students.StudentId
+                                    WHERE Students.StudentId = @StudentId;";
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                return db.Query<StudentStatisticsDTO>(sqlQuery).FirstOrDefault();
+                return db.Query<StudentStatisticsDTO>(sqlQuery, new {studentId, courseId}).FirstOrDefault();
             }
         }
 

@@ -82,9 +82,22 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
             '100%': '#87d068',
         };
 
-        const progressPerencent = (accomplishedCount/(accomplishedCount + unAccomplishedCount));
+        
  
         if (studentCources && courseLessons && studentStatistics) {
+
+            courseLessons.map((lesson: Lesson, index: number) => {
+                const lessonDate = new Date(lesson.LessonDateFrom)
+                if (lessonDate.getTime() < currDate.getTime()) {
+                    accomplishedCount += 1;
+                }
+                else {
+                    unAccomplishedCount += 1;
+                }
+            })
+
+            const progressPerencent = ((accomplishedCount/unAccomplishedCount)*100);
+
             return (
                 <>
                     <Radio.Group defaultValue={this.state.courseSelected ? this.state.courseSelected : studentCources[0].CourseId} buttonStyle="solid" onChange={this.onCourseSelected}>
@@ -106,7 +119,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                     if (lessonDate.getTime() < currDate.getTime()) {
                                         stepContent = (<Step transition="scale">
                                             {(accomplished: true) => {
-                                                accomplishedCount =+ 1;
                                                 return (
                                                 <div
                                                     className={`indexedStep ${accomplished ? "accomplished" : null}`}
@@ -120,7 +132,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                     else {
                                         stepContent = (<Step transition="scale">
                                             {(accomplished: true) => {
-                                                unAccomplishedCount =+ 1;
                                                 return (
                                                 <div
                                                     className={`indexedStep`}
