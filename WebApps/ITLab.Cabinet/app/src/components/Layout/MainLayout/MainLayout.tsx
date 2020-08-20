@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Link, Route, Switch } from 'react-router-dom';
 import StudentDetails from "../../../pages/Student/StudentDetails/StudentDetails";
+import LessonDetailed from '../../../pages/Lessons/LessonDetailed/LessonDetailed';
 
 import { connect } from 'react-redux'
 import '../../../App.css';
@@ -79,7 +80,8 @@ class MainLayout extends React.Component<any> {
                     <Route path='/general' render={() => <StudentDetails />} />
                     <Route path='/calendar' render={() => calendar} />
                     <Route path='/my-lessons' render={() => myLessons} />
-                    <Route path='/my-home-tasks' render={() => myHometasks} />
+                    <Route path='/my-home-tasks' render={() => myHometasks} /> 
+                    <Route path='/detailed-lesson' render={() => <LessonDetailed /> }/>
                 </Switch>
 
             </div>

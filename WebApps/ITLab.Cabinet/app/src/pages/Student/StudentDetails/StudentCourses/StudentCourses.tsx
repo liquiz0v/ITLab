@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { AppState } from '../../../../reducer';
 import { Student, Course, Lesson, StudentStatistics } from '../../reducer';
 import '../../../../App.css';
-import { Col, Row, Radio,  Progress } from 'antd';
+import { Col, Row, Radio, Progress } from 'antd';
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from 'react-step-progress-bar';
 import { getCourseLessons, getStudentStatistics } from '../actions';
+//import LessonDetailed from '../../../Lessons/LessonDetailed/LessonDetailed';
 
 import './StudentCourses.css'
+import { Link } from 'react-router-dom';
 // import { StudentStatistics as StudentStatisticsPage } from 'pages/Student/StudentStatictics/StudentStatistics';
 
 interface StateFromProps {
@@ -110,7 +112,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                     
                     <Row>
                         <Col span={24} >
-
                             <ProgressBar percent={progressPerencent}>
                             {
                                 courseLessons.map((lesson: Lesson, index: number) => {
@@ -123,7 +124,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                                 <div
                                                     className={`indexedStep ${accomplished ? "accomplished" : null}`}
                                                 >
-                                                    {index + 1}
+                                                    <Link to={`detailed-lesson/?lessonId=${lesson.LessonId}`}>{index + 1}</Link>
                                                 </div>
                                             )}}
                                         </Step>);
@@ -136,7 +137,7 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                                 <div
                                                     className={`indexedStep`}
                                                 >
-                                                    {index + 1}
+                                                    <Link to={`detailed-lesson/?lessonId=${lesson.LessonId}`}>{index + 1}</Link>
                                                 </div>
                                             )}}
                                         </Step>);
@@ -145,7 +146,6 @@ class StudentCourses extends React.Component<StateFromProps & DispatchFromProps 
                                 })
                             }
                             </ProgressBar>
-
 
                         </Col>
 
