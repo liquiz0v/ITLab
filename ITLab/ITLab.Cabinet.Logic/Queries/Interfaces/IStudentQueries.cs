@@ -8,7 +8,7 @@ namespace ITLab.Cabinet.Logic.Queries.Interfaces
 {
     public interface IStudentQueries
     {
-        public List<CourseDTO> GetStudentCources(int studentId);
+        public List<CourseDTO> GetStudentCourses(int studentId);
         public List<LessonDTO> GetStudentLessons(int studentId);
         public StudentDTO GetStudent(int studentId);
     }
