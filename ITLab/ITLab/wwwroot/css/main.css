@@ -184,7 +184,6 @@ header nav ul li span:hover{
 .header-dropdown {
 	position: absolute;
 	left: 0;
-	top: 45px;
 	background-color: #110f0d;
 	color: white;
 	border-radius: 10px;
