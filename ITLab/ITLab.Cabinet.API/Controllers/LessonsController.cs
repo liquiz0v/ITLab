@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ITLab.Cabinet.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class LessonsController : ControllerBase
     {
@@ -19,15 +19,14 @@ namespace ITLab.Cabinet.API.Controllers
             _lessonsReadService = lessonsReadService;
         }
 
-        [HttpGet] 
+        [HttpGet("{lessonId:int}/course/{courseId:int}")] 
         public async Task<object> GetLessons(int courseId, int studentId)
         {
             return await _lessonsReadService.GetLessonsAsync(courseId, studentId);
         }
 
-        // TODO: made this restful
-        [HttpGet]
-        public async Task<IEnumerable<object>> GetLessonByLessonId(int lessonId, int studentId)
+        [HttpGet("{lessonId:int}/student/{studentId:int}")]
+        public async Task<IEnumerable<object>> GetLessonsByLessonId(int lessonId, int studentId)
         {
             return await _lessonsReadService.GetLessonByLessonId(lessonId, studentId);
         }

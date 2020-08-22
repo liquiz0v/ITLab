@@ -16,8 +16,8 @@ interface OwnStateProps {
 interface PassedProps {
 
 }
-class LessonDetailed extends React.Component<StateFromProps & DispatchFromProps & PassedProps & RouteComponentProps, OwnStateProps> {
-    constructor(props: StateFromProps & DispatchFromProps & PassedProps & RouteComponentProps) {
+class LessonDetailed extends React.Component<StateFromProps & DispatchFromProps & PassedProps & any & RouteComponentProps, OwnStateProps> {
+    constructor(props: StateFromProps & DispatchFromProps & PassedProps & any & RouteComponentProps) {
         super(props);
         
         this.state = {
@@ -29,7 +29,7 @@ class LessonDetailed extends React.Component<StateFromProps & DispatchFromProps 
         return (
             <div>
                 LessonId: {this.props.history.location.search}
-                <button onClick={() => this.props.history.push('/general')} > hui </button>
+                <button onClick={() => this.props.history.push('/general')} > btn </button>
             </div>
         )
     }
