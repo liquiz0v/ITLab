@@ -16,9 +16,9 @@
         console.log(object);
         let coursesArr = [];
 
-        for (i in object) {
-            let courseObj = new Course
-                (
+        for (let i in object) {
+            if (Object.prototype.hasOwnProperty.call(object, i)) {
+                let courseObj = new Course(
                     object[i].Schedule,
                     object[i].CourseId,
                     object[i].Name,
@@ -28,26 +28,28 @@
                     object[i].Lessons,
                     object[i].PhotoLink
                 );
-            let str = ``;
+                let str = ``;
 
-            if (i % 2 === 0) {
-                str = 'fadeInDown'
-            }
-            else {
-                str = 'fadeInUp'
-            }
+                if (i % 2 === 0) {
+                    str = 'fadeInDown';
+                } else {
+                    str = 'fadeInUp';
+                }
 
-            coursesArr.push(courseObj.generateHtml(str));
-            
+                coursesArr.push(courseObj.generateHtml(str));
+
+            }
         }
         let courseHtmlString = "";
 
-        for (item in coursesArr) {
-            courseHtmlString += coursesArr[item];
+        for (let item in coursesArr) {
+            if (Object.prototype.hasOwnProperty.call(coursesArr, item)) {
+                courseHtmlString += coursesArr[item];
+            }
         }
 
         //console.log(newsHtmlString);
-        if (type == "refresh") {
+        if (type === "refresh") {
             document.getElementById(blockForRenderId).innerHTML = courseHtmlString;
         }
         else {
@@ -74,25 +76,25 @@ class Course {
     generateHtmlTimes(schedule) {
         let htmlTime = ``;
 
-        for (i in schedule) {
+        for (let i in schedule) {
             let time = getTime(schedule[i].LessonDateFrom)
             console.log(time);
             htmlTime = htmlTime + `<li><img src="/images/clock.png"/> ${getTime(schedule[i].LessonDateFrom)} - ${getTime(schedule[i].LessonDateTo)}</li>`;
         }
 
         return htmlTime;
-    };
+    }
 
     generateHtmlDates(schedule) {
         let htmlDate = ``;
 
-        for (i in schedule) {
+        for (let i in schedule) {
             console.log(numberToDayOfWeek(schedule[i].LessonDateFrom))
             htmlDate = htmlDate + `<li>${numberToDayOfWeek(schedule[i].LessonDateFrom)}</li>`;
         }
 
         return htmlDate;
-    };
+    }
 
     generateHtml(str) {
 
