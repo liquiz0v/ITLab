@@ -14,7 +14,7 @@ namespace ITLab.Cabinet.Logic.Queries
 {
     public class CoursesQueries : ICoursesQueries
     {
-        public string _connectionString;
+        private readonly string _connectionString;
         public CoursesQueries(IConnectionStringHelper helper)
         {
             _connectionString = helper.ConnectionString;
