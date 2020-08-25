@@ -19,7 +19,7 @@ namespace ITLab.Cabinet.API.Controllers
             _lessonsReadService = lessonsReadService;
         }
 
-        [HttpGet("{lessonId:int}/course/{courseId:int}")] 
+        [HttpGet("{lessonId:int}/student/{studentId:int}")] 
         public async Task<object> GetLessons(int courseId, int studentId)
         {
             return await _lessonsReadService.GetLessonsAsync(courseId, studentId);
