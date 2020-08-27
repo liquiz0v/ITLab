@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ITLab.Cabinet.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class LessonsController : ControllerBase
     {
@@ -19,19 +19,14 @@ namespace ITLab.Cabinet.API.Controllers
             _lessonsReadService = lessonsReadService;
         }
 
-        [HttpGet]
-        public Task<object> GetLessons(int courseId, int lessonId, int studentId)
-        {
-            
-            return courseId == 0 ? GetLessonsByLessonId(lessonId, studentId) : GetLessonsByCourseId(courseId, studentId);
-        }
-
-        private async Task<object> GetLessonsByCourseId(int courseId, int studentId) 
+        [HttpGet("Lessons/")]
+        public async Task<object> GetLessonsByCourseId(int courseId, int studentId) 
         {
             return await _lessonsReadService.GetLessonsAsync(courseId, studentId).ConfigureAwait(false);
         }
 
-        private async Task<object> GetLessonsByLessonId(int lessonId, int studentId)
+        [HttpGet("Lesson/")]
+        public async Task<object> GetLessonByLessonId(int lessonId, int studentId)
         {
             return await _lessonsReadService.GetLessonByLessonId(lessonId, studentId).ConfigureAwait(false);
         }
