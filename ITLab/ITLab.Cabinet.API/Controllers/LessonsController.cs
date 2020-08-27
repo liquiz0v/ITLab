@@ -19,16 +19,21 @@ namespace ITLab.Cabinet.API.Controllers
             _lessonsReadService = lessonsReadService;
         }
 
-        [HttpGet("{lessonId:int}/student/{studentId:int}")] 
-        public async Task<object> GetLessons(int courseId, int studentId)
+        [HttpGet]
+        public Task<object> GetLessons(int courseId, int lessonId, int studentId)
         {
-            return await _lessonsReadService.GetLessonsAsync(courseId, studentId);
+            
+            return courseId == 0 ? GetLessonsByLessonId(lessonId, studentId) : GetLessonsByCourseId(courseId, studentId);
         }
 
-        [HttpGet("{lessonId:int}/student/{studentId:int}")]
-        public async Task<IEnumerable<object>> GetLessonsByLessonId(int lessonId, int studentId)
+        private async Task<object> GetLessonsByCourseId(int courseId, int studentId) 
         {
-            return await _lessonsReadService.GetLessonByLessonId(lessonId, studentId);
+            return await _lessonsReadService.GetLessonsAsync(courseId, studentId).ConfigureAwait(false);
+        }
+
+        private async Task<object> GetLessonsByLessonId(int lessonId, int studentId)
+        {
+            return await _lessonsReadService.GetLessonByLessonId(lessonId, studentId).ConfigureAwait(false);
         }
     }
 }
