@@ -9,5 +9,6 @@ namespace ITLab.Cabinet.Logic.ReadServices.Interfaces
     public interface ILessonsReadService
     {
         Task<IEnumerable<LessonDTO>> GetLessonsAsync(int courseId, int studentId);
+        Task<IEnumerable<DetailedLessonDTO>> GetLessonByLessonId(int lessonId, int studentId);
     }
 }

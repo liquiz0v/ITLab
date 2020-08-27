@@ -19,7 +19,7 @@ namespace ITLab.Cabinet.Logic.Queries
             _connectionString = helper.ConnectionString;
         }
 
-        public List<CourseDTO> GetStudentCources(int studentId)
+        public List<CourseDTO> GetStudentCourses(int studentId)
         {
             var sqlquery = @$"
                 SELECT Courses.Name

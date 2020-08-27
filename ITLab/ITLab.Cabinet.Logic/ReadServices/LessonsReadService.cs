@@ -17,6 +17,11 @@ namespace ITLab.Cabinet.Logic.ReadServices
             _lessonsQueries = lessonsQueries;
         }
 
+        public async Task<IEnumerable<DetailedLessonDTO>> GetLessonByLessonId(int lessonId, int studentId)
+        {
+            return await _lessonsQueries.GetLessonByLessonId(lessonId, studentId);
+        }
+
         public async Task<IEnumerable<LessonDTO>> GetLessonsAsync(int courseId, int studentId)
         {
             return await _lessonsQueries.GetLessonsAsync(courseId, studentId);

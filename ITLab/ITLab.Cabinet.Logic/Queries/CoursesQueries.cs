@@ -151,11 +151,21 @@ namespace ITLab.Cabinet.Logic.Queries
                                     JOIN
                                     (
                                         SELECT StudentMarks.StudentId, 
-                                               COUNT(StudentMarks.Mark) OVER(PARTITION BY StudentMarks.StudentId) AS MarksCount
+                                               COUNT(CheckForNulls.Mark) OVER(ORDER BY StudentMarks.StudentId) AS MarksCount
                                         FROM [ITLab_Cabinet].[dbo].[StudentMarks]
                                              JOIN HomeTasks ON HomeTasks.Id = StudentMarks.HomeTaskId
                                              JOIN Lessons ON HomeTasks.LessonId = Lessons.LessonId
                                              JOIN Courses ON Courses.CourseId = Lessons.CourseId
+                                             JOIN
+                                             (
+                                                 SELECT(CASE
+                                                            WHEN StudentMarks.Mark IS NULL
+                                                            THEN 0
+                                                            ELSE StudentMarks.Mark
+                                                        END) AS Mark, 
+                                                       StudentMarks.Id
+                                                    FROM StudentMarks
+                                             ) AS CheckForNulls ON CheckForNulls.Id = StudentMarks.Id
                                         WHERE StudentMarks.StudentId = @StudentId
                                               AND Courses.CourseId = @CourseId
                                     ) AS StudentOverallTasks ON StudentOverallTasks.StudentId = Students.StudentId

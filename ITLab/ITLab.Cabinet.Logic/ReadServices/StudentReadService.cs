@@ -20,7 +20,7 @@ namespace ITLab.Cabinet.Logic.ReadServices
 
         public List<CourseDTO> GetStudentCourses(int studentId)
         {
-            var response = _queries.GetStudentCources(studentId);
+            var response = _queries.GetStudentCourses(studentId);
             return response;
         }
 
